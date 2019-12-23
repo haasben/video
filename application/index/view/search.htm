@@ -1,0 +1,33 @@
+<a class="logo mr20" href="./">
+			<img src="{$web_config.web_logo}" width="250" height="66" alt="{$web_config.web_name}" />
+		</a>
+
+		<!--搜索框-->
+		<div class="h-search mr20">
+
+			<div class="search-input search-area">
+				<input type="text" name="txtSearch" class="txt-search1" id="txtSearch" placeholder="请输入你要搜索的内容" value="{$keywords}" />
+			</div>
+			<a href="javascript:;" class="search-btn searchsubmit btn-search1" id="btn-search1" onfocus="this.blur();">
+				<i class="iconfont f20"></i>
+			</a>
+		</div>
+		<script type="text/javascript" src="/public/plugins/layer-v3.1.0/layer.js"></script>
+		<script type="text/javascript">
+			$('#btn-search1').click(function(){
+
+				var keywords = $('#txtSearch').val();
+				$.post('/search',{keywords:keywords},function(data){
+
+					if(data.code == '2'){
+						layer.msg('请输入您要搜索的内容',{icon:5});
+					}else{
+						window.location.href = "/search?keywords="+keywords;
+					}
+
+
+				})
+
+
+			})
+		</script>

@@ -1,0 +1,901 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>专业课程-工控邦</title>
+		<meta name="description" content="技成自动化培训网课程中心，提供全面的专业自动化课程培训视频，提供长期在线答疑辅导服务,确保技成学员学以致用。" />
+		<meta name="keywords" content="西门子S7-200,S7-300,三菱PLC视频,变频器视频 欧姆龙视频教程,工控教程，PLC培训，PLC教程视频" />
+		<link rel="shortcut icon" href="http://images.jcpeixun.com/favicon.ico?20141124001" />
+
+		<link rel="stylesheet" href="static/css/lesson/reset.css" />
+		<link rel="stylesheet" href="static/css/iconfont.css" />
+		<link rel="stylesheet" href="static/css/lesson/basic.css" />
+		<link rel="stylesheet" href="static/css/lesson/style.css" />
+
+		<script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="static/css/lesson/jquery.fancybox.css" media="screen" />
+		<script type="text/javascript" src="static/js/jquery.fancybox.js"></script>
+
+		<script type="text/javascript" src="static/js/jquery.superslide.2.1.1.js"></script>
+		<script type="text/javascript" src="static/js/basic.js"></script>
+		<script src="static/js/pagesou_ajax.js" type="text/javascript"></script>
+		<script src="static/js/tools.v1.js" type="text/javascript"></script>
+
+		<script src="static/js/jquery.lazyload.js" type="text/javascript"></script>
+		<script type="text/javascript" src="static/js/pagination.bootstrap.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				/* 图片懒加载 */
+				$(".lazy").lazyload({
+					placeholder: "http://images.jcpeixun.com/grey.gif",
+					effect: "fadeIn"
+				});
+			});
+			
+			window.enable_ad_stat_ord = true; //表示本页面启用订单来源统计
+		</script>
+
+		<style type="text/css">
+			/* 分页 */
+			.pages li {
+				display: inline;
+			}
+
+			.pages .active a {
+				border-color: #188EEE;
+				background-color: #188EEE;
+				color: #FFF;
+			}
+			
+			.user-wrap .user-head {
+				width: 98px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.user-wrap .user-head .caret {
+				z-index: 1;
+			}
+			
+			.user-wrap .user-head .user-head-inner {
+				width: 100%;
+				z-index: 0;
+				border: 0;
+				text-align: center;
+			}
+			
+			.user-wrap .user-head .user-head-inner img {
+				border-radius: 3px;
+			}
+			
+			.h-user {
+				float: right;
+				width: 230px;
+				margin-top: -70px;
+				height: 70px;
+			}
+		</style>
+
+		<script type="text/javascript">
+			$(function() {
+
+				$("#page-tabs-nav li").eq(0).addClass("active");
+
+				var psort = '3'; //brand	devicetype	coursetype
+
+				var f5 = "电工";
+				if (f5 == '0') {
+					$(".condition-devicetype a").eq(0).addClass("active");
+				} else {
+					$(".condition-devicetype a[id='f5-" + f5 + "']").addClass("active");
+				}
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<!--header-->
+			<div class="header">
+				<div class="inner clearfix">
+					<a class="logo mr20" href="./">
+						<img src="static/picture/logo.jpg" width="250" height="66" alt="工控培训" />
+					</a>
+
+					<!--位置导航-->
+					<div class="guide-nav mr20">
+						<!-- <li>
+							<a class="nav-link" href="./">首页</a>
+						</li> -->
+						<!-- <li class="trigger" data-role="collapsible">
+							<a class="nav-link" href="http://course.jcpeixun.com/p/PLC"><i class="iconfont f20 b"></i> 栏目</a>
+							<div class="guide-sub-nav dn clearfix">
+								<dl>
+									<dt class="red"><a href="http://course.jcpeixun.com/p/PLC">选课中心</a></dt>
+									<dd>
+										<a href="http://course.jcpeixun.com/p/PLC">精品课</a>
+										<a href="http://www.jcpeixun.com/class/">直播课</a>
+										<a href="http://course.jcpeixun.com/p/qianghua">小班课</a>
+										<a href="http://course.jcpeixun.com/p/scene">现场实训</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>客户端</dt>
+									<dd>
+										<a href="http://act.jcpeixun.com/topic/20180112/" target="_blank">技成播放器</a>
+										<a href="#" target="_blank">技成手机APP</a>
+										<a href="http://www.jcpeixun.com/mobile/Phone.aspx" target="_blank">微信公众号</a>
+									</dd>
+
+								</dl>
+								<dl>
+									<dt>资讯中心</dt>
+									<dd>
+										<a href="http://www.jcpeixun.com/knowledge/" target="_blank">文章</a>
+										<a href="http://www.jcpeixun.com/xiazai/ " target="_blank">资料下载</a>
+										<a href="http://zhaopin.jcpeixun.com/" target="_blank">找工作</a>
+										<a href="http://www.jcpeixun.com/topic/exam/login.html?callback=http://exam.jcpeixun.com/jcexam/ChooseRoom.aspx">考证</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>企业服务</dt>
+									<dd>
+										<a href="http://course.jcpeixun.com/p/weipei">企业内训</a>
+										<a href="http://course.jcpeixun.com/p/weipei">定向委培</a>
+										<a href="http://course.jcpeixun.com/p/weipei">人才输送</a>
+										<a href="http://course.jcpeixun.com/p/weipei">项目要求 </a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>实操中心</dt>
+									<dd>
+										<a href="http://act.jcpeixun.com/topic/20160503/ximenzi.aspx">西门子学习机 (箱)</a>
+										<a href="http://act.jcpeixun.com/topic/20160503/sanling.aspx">三菱学习机(箱)</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>院校服务</dt>
+									<dd>
+										<a href="http://yuanxiao.jcpeixun.com/index.aspx">学习平台</a>
+										<a href="http://course.jcpeixun.com/p/weipei">定向委培</a>
+										<a href="http://zhaopin.jcpeixun.com/">就业交流</a>
+										<a href="http://course.jcpeixun.com/p/weipei">技术方案</a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>技成会员</dt>
+									<dd>
+										<a href="http://www.jcpeixun.com/help/help21.aspx">服务</a>
+										<a href="http://www.jcpeixun.com/pay/member.aspx">购买</a>
+										<a href="http://www.jcpeixun.com/lesson1/person_xufei.aspx">续费</a>
+										<a href="http://course.jcpeixun.com/p/weipei">工程对接</a>
+									</dd>
+								</dl>
+							</div>
+						</li> -->
+						<!-- <li>
+							<span class="fs pr10 pl10">&gt;</span>
+							<strong class="gray3">选课中心</strong>
+						</li> -->
+					</div>
+					<!--位置导航-->
+
+					<!--搜索框-->
+					<div class="h-search mr20">
+
+						<div class="search-input search-area">
+							<input type="text" name="txtSearch" class="txt-search1" id="txtSearch" placeholder="搜索课程" />
+						</div>
+						<a href="javascript:;" class="search-btn searchsubmit btn-search1" id="btn-search1" onfocus="this.blur();">
+							<i class="iconfont f20"></i>
+						</a>
+
+						<p class="hot-key h20 lh20 mt5">
+							<a href="majorcourse.html?f5=电工">电工基础</a>
+							<a href="course.html">PLC</a>
+							<a href="search.html?keyword=数控">数控</a>
+							<a href="search.html?keyword=S7-200">S7-200</a>
+							<a href="search.html?keyword=学习机">学习机</a>
+							<a href="search.html?keyword=编程案例">编程案例</a>
+							<a href="search.html?keyword=案例">案例课程</a>
+							<a href="search.html?keyword=微课">微课</a>
+						</p>
+					</div>
+					<div style="clear: both;"></div>
+					<!--搜索框-->
+					
+					<div class="h-user">
+						<!--已登录-->
+						<div class="user-center" id="header-logined" style="display:none;">
+							<!--用户菜单-->
+							<div class="user-wrap" data-role="collapsible">
+								<div class="user-head">
+									<a class="user-head-inner" href="javascript:;">
+										<img class="u-avatar" src="static/picture/stu.jpg" width="32" height="32">
+										<b class="u-truename"></b>
+									</a>
+									<i class="caret"></i>
+								</div>
+								<div class="user-cont">
+									<div class="user-info">
+										<span class="u-truename"></span>
+									</div>
+									<div class="user-menu">
+										<a href="http://lgc.jcpeixun.com/user.aspx?t=4">学员中心</a> <a href="http://lgc.jcpeixun.com/Message.aspx?t=6">
+											我的消息<span></span></a> <a href="http://lgc.jcpeixun.com/Study.aspx?t=2" target="_blank">
+											学习记录</a> <a href="http://lgc.jcpeixun.com/Order.aspx?t=3" target="_blank">我的订单</a>
+										<a href="http://lgc.jcpeixun.com/my_course.aspx?t=2" target="_blank">我的收藏</a> <a href="http://course.jcpeixun.com/"
+										 target="_blank">新课上架</a>
+										<a href="http://lgc.jcpeixun.com/Money.aspx?t=5" class="btn-link btn-link9" target="_blank">赚学费</a> <a href="http://lgc.jcpeixun.com/coupon.aspx?t=7"
+										 class="btn-link btn-link9" target="_blank">优惠券</a>
+										<a href="http://www.jcpeixun.com//lesson1/person_xufei.aspx" class="fw" style="background: url(static/images/bg_20130926001.gif) no-repeat scroll 60px 0px transparent;">会员续费</a>
+										<a href="http://act.jcpeixun.com/topic/20170804/?vippage" class="fw" style="background: url(static/images/bg_20130926001.gif) no-repeat scroll 60px 0px transparent;">购买会员</a>
+										<a href="http://www.jcpeixun.com/logout.aspx?callback=" class="fw">退出</a>
+									</div>
+								</div>
+							</div>
+							<!--用户菜单-->
+							<!--购物车-->
+							<div class="user-shop" data-role="collapsible" style="margin-right:0">
+								<a class="shop-btn u-grade2" href="#" style="padding:0 10px;">用户注册</a>
+							</div>
+
+						</div>
+
+						<!--未登录-->
+						<div class="login-nav" id="header-n-login">
+							<a class="mr10" href="http://www.jcpeixun.com/newlogin.aspx">用户登录</a> <a class="reg" href="http://www.jcpeixun.com/emailregister.aspx">免费注册</a>
+						</div>
+						<!--未登录-->
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+
+			<!--header-->
+
+			<!--container-->
+			<div class="container">
+
+				<!--tabs-->
+				<div class="inner">
+					<div class="tabs1 mt20">
+						<!-- page tab nav -->
+
+						<ul class="tabs-nav" id="page-tabs-nav">
+							<li class="">
+								<a class="tabs-link" href="course.html">
+									<h3 class="rel">精品课程</h3>
+									<div class="tip">
+										<i class="iconfont tip-icon f20 grayc n">&#xe61f;</i>
+										<div class="tip-cont"><i class="caret1"></i><i class="caret2"></i>此处放技能强化小班的精简介绍内容，名师带学，点对点一 一攻破</div>
+									</div>
+									<p>海量工控技术讲解畅享学习</p>
+
+								</a>
+							</li>
+							<li class="">
+								<a class="tabs-link" href="mfcourse.html">
+									<h3>免费课程</h3>
+									<p>免费学习观看下载</p>
+								</a>
+							</li>
+							<li>
+								<a class="tabs-link" href="scene">
+									<h3>现场培训</h3>
+									<p>一人一机，专业辅导，学会为止</p>
+								</a>
+							</li>
+							<li>
+								<a class="tabs-link" href="jihua">
+									<h3>学习计划</h3>
+									<p>学习方向不对，努力白费</p>
+								</a>
+							</li>
+						</ul>
+
+						<!-- page tab nav end-->
+
+						<div class="tabs-cont pd20">
+
+							<dl class="condition clearfix">
+								<dt>课程：</dt>
+								<dd class="condition-cont clearfix condition-devicetype">
+									<!--课程分类：-->
+
+									<a id="f5-电工" href="/p/majorcourse?f5=电工">电工</a>
+									<div style="position: relative;" class="type-plc-unfold">
+										<a id="f5-PLC" class="type-plc-unfold" href="course.html">PLC</a>
+										<div class="type-plc-child" style="">
+										</div>
+									</div>
+									<a id="f5-变频器" href="/p/majorcourse?f5=变频器">变频器</a>
+									<a id="f5-伺服" href="/p/majorcourse?f5=伺服">伺服</a>
+									<a id="f5-触摸屏" href="/p/majorcourse?f5=触摸屏">触摸屏</a>
+									<a id="f5-组态" href="/p/majorcourse?f5=组态">上位机组态</a>
+									<a id="f5-数控" href="/p/majorcourse?f5=数控">数控</a>
+									<a id="f5-机器人" href="/p/majorCourse.aspx?f5=机器人">机器人</a>
+									<a id="f5-单片机" href="/p/majorCourse.aspx?f5=单片机">单片机</a>
+									<a id="f5-机械设计" href="/p/majorCourse.aspx?f5=机械设计">机械设计</a>
+
+									<a id="f4-案例课程" href="/p/case">案例课程</a>
+									<a id="f5-微课" href="/p/majorcourse?f5=微课">微课</a>
+									<a id="f5-其他" href="/p/majorcourse?f5=其他">其他</a>
+
+									<script type="text/javascript">
+										$(function() {
+											var plcType = "";
+											var categoryUrl = "https://apidata.jcpeixun.com/course/course.aspx?func=getCategorylist&parent_id=131";
+											$.getJSON(categoryUrl, function(res) {
+												for (var i = 0; i < res.data.length; i++) {
+													plcType += "<a href=\"/p/majorcourse?f5=PLC&plctype=" + res.data[i].category_id + "\">" + res.data[i].name +
+														"</a>";
+												}
+												$(".type-plc-child").html(plcType);
+
+											});
+										});
+									</script>
+								</dd>
+							</dl>
+
+							<dl class="condition clearfix dn">
+								<dt>难度：</dt>
+								<dd class="condition-cont clearfix condition-diffc">
+									<a href="?f1=0&f2=0&f3=">全部</a>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<!--tabs-->
+
+				<div class="inner mt20 oh">
+					<div class="clearfix bd1 bds bdgrayd dn">
+						<span class="r gray6 f16 lh45 pr20">共27门课</span>
+						<div class="tabs-nav1 bd0" style="background-color:#FFF;">
+							<a id="Psort-3" class="" href="?f1=0&f2=0&f3=0&psort=3">最近更新</a>
+							<a id="Psort-1" href="?f1=0&f2=0&f3=0&psort=1">近期热门</a>
+							<a id="Psort-2" href="?f1=0&f2=0&f3=0&psort=2">评分最高</a>
+						</div>
+					</div>
+
+					<div class="tabs-nav1 bd0" style="background-color:#FFF;"><a class="active">电工课程</a><span class="r gray6 f16 lh45 pr20">共27门课</span></div>
+
+					<!--课程列表-->
+					<div class="inner oh">
+						<ul class="listview13 clearfix" style="width:1220px; margin-top:0px;">
+
+							<li>
+								<div class="li-img">
+									<a href="/6975/" class="title" id="title" data-id="6975" target="_blank">
+										<img src="static/picture/20190829170428236.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6975/">十年老电工实操系列之从小白到超越中级</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6975"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6975">12</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 2万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6975/460189.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6969/" class="title" id="title" data-id="6969" target="_blank">
+										<img src="static/picture/20190812173330288.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6969/">十年老电工教你安全正确使用工具</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6969"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6969">5</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 1.2万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6969/460143.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6961/" class="title" id="title" data-id="6961" target="_blank">
+										<img src="static/picture/20190722152349081.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6961/">电气控制原理图到梯形图转换</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6961"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6961">20</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 2.5万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6961/460069.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6898/" class="title" id="title" data-id="6898" target="_blank">
+										<img src="static/picture/20190628094241207.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6898/">电工电磁技术</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6898"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6898">23</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 2.4万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6898/459859.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6868/" class="title" id="title" data-id="6868" target="_blank">
+										<img src="static/picture/20190617175539841.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6868/">老电工带你看图接线</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6868"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6868">21</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 6.6万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6868/459815.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6795/" class="title" id="title" data-id="6795" target="_blank">
+										<img src="static/picture/20190513093457027.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6795/">电工常用工具的使用</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6795"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6795">8</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 3.4万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6795/459731.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6763/" class="title" id="title" data-id="6763" target="_blank">
+										<img src="static/picture/20190427113902857.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6763/">老司机带你玩转电工仪表</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6763"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6763">24</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 5.1万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6763/459668.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6746/" class="title" id="title" data-id="6746" target="_blank">
+										<img src="static/picture/20190426092757206.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6746/">电器元件选型与应用大全</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6746"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6746">29</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 5.3万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6746/459660.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6700/" class="title" id="title" data-id="6700" target="_blank">
+										<img src="static/picture/20190409110058593.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6700/">家装电工技能速成</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6700"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6700">18</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 4.9万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6700/459634.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6694/" class="title" id="title" data-id="6694" target="_blank">
+										<img src="static/picture/20190404144045507.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6694/">深入浅出电工技术</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6694"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6694">29</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 4.4万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6694/459645.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6680/" class="title" id="title" data-id="6680" target="_blank">
+										<img src="static/picture/20190329161413824.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6680/">家装电路设计与布线</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6680"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6680">15</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 2.7万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6680/459609.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="/6660/" class="title" id="title" data-id="6660" target="_blank">
+										<img src="static/picture/20190321171107918.jpg" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/6660/">实物讲述住宅单户配电</a></p>
+								<p class="clearfix pt5 f14">
+									<span class="colblue r"><a class="like-video-btn6660"><i class="iconfont">&#xe601;</i>
+											<label class="like-video-num6660">12</label>
+										</a>
+									</span><span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> 2.2万人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">初级</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/6660/459591.html">
+											<em class="colblue">免费试看</em></a></span></p>
+							</li>
+
+						</ul>
+					</div>
+					<!--课程列表-->
+
+					<!--pages-->
+					<div class=" pages tr">
+						<ul id="pagination">
+
+						</ul>
+					</div>
+					<div class="" style="clear:both"></div>
+					<!--pages-->
+				</div>
+			</div>
+			<!--container-->
+
+			<script type="text/javascript">
+				var callbackURI = escape(location.href);
+				//登录页面
+				function login(url) {
+					if (!url) {
+						url = callbackURI
+					}
+					$.fancybox.open({
+						href: 'http://www.jcpeixun.com/login/logins.html?callback=' + url + '',
+						type: 'iframe',
+						padding: 10,
+						width: '400',
+						height: '520',
+						keys: {
+							close: [27]
+						}
+					});
+
+				}
+
+				//课程试看浏览点击数
+				$(function() {
+					$(".title").click(function() {
+						var course_id = $(this).attr("data-id");
+						$.post(fpath + "ajax/coursehandle", {
+							"action": "courseclicknum",
+							"course_id": course_id
+						})
+
+					})
+
+					//课程点赞数
+					$(".btnlogin").click(function(event) { //点击观看
+						var learnerId = $.cookie("learnerId");
+						if (learnerId == null) {
+							var url = $(this).attr("href");
+							login(url);
+							return false;
+						}
+					});
+				})
+			</script>
+
+			<!--footer-->
+			<div class="footer mt20">
+
+				<!--footer-guide-->
+				<div class="foot-guide inner clearfix">
+					<dl class="fg-item2">
+						<dt class="h30 lh30 b f14">精品课程</dt>
+						<dd class="clearfix">
+							<a class="w140" href="/p/search?keyword=三菱">三菱视频教程</a>
+							<a class="w80" href="/p/search?keyword=电工">电工</a>
+							<a class="w140" href="/p/search?keyword=案例课程">案例课程</a>
+							<a class="w140" href="/p/search?keyword=西门子">西门子视频教程</a>
+							<a class="w80" href="/p/search?keyword=数控">数控</a>
+							<a class="w140" href="/p/search?keyword=西门子S7-200">西门子S7-200</a>
+							<a class="w140" href="/p/search?keyword=指令详解">指令详解</a>
+							<a class="w80" href="/p/search?keyword=组态王">组态王</a>
+							<a class="w140" href="/p/search?keyword=西门子S7-300">西门子S7-300</a>
+							<a class="w140" href="/p/search?keyword=变频器">变频器</a>
+							<a class="w80" href="/p/search?keyword=PID">PID</a>
+							<a class="w140" href="/p/search?keyword=伺服">伺服</a>
+
+
+
+						</dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">学习咨询</dt>
+						<dd><a href="/p/PLC">选课中心</a></dd>
+						<dd><a href="/P/jihua">学习计划</a></dd>
+						<dd><a href="http://www.jcpeixun.com/knowledge/">文章中心</a></dd>
+						<dd><a href="http://www.jcpeixun.com/xiazai/">技成下载库</a></dd>
+						<dd style="width:100px;"><a href="http://www.jcpeixun.com/lesson1/tear_user.aspx">助教老师邀请通道</a> </dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">帮助中心</dt>
+
+						<dd><a href="http://www.jcpeixun.com/lesson1/guide.aspx">新手上路</a></dd>
+						<!--  <dd><a href="http://www.jcpeixun.com/help/index.aspx">学习攻略</a></dd>-->
+						<!--<dd><a href="http://www.jcpeixun.com/help/help36.aspx">积分获取、规则</a></dd>-->
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">升级与购买</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">购买白金学员</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">购买金牌学员</a></dd>
+						<dd><a href="http://wenda.jcpeixun.com/" target="_blank">技成问答</a></dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">关于技成</dt>
+						<dd><a href="http://www.jcpeixun.com/AboutUs.aspx">了解技成</a></dd>
+						<dd><a href="http://www.jcpeixun.com/contact.aspx">联系我们</a></dd>
+						<dd><a href="http://www.jcpeixun.com/zhaopin.aspx">加入我们</a></dd>
+						<dd><a href="http://www.jcpeixun.com/lesson1/tear_info.aspx">助教老师</a></dd>
+						<dd><a href="http://exam.jcpeixun.com/jcexam/certificateprofile.aspx">证书查询</a></dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">客户端</dt>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/">技成播放器</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/jc-index.aspx">技成手机APP</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/other.aspx">工具App</a></dd>
+						<dd><a href="http://weibo.com/jcpx">新浪微博</a></dd>
+						<dd><a href="http://bbs.jcpeixun.com/thread-39246-1-1.html">官方微信</a></dd>
+					</dl>
+					<dl class="fg-item" style="border-right:0; padding-right:0;">
+						<dt class="h30 lh30 f14">合作服务</dt>
+						<dd><a href="http://www.jcpeixun.com/help/help21.aspx">个人服务</a></dd>
+						<dd><a href="/p/weipei">企业服务</a></dd>
+						<dd><a href="/p/weipei">院校服务</a></dd>
+					</dl>
+				</div>
+				<!--footer-guide-->
+
+				<!--copyright-->
+				<div class="copyright">
+					<div class="inner">
+						<div class="w250 r tr mt15">
+							<a class="mr10" href="http://www.baidu.com/s?wd=www.jcpeixun.com@v" target="_blank"><img src="static/picture/bdxy.jpg"
+								 width="66" height="24" alt="百度信誉放心访问" /></a>
+
+							<!--<a class="mr10" href="https://ss.knet.cn/verifyseal.dll?sn=e1108064400000694321023465&comefrom=trust&trustKey=dn&trustValue=jcpeixun.com" target="_blank"><img src="static/picture/kxwz.jpg" width="66" height="24" alt="可信网站身份验证"/></a>-->
+						</div>
+						<p class="gray9">©深圳市技成科技有限公司 - 课程内容版权均归技成培训网所有 粤ICP备11069432号</p>
+						<p class="">联合运营单位：深圳市工程师联合会</p>
+					</div>
+				</div>
+				<!--copyright-->
+
+			</div>
+			<div class="aside-bar fixed-top">
+				<ul class="aside-bar-inner">
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe633;</p>
+							<p class="txt">
+								公众账号</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f13 gray6 tc">
+								扫描二维码<br>
+								关注技成微信公众账号</p>
+							<p>
+								<img src="static/picture/qr.jpg" width="130" height="130" alt="技成微信公众账号"></p>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe630;</p>
+							<p class="txt">
+								学习交流</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f14 gray6 tc">
+								技成学员交流总群</p>
+							<p class="f14">
+								125群：154017892</p>
+							<p class="link-blue">
+								<a href="http://shang.qq.com/wpa/qunwpa?idkey=2eee53569300abbcfb8b8a6cab6f7374da37ddcbe5fc37e5015bdec61dbb30fe"
+								 target="_blank">进群交流</a></p>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe63f;</p>
+							<p class="txt">
+								留言反馈</p>
+						</a>
+						<div class="aside-bar-cont msg-board">
+							<p class="f16 h40 lh40 gray6 tl">
+								欢迎给我们留言</p>
+							<iframe frameborder="0" style="width:234px;height:170px" src="http://www.jcpeixun.com/ashx/studentsound/Form.html?v=1111"></iframe>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe63c;</p>
+							<p class="txt">
+								APP下载</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f13 gray6 tc">
+								扫描二维码下载到手机</p>
+							<p>
+								<img src="static/picture/qr.png" width="130" height="130" alt="技成微信公众账号"></p>
+						</div>
+					</li>
+					<li class="aside-bar-item"><a class="aside-bar-link" href="#top" target="_self">
+							<p class="iconfont f30 n">
+								&#xe625;</p>
+							<p class="txt">
+								返回顶部</p>
+						</a></li>
+				</ul>
+			</div>
+			<script defer type="text/javascript" src="static/js/cityjson.js"></script>
+			<script src="static/js/bm2017.min.js"></script>
+			<script>
+				/* //上线时取消该注释    */
+				(function() {
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = 'https://images.jcpeixun.com/static/js/tongji.js?a=201601';
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				})();
+			</script>
+			<script type="text/javascript">
+				function addLoadEvent(func) {
+					if (document.all) {
+						window.attachEvent("onload", func); //对于IE
+
+					} else {
+						window.addEventListener("load", func, false); //对于FireFox
+					}
+				}
+
+				function calcLoadTime() {
+					//获取网站响应时长，单位毫秒
+					var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart; //响应时间
+					var ip = returnCitySN.cip; //客户端ip地址
+					var city = returnCitySN.cname; //ip所在城市
+					var domain = window.location.host; //域名
+					var page = window.location.href; //页面地址
+					$.getJSON("https://apidata.jcpeixun.com/sys/page-loadtime-handle.aspx?jsoncallback=?&loadtime=" + loadTime +
+						"&domain=" + domain + "&page=" + page + "&ip=" + ip + "&city=" + city,
+						function(data) {
+							if (data.code == "error") {
+								window.console && console.log(data.msg);
+							}
+						})
+				}
+				addLoadEvent(calcLoadTime);
+			</script>
+			<script>
+				$(function() {
+					var learnerId = $.cookie("learnerId");
+					//设置用户在官网登录有效期为当天的23:59:59
+					var expires = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1);
+					$.cookie("learnerId", learnerId, {
+						path: '/',
+						expires: expires,
+						domain: '.jcpeixun.com'
+					});
+				});
+			</script>
+
+			<!--百度课程内容页统计 -->
+			<script type="text/javascript">
+				var _hmt = _hmt || [];
+				(function() {
+					var hm = document.createElement("script");
+					hm.src = "https://hm.baidu.com/hm.js?2c42fc3e7f21e9b99348df496327a306";
+					var s = document.getElementsByTagName("script")[0];
+					s.parentNode.insertBefore(hm, s);
+				})();
+			</script>
+
+			<!-- WPA Button Begin -->
+			<!--上线时取消该注释-->
+			<!--<script charset="utf-8" type="text/javascript" src="static/js/wpa.js"></script> -->
+			<!-- WPA Button End -->
+
+
+			<script type='text/javascript'>
+				var _vds = _vds || [];
+				window._vds = _vds;
+				(function() {
+					_vds.push(['setAccountId', '93cc8bea131bfa68']);
+					var account = $.cookie("account");
+					if (account) {
+						account = eval('(' + $.cookie("account") + ')');
+						_vds.push(['setCS1', 'user_id', new Base64().decode(account.user_id)]);
+					}
+					(function() {
+						var vds = document.createElement('script');
+						vds.type = 'text/javascript';
+						vds.async = true;
+						vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'assets.growingio.com/vds.js';
+						var s = document.getElementsByTagName('script')[0];
+						s.parentNode.insertBefore(vds, s);
+					})();
+				})();
+			</script>
+			<!--footer-->
+		</div>
+	</body>
+</html>

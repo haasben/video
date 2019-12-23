@@ -1,0 +1,1477 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>变频器、伺服和步进驱动技术应用-工控邦培训网</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="static/css/lesson/player.css">
+		<link rel="dns-prefetch" href="//passport.jcpeixun.com/" />
+		<link href="static/css/lesson/course.css" rel="stylesheet" />
+		<link href="static/css/lesson/course_v2019.css" rel="stylesheet" />
+
+		<link rel="shortcut icon" href="http://images.jcpeixun.com/favicon.ico?20141124001" />
+
+		<link rel="stylesheet" href="static/css/lesson/reset.css" />
+		<link rel="stylesheet" href="static/css/iconfont.css" />
+		<link rel="stylesheet" href="static/css/lesson/basic.css" />
+		<link rel="stylesheet" href="static/css/lesson/style.css" />
+
+		<script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="static/css/jquery.fancybox.css" media="screen" />
+		<script type="text/javascript" src="static/js/jquery.fancybox.js"></script>
+
+		<script type="text/javascript" src="static/js/jquery.superslide.2.1.1.js"></script>
+		<script type="text/javascript" src="static/js/basic.js"></script>
+		<script src="static/js/pagesou_ajax.js" type="text/javascript"></script>
+		<script src="static/js/tools.v1.js" type="text/javascript"></script>
+
+		<script src="static/js/jquery.lazyload.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				/* 图片懒加载 */
+				$(".lazy").lazyload({
+					placeholder: "http://images.jcpeixun.com/grey.gif",
+					effect: "fadeIn"
+				});
+
+				$("#searchsubmit").click(function() {
+					if ($("#search").val() != "") {
+						window.location.href = "/lesson1/search-list.aspx?keyword=" + $("#search").val();
+					}
+				});
+
+			});
+
+			var fpath = (window.location.host.indexOf("127.0.0.1") > -1 || window.location.host.indexOf("localhost") > -1) ?
+				"/lesson/" : "/"; //全局文件路径
+		</script>
+		<script>
+			window.enable_ad_stat_ord = true; //表示本页面启用订单来源统计
+		</script>
+		<script src="static/js/swfobject.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var data_role_Miniplay_navbar = 'course-intro'; //导航选中
+		</script>
+		<script>
+			$(function () {
+            var hidden_course_id = $("#hidden_course_id").val();
+            //选项卡
+            $(".tabs-nav1 a").click(function () {
+                var $div_li = $(this).index();
+                var $path = $(this).attr("data-path");
+                var $current = $(".tabCon>div").eq($div_li);
+                var $content = $.trim($current.text());
+                $(this).addClass("active").siblings().removeClass("active");
+
+                if ($content.length > 0) {
+                    $(".tabCon>div").eq($div_li).show().siblings().hide();
+                }
+                else {
+                    $(".tabCon>div").eq($div_li).show().siblings().hide();
+                    $current.html('<p><img src="static/picture/loading-50.gif" style=" width: 20px; ">正在加载...</p>');
+                    $.get(fpath + "" + $path + "?courseid=" + hidden_course_id, function (msg) {
+                        $current.html(msg);
+                    })
+                }
+
+
+            })
+        })
+    </script>
+		<style type="text/css">
+			#boxen_titlebar {
+				position: relative;
+				height: 30px;
+				line-height: 30px;
+				background-color: rgb(37, 153, 242) !important;
+				color: #333;
+				font-size: 18px;
+				font-weight: 700;
+				font-family: 'Microsoft Yahei';
+				padding: 15px;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+				width: 520px;
+			}
+
+			#boxen_content_area {
+				background: #fff;
+				width: 100%;
+				height: 240px !important;
+				box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6) !important;
+				padding-top: 20px;
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+
+			#boxen_container {
+				width: 550px;
+				height: 260px position: fixed;
+				left: 50%;
+				top: 50%;
+				margin-left: -275px;
+				margin-top: -160px;
+				z-index: 10001;
+				box-shadow: rgb(51, 51, 51) 0px 5px 15px;
+				border-radius: 10px !important;
+			}
+
+			#boxen_title {
+				position: relative;
+				height: 30px;
+				line-height: 30px;
+				background-color: #eee;
+				color: #fff;
+				font-size: 20px;
+				font-weight: normal;
+				font-family: 'Microsoft Yahei';
+				padding: 15px;
+				background: rgb(37, 153, 242);
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+
+			#boxen_close_button {
+				border: none;
+				position: absolute;
+				right: 0;
+				top: 15px;
+				width: 28px;
+				text-align: center;
+				outline: none;
+				text-decoration: none;
+				font-size: 18px;
+				font-family: Arial;
+				font-weight: normal;
+				color: #fff;
+				padding-right: 5px;
+			}
+
+			/*新改版的课程说明样式*/
+			.kc_span p .shijian {
+				color: #1caaea;
+			}
+
+			.kc_span p .ques {
+				color: #fff;
+				background: #c9c9c9;
+				border-radius: 100%;
+				font-size: 15px;
+				display: inline-block;
+				width: 22px;
+				height: 22px;
+				line-height: 22px;
+				text-align: center;
+			}
+
+			.kc_span p .comment-star {
+				display: inline-block;
+				width: 78px;
+				height: 14px;
+				background: url(static/images/stars.jpg) no-repeat;
+			}
+
+			.kc_span p .star-0 {
+				background-position: -80px 0;
+			}
+
+			.kc_span p .star-1 {
+				background-position: -64px 0;
+			}
+
+			.kc_span p .star-2 {
+				background-position: -48px 0;
+			}
+
+			.kc_span p .star-3 {
+				background-position: -32px 0;
+			}
+
+			.kc_span p .star-4 {
+				background-position: -16px 0;
+			}
+
+			.kc_span p .star-5 {
+				background-position: 0 0;
+			}
+
+			.sharesdiv {
+				float: right;
+				width: 200px;
+				margin-top: -40px;
+				margin-right: -40px;
+				padding-top: 0 !important;
+				padding-left: 0 !important;
+			}
+
+			.reset p .discount_price {
+				font-size: 30px;
+				color: #ff4d4d;
+				font-weight: normal;
+			}
+
+			.reset p .discount_price em {
+				font-size: 18px;
+			}
+
+			.reset p .discount_price i {
+				font-style: normal;
+				font-size: 32px;
+				font-weight: bold;
+			}
+
+			.reset p .price {
+				font-size: 14px;
+				text-decoration: line-through;
+				color: #999;
+			}
+
+			.reset .btn {
+				display: inline-block;
+				padding: 0;
+				width: 120px;
+				height: 40px;
+				line-height: 40px;
+				margin-right: 10px;
+				font-size: 14px;
+				margin-top: 10px;
+			}
+
+			.reset .btn:hover {
+				background: #FF7272;
+				border-color: #fff;
+			}
+
+			.reset .buy_vip {
+				background: #fff;
+				color: #FF4D4D;
+				border: 1px solid #FF4D4D;
+			}
+
+			.reset .buy_vip:hover {
+				background: #FF4D4D;
+				color: #fff;
+				border-color: #fff;
+			}
+
+			.reset .btn:active {
+				background: #CD3131;
+			}
+
+			.reset .detail {
+				color: #999;
+				font-size: 12px;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+
+			.reset .detail .ques {
+				color: #fff;
+				background: #c9c9c9;
+				border-radius: 100%;
+				font-size: 12px;
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				line-height: 16px;
+				text-align: center;
+				margin-left: 2px;
+			}
+		</style>
+	</head>
+	<body id="lesson_20140110">
+		<div class="wrap">
+			<!--header-->
+			<style type="text/css">
+				.user-wrap .user-head {
+					width: 98px;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+
+				.user-wrap .user-head .caret {
+					z-index: 1;
+				}
+
+				.user-wrap .user-head .user-head-inner {
+					width: 100%;
+					z-index: 0;
+					border: 0;
+					text-align: center;
+				}
+
+				.user-wrap .user-head .user-head-inner img {
+					border-radius: 3px;
+				}
+
+				.h-user {
+					float: right;
+					width: 230px;
+					margin-top: -70px;
+					height: 70px;
+				}
+			</style>
+			<div class="header">
+				<div class="inner clearfix">
+
+					<a class="logo mr20" href="./">
+						<img src="static/picture/logo.jpg" width="250" height="66" alt="技成培训" />
+					</a>
+
+					<!--位置导航-->
+					<div class="guide-nav mr20">
+						<li>
+							<a class="nav-link" href="http://www.jcpeixun.com/">首页</a>
+						</li>
+						<li class="trigger" data-role="collapsible">
+							<a class="nav-link" href="http://course.jcpeixun.com/p/PLC"><i class="iconfont f20 b"></i> 栏目</a>
+							<div class="guide-sub-nav dn clearfix">
+								<dl>
+									<dt class="red"><a href="http://course.jcpeixun.com/p/PLC">选课中心</a></dt>
+									<dd>
+										<a href="http://course.jcpeixun.com/p/PLC">精品课</a>
+										<a href="http://www.jcpeixun.com/class/">直播课</a>
+										<a href="http://course.jcpeixun.com/p/qianghua">小班课</a>
+										<a href="http://course.jcpeixun.com/p/scene">现场实训</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>客户端</dt>
+									<dd>
+										<a href="http://act.jcpeixun.com/topic/20180112/" target="_blank">技成播放器</a>
+										<a href="#" target="_blank">技成手机APP</a>
+										<a href="http://www.jcpeixun.com/mobile/Phone.aspx" target="_blank">微信公众号</a>
+									</dd>
+
+								</dl>
+								<dl>
+									<dt>资讯中心</dt>
+									<dd>
+										<a href="http://www.jcpeixun.com/knowledge/" target="_blank">文章</a>
+										<a href="http://www.jcpeixun.com/xiazai/ " target="_blank">资料下载</a>
+										<a href="http://zhaopin.jcpeixun.com/" target="_blank">找工作</a>
+										<a href="http://www.jcpeixun.com/topic/exam/login.html?callback=http://exam.jcpeixun.com/jcexam/ChooseRoom.aspx">考证</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>企业服务</dt>
+									<dd>
+										<a href="http://course.jcpeixun.com/p/weipei">企业内训</a>
+										<a href="http://course.jcpeixun.com/p/weipei">定向委培</a>
+										<a href="http://course.jcpeixun.com/p/weipei">人才输送</a>
+										<a href="http://course.jcpeixun.com/p/weipei">项目要求 </a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>实操中心</dt>
+									<dd>
+										<a href="http://act.jcpeixun.com/topic/20160503/ximenzi.aspx">西门子学习机 (箱)</a>
+										<a href="http://act.jcpeixun.com/topic/20160503/sanling.aspx">三菱学习机(箱)</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>院校服务</dt>
+									<dd>
+										<a href="http://yuanxiao.jcpeixun.com/index.aspx">学习平台</a>
+										<a href="http://course.jcpeixun.com/p/weipei">定向委培</a>
+										<a href="http://zhaopin.jcpeixun.com/">就业交流</a>
+										<a href="http://course.jcpeixun.com/p/weipei">技术方案</a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>技成会员</dt>
+									<dd>
+										<a href="http://www.jcpeixun.com/help/help21.aspx">服务</a>
+										<a href="http://www.jcpeixun.com/pay/member.aspx">购买</a>
+										<a href="http://www.jcpeixun.com/lesson1/person_xufei.aspx">续费</a>
+										<a href="http://course.jcpeixun.com/p/weipei">工程对接</a>
+									</dd>
+								</dl>
+							</div>
+						</li>
+						<li>
+							<span class="fs pr10 pl10">&gt;</span>
+							<strong class="gray3">选课中心</strong>
+						</li>
+					</div>
+					<!--位置导航-->
+
+					<!--搜索框-->
+					<div class="h-search mr20">
+
+						<div class="search-input search-area">
+							<input type="text" name="txtSearch" class="txt-search1" id="txtSearch" placeholder="搜索课程" />
+						</div>
+						<a href="javascript:;" class="search-btn searchsubmit btn-search1" id="btn-search1" onfocus="this.blur();">
+							<i class="iconfont f20"></i></a>
+
+						<p class="hot-key h20 lh20 mt5">
+							<a href="http://course.jcpeixun.com/p/majorCourse?f5=电工">电工基础</a>
+							<a href="http://course.jcpeixun.com/p/PLC">PLC</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=数控">数控</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=S7-200">S7-200</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=学习机">学习机</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=编程案例">编程案例</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=案例">案例课程</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=微课">微课</a>
+						</p>
+					</div>
+					<div style="clear: both;"></div>
+					<!--搜索框-->
+					<script type="text/javascript">
+						/*	搜索    */
+						
+					</script>
+
+
+					<div class="h-user">
+
+						<!--已登录-->
+						<div class="user-center" id="header-logined" style="display:none;">
+							<!--用户菜单-->
+							<div class="user-wrap" data-role="collapsible">
+								<div class="user-head">
+									<a class="user-head-inner" href="javascript:;">
+										<img class="u-avatar" src="static/picture/stu.jpg" width="32" height="32">
+
+										<b class="u-truename"></b>
+									</a>
+									<i class="caret"></i>
+								</div>
+								<div class="user-cont">
+									<div class="user-info">
+										<span class="u-truename"></span>
+									</div>
+									<div class="user-menu">
+										<a href="http://lgc.jcpeixun.com/user.aspx?t=4">学员中心</a> <a href="http://lgc.jcpeixun.com/Message.aspx?t=6">
+											我的消息<span></span></a> <a href="http://lgc.jcpeixun.com/Study.aspx?t=2" target="_blank">
+											学习记录</a> <a href="http://lgc.jcpeixun.com/Order.aspx?t=3" target="_blank">我的订单</a>
+										<a href="http://lgc.jcpeixun.com/my_course.aspx?t=2" target="_blank">我的收藏</a> <a href="http://course.jcpeixun.com/"
+										 target="_blank">新课上架</a>
+										<a href="http://lgc.jcpeixun.com/Money.aspx?t=5" class="btn-link btn-link9" target="_blank">赚学费</a> <a href="http://lgc.jcpeixun.com/coupon.aspx?t=7"
+										 class="btn-link btn-link9" target="_blank">优惠券</a>
+										<a href="http://www.jcpeixun.com//lesson1/person_xufei.aspx" class="fw" style="background: url(static/images/bg_20130926001.gif) no-repeat scroll 60px 0px transparent;">会员续费</a>
+										<a href="http://act.jcpeixun.com/topic/20170804/?vippage" class="fw" style="background: url(static/images/bg_20130926001.gif) no-repeat scroll 60px 0px transparent;">购买会员</a>
+										<a href="http://www.jcpeixun.com/logout.aspx?callback=" class="fw">退出</a>
+									</div>
+								</div>
+							</div>
+							<!--用户菜单-->
+							<!--购物车-->
+							<div class="user-shop" data-role="collapsible" style="margin-right:0">
+								<a class="shop-btn u-grade2" href="#" style="padding:0 10px;">用户注册</a>
+
+							</div>
+
+						</div>
+
+						<!--未登录-->
+						<div class="login-nav" id="header-n-login">
+							<a class="mr10" href="http://www.jcpeixun.com/newlogin.aspx">用户登录</a> <a class="reg" href="http://www.jcpeixun.com/emailregister.aspx">免费注册</a>
+						</div>
+						<!--未登录-->
+
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+
+
+			<script>
+				$.getJSON("https://apidata.jcpeixun.com/user/loginstate_cross_domain?jsoncallback=?", function(Json) {
+					if (Json.login == 1) {
+						var $login = $("#header-logined");
+						$login.find(".u-truename").text(Json.truename);
+						$login.find(".u-grade").text(Json.grade);
+						$login.find(".u-grade2").text(Json.grade);
+
+						$login.find(".u-avatar").attr("src", "http://www.jcpeixun.com/user/uimg.aspx?lid=" + Json.learnerId);
+						$login.show();
+						$("#header-n-login").hide();
+					} else {
+
+					}
+
+
+				})
+			</script>
+			<!--header-->
+			<!--navbar-->
+
+			<!--navbar-->
+			<!--container-->
+			<div class="container">
+				<!--头部导航栏-->
+
+				<div class="navbar">
+					<ul class="main-nav inner">
+						<li class="active"><a href="course.html">选课中心</a></li>
+						<li><a href="majorcourse.html?f5=PLC&plctype=140">三菱视频教程</a></li>
+						<li><a href="majorcourse.html?f5=PLC&plctype=143">西门子视频教程</a></li>
+						<li><a href="majorcourse.html?f5=PLC&plctype=146">欧姆龙视频教程</a></li>
+						<li><a href="majorcourse.html?f5=变频器">变频器视频教程</a></li>
+						<li><a href="majorcourse.html?f5=电工">电工基础</a></li>
+						<li><a href="majorcourse.html?f5=数控">数控</a></li>
+						<li><a href="searc.html?keyword=组态">组态/PID</a></li>
+						<li><a href="search.html?keyword=案例">工程案例详解</a></li>
+					</ul>
+				</div>
+				<div style="clear: both;"></div>
+				<!--bread-crumb-->
+				<!--课程简介-->
+
+				<div class="bread-crumb inner">
+					<a href="http://www.jcpeixun.com">首页</a> <em class="fs">&gt;</em> 
+					<a href="/p/plc">选课中心</a><em class="fs">&gt;</em>
+					<span><a href="javascript:">变频器、伺服和步进驱动技术应用</a></span>
+				</div>
+				<div style="clear: both;"></div>
+				<!--课程简介-->
+				<div class="inner">
+					<div class="bd1 bds bdgrayd bgwhite pt20 pl20 pr20 clearfix pb20">
+						<div class="w468 l vedio rel">
+							<div id="player" style="width: 468px;">
+								<a href="/6972/460167.html" class="see check-login" data-id="6972">
+									<img src="static/picture/20190827093206582.jpg" width="468" height="265">
+									<i class="icon-vedio"></i></a>
+								<span><a target="_blank" style="width:100%;" title="本课时暂无在线试看"><img src="static/picture/nofile.png" style="width:100%; display: none;"></a></span>
+							</div>
+							<div style="display: none; position: absolute; width: 320px; height: 163px; top: 40px; padding: 10px; left: 50%; margin-left: -160px; background-color: rgb(255, 255, 255); z-index: 1;"
+							 id="huodong_dialog">
+								<a href="http://www.jcpeixun.com/lesson1/vip_day.aspx?from=payler_index" target="_blank">
+									<img src="static/picture/20150910-01.png"></a>
+								<div><a id="huodong_dialog_close" style="position: absolute; right: 17px; top: 0; font-size: 26px; cursor: pointer; color: #fff; width: 20px; height: 20px;">×</a></div>
+							</div>
+							<script type="text/javascript">
+								$(function() {
+									//关闭播放弹出广告
+									$("#huodong_dialog_close").click(function() {
+										$("#huodong_dialog").hide();
+									});
+								});
+							</script>
+						</div>
+
+						<div class="w672 r" style="padding-top: 0; position: relative;">
+							<h3 class="h20 lh20 f20 n" style="color: #333;">变频器、伺服和步进驱动技术应用</h3>
+							<!--加上类别标签-->
+							<p class="category">
+								<a href='http://course.jcpeixun.com/series/xmz?course'>西门子系列课程</a>
+							</p>
+							<!--讲师-->
+							<p class="tec-name">讲师：向晓汉</p>
+							<!--课程介绍-->
+							<div class="p2em f14 bds bdb bdgrayd lh22 pb6">变频器、伺服驱动和步进驱动是20世纪70年随着电力电子技术、PWM控制技术的发展而产生驱动装置，此应用技术在有的文献上也称为“运动控制”。由于其通用性强、可靠性好、使用方便，目前已在工业自动化控制的很多领域得到了广泛的应用。</div>
+							<div class="reset">
+								<form id="course_form" name="course_form" method="post" autocomplete="off">
+									<div class="fix-box">
+										<p class="gray6">
+											<span class="mr10 discount_price">￥499</span><span class="mr10 price">原价:&nbsp;￥599</span>
+										</p>
+									</div>
+									<input type="hidden" id="grade" value="0" />
+									<input type="hidden" id="recommend_uid" name="recommend_uid" value="0" />
+									<input id="paycourse_id" name="paycourse_id" type="hidden" value="6972" />
+									<a class='btn btn-active w165 f18 quick_buy btnPay' href="javascript:void(0);">立即购买</a><a class='btn btn-active buy_vip'
+									 href='http://act.jcpeixun.com/topic/20190227/' style='width: 120px;'>VIP会员免费学</a>
+								</form>
+								<p class="detail">
+									<span>4186</span>人正在学
+									| 课程进度：更新至<span>10</span>课时
+									| 有效期: <span>365</span>天<span class='ques' style='cursor: pointer;'>?</span>
+								</p>
+								<div class="tag-top">有效期自支付成功后开始计算，付费会员（金牌会员、白金会员、金钻会员）不受此限制。单课程购买用户需关注课程有效期，合理安排好学习计划。</div>
+							</div>
+						</div>
+						<div style="clear: both;"></div>
+						<!--新添加的收藏和推荐手机观看-->
+						<div class="include-box">
+							<a href="javascript:;" id="btn-addToFav" style="width: 40px;">
+								<i class="icon-bg"></i>
+								<b>收藏</b>
+							</a>
+							<a href="javascript:;" id="access">
+								<i class="icon-bg"></i>
+								<b style="left: 15px;">推荐手机观看</b>
+								<span class="QR-code">
+									<img src="static/picture/download.png" alt="" style="width: auto;" />
+								</span>
+							</a>
+						</div>
+					</div>
+					<div class="tabs-nav1" data-role="fixed" id="mini-play-navbar">
+						<a data-path="ajax/part/kechengbiao" data-role="course-intro" class="active" href="javascript:;">课程表<em class="badge">试听</em></a>
+						<a data-path="ajax/part/content" data-role="course-syll" href="javascript:;">课程简介</a>
+					</div>
+				</div>
+				<!--bread-crumb-->
+				<!--课程简介-->
+				<div class="inner mt20 clearfix" id="inner-container">
+					<!--左侧栏目块-->
+					<!--选项卡内容-->
+					<div class="tabCon">
+						<div class="tabConBox" id="part-kechengbiao">
+							<!--课程视频大纲-->
+							<div class="w880 box1 mt0">
+								<div class="bhead">
+									<h3>课程设置</h3>
+									<span><em>10</em>个课时</span>
+									<a href="/6972/460167.html" class="see check-login" data-id="6972">免费试看</a>
+								</div>
+								<div>
+									<ul class="listview4">
+										<ul class="listview5">
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460167.html">
+														第1课时.用软件设置G120S120变频器的IP地址
+													</a></span><span class="colblue l">免费</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 btn_down1" href="javascript:;" id="down460167" data-lesson-name="第1课时.用软件设置G120S120变频器的IP地址"
+												 data-lesson-id="460167" data-down="http://ftp.jcpeixun.com:81/vip/kecheng_jc/6972/第1课时.用软件设置G120S120变频器的IP地址.jc"><span
+													 style='visibility: inherit;' class="txt">免费下载</span></a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460167.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460168.html">
+														第2课时.用TIAPortal软件调试G120变频器
+													</a></span><span class="colblue l">免费</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 btn_down1" href="javascript:;" id="down460168" data-lesson-name="第2课时.用TIAPortal软件调试G120变频器"
+												 data-lesson-id="460168" data-down="http://ftp.jcpeixun.com:81/vip/kecheng_jc/6972/第2课时.用TIAPortal软件调试G120变频器.jc"><span
+													 style='visibility: inherit;' class="txt">免费下载</span></a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460168.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460169.html">
+														第3课时.用Starter软件设置S120变频器的参数
+													</a></span><span class="colblue l">免费</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 btn_down1" href="javascript:;" id="down460169" data-lesson-name="第3课时.用Starter软件设置S120变频器的参数"
+												 data-lesson-id="460169" data-down="http://ftp.jcpeixun.com:81/vip/kecheng_jc/6972/第3课时.用Starter软件设置S120变频器的参数.jc"><span
+													 style='visibility: inherit;' class="txt">免费下载</span></a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460169.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460204.html">
+														第4课时.S7-1200PLC与S120之间的PROFINET通信
+													</a></span><span class="colblue l">￥3</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 quick_buy" id="no-addcart460204" href="javascript:;" data-lesson-id="460204"
+												 data-lesson-name="第4课时.S7-1200PLC与S120之间的PROFINET通信" style="background-color:#1CAAEA;color:#fff;"><i class="iconfont f24"
+													 style="line-height: 1.2"></i>立即购买</a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460204.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460205.html">
+														第5课时.S7-1200与G120的PN通信
+													</a></span><span class="colblue l">￥5</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 quick_buy" id="no-addcart460205" href="javascript:;" data-lesson-id="460205"
+												 data-lesson-name="第5课时.S7-1200与G120的PN通信" style="background-color:#1CAAEA;color:#fff;"><i class="iconfont f24"
+													 style="line-height: 1.2"></i>立即购买</a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460205.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460206.html">
+														第6课时.S7-1200对V90伺服系统的位置控制
+													</a></span><span class="colblue l">￥3</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 quick_buy" id="no-addcart460206" href="javascript:;" data-lesson-id="460206"
+												 data-lesson-name="第6课时.S7-1200对V90伺服系统的位置控制" style="background-color:#1CAAEA;color:#fff;"><i class="iconfont f24"
+													 style="line-height: 1.2"></i>立即购买</a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460206.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460351.html">
+														第7课时.S7-1200与G120的USS通信
+													</a></span><span class="colblue l">￥3</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 quick_buy" id="no-addcart460351" href="javascript:;" data-lesson-id="460351"
+												 data-lesson-name="第7课时.S7-1200与G120的USS通信" style="background-color:#1CAAEA;color:#fff;"><i class="iconfont f24"
+													 style="line-height: 1.2"></i>立即购买</a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460351.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460352.html">
+														第8课时.S7-1200与的G120的Modbus通信
+													</a></span><span class="colblue l">￥3</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 quick_buy" id="no-addcart460352" href="javascript:;" data-lesson-id="460352"
+												 data-lesson-name="第8课时.S7-1200与的G120的Modbus通信" style="background-color:#1CAAEA;color:#fff;"><i class="iconfont f24"
+													 style="line-height: 1.2"></i>立即购买</a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460352.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460387.html">
+														第9课时.S7-1200与G120的PN通信
+													</a></span><span class="colblue l">￥3</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 quick_buy" id="no-addcart460387" href="javascript:;" data-lesson-id="460387"
+												 data-lesson-name="第9课时.S7-1200与G120的PN通信" style="background-color:#1CAAEA;color:#fff;"><i class="iconfont f24"
+													 style="line-height: 1.2"></i>立即购买</a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460387.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+
+											<li><span class="w550 l">
+													<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/6972/460388.html">
+														第10课时.S7-1500与G120的PN通信
+													</a></span><span class="colblue l">￥3</span>
+												<!--您已购买2，可下载学习  || le_item.price <= 0 --->
+												<input type="hidden" name="aloow" class="aloow" value="False" />
+
+												<a class="icon-btn r ml10 quick_buy" id="no-addcart460388" href="javascript:;" data-lesson-id="460388"
+												 data-lesson-name="第10课时.S7-1500与G120的PN通信" style="background-color:#1CAAEA;color:#fff;"><i class="iconfont f24"
+													 style="line-height: 1.2"></i>立即购买</a>
+
+
+
+												<a class="icon-btn r check-login" href="/6972/460388.html">
+													<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> </li>
+										</ul>
+									</ul>
+								</div>
+								<br />
+								<div class="h60 lh60 pl20 f16">
+									<label class="w70 l dn">
+										<input type="checkbox">全选</label>
+									<a target="_blank" class="btn btn-none btn-active btn-auto w185 f18 r " href="http://act.jcpeixun.com/topic/20180112/jc-index.aspx"
+									 style="height: 54px; line-height: 54px; margin: 3px; border-color: #1BA9E9; background: #1BA9E9;" title="APP下载">APP下载</a>
+
+								</div>
+								<br />
+							</div>
+							<!--课程视频大纲-->
+
+						</div>
+						<div class="tabConBox hide" id="part-content">
+						</div>
+					</div>
+					<!--左侧栏目块-->
+
+					<!--右侧栏目块-->
+					<div class="w300 r">
+						<!--广告图-->
+
+						<!--广告图-->
+						<!--老师介绍-->
+						<div class="box1 mt5">
+							<div class="bhead">
+								<h3>老师介绍</h3>
+							</div>
+							<div class="pt10 pb10 pl20 pr20 f14">
+								<div class="clearfix pt10 pb10">
+									<div class="w100 l">
+										<a href="http://www.jcpeixun.com/teacher/128.html">
+											<img src="static/picture/190d3ee4b7d44e20b0f1e92edc7c8eed.gif" class="img-radius" width="100" height="100"
+											 alt=""></a>
+									</div>
+									<div class="w140 pl10 l">
+										<h4 class="f16 gray3">
+											向晓汉</h4>
+
+									</div>
+								</div>
+								<p>
+									向晓汉老师，有丰富的企业工作经历，已经从事工控20余年，两次到新加坡NanYang Polytechnic学习自动控制技术，先后两次到德国INWENT学习。精通西门子全系列PLC（S7-200/ 200SMART/
+									300/ 400/1200/1500）、西门子HMI（触摸屏）、西门子组态软件（WinCC）和西门子网络通信，对西门子的变频器、三菱FX系列PLC、三菱变频器和欧姆龙CP1系列PLC也比较熟悉。
+								</p>
+							</div>
+							<div class="bfoot pl20 pr20 f14">
+								<p class="clearfix">
+									<span class="l">课程总数（3）</span> <span class="r hand" id="like-teacher-btn">
+										<i class="iconfont f14 colblue">&#xe601;</i> 赞（<label id="like-teacher-num">80</label>）</span>
+								</p>
+							</div>
+						</div>
+						<!--老师介绍-->
+
+						<!-----评论总数展示------>
+						<div class="sum-box comment">
+							<div class="titel fl"><span class="titel-top fl f18">综合评分</span><span class="fr f18">0人评论</span></div>
+
+							<div class="number fl"><span class="num">7</span></div>
+
+							<div class="icon icon-3 fl" style="margin-top:-10px;"></div>
+
+							<span class="fl f16">3星好评</span>
+							<div class="line fl"></div>
+							<div class="tab-box">
+								<ul id="tab-cums">
+									<li>内容实用<br><strong>0</strong></li>
+									<li>通俗易懂<br><strong>0</strong></li>
+									<li>逻辑清晰 <br><strong>0</strong></li>
+									<li>幽默风趣<br><strong>0</strong></li>
+									<li>平易近人<br><strong>0</strong></li>
+									<li>耐心教导<br><strong>0</strong></li>
+								</ul>
+							</div>
+						</div>
+						<!----评论总数展示---->
+
+						<!--热门课程-->
+						<div id="hot-courses">
+
+						</div>
+						<!--热门课程-->
+						<!--精华点评-->
+						<div class="box1 mt20 f14 fl" style="display: none;">
+							<div class="bhead">
+								<span class="r f14 pr20"></span>
+								<h3>精华点评</h3>
+							</div>
+							<div>
+								<ul>
+									<li class="pl20 pr20 pt10 pb10 bdgrayd bdda bdb">
+										<p class="h30 lh30">
+											<span class="gray9 r">2019-01-06 10:51 </span>
+											<a class="colblue" href="#">jckrGvZF</a>
+										</p>
+										<p style="word-break: break-all;">
+											非常感谢李老师，您讲的课程通俗易懂；幽默风趣；受益颇多，谢谢
+										</p>
+									</li>
+									<li class="pl20 pr20 pt10 pb10 bdgrayd bdda bdb">
+										<p class="h30 lh30">
+											<span class="gray9 r">2019-02-13 11:11 </span>
+											<a class="colblue" href="#">wangzailing</a>
+										</p>
+										<p style="word-break: break-all;">
+											老师讲的很详细、非常好 、就是我学的太慢了，夏天忙着种地，只有在冬天我才能学习、PLC数字量我还没有完全掌握。
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--精华点评-->
+						<!--精彩讨论-->
+
+						<!--精彩讨论-->
+						<!--n人在学-->
+
+						<!--n人在学-->
+					</div>
+					<!--右侧栏目块-->
+				</div>
+				<!--课程推荐-->
+				<div id="recommend-courses">
+					<script>
+						$(function() {
+							$.get(fpath + "common_tpl/tjcourse.aspx", function(msg) {
+								$("#recommend-courses").html(msg);
+							})
+						})
+					</script>
+				</div>
+				<!--课程推荐-->
+			</div>
+			<!--container-->
+			<!--footer-->
+			<div class="footer mt20">
+
+				<!--footer-guide-->
+				<div class="foot-guide inner clearfix">
+					<dl class="fg-item2">
+						<dt class="h30 lh30 b f14">精品课程</dt>
+						<dd class="clearfix">
+							<a class="w140" href="/p/search?keyword=三菱">三菱视频教程</a>
+							<a class="w80" href="/p/search?keyword=电工">电工</a>
+							<a class="w140" href="/p/search?keyword=案例课程">案例课程</a>
+							<a class="w140" href="/p/search?keyword=西门子">西门子视频教程</a>
+							<a class="w80" href="/p/search?keyword=数控">数控</a>
+							<a class="w140" href="/p/search?keyword=西门子S7-200">西门子S7-200</a>
+							<a class="w140" href="/p/search?keyword=指令详解">指令详解</a>
+							<a class="w80" href="/p/search?keyword=组态王">组态王</a>
+							<a class="w140" href="/p/search?keyword=西门子S7-300">西门子S7-300</a>
+							<a class="w140" href="/p/search?keyword=变频器">变频器</a>
+							<a class="w80" href="/p/search?keyword=PID">PID</a>
+							<a class="w140" href="/p/search?keyword=伺服">伺服</a>
+
+
+
+						</dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">学习咨询</dt>
+						<dd><a href="/p/PLC">选课中心</a></dd>
+						<dd><a href="/P/jihua">学习计划</a></dd>
+						<dd><a href="http://www.jcpeixun.com/knowledge/">文章中心</a></dd>
+						<dd><a href="http://www.jcpeixun.com/xiazai/">技成下载库</a></dd>
+						<dd style="width:100px;"><a href="http://www.jcpeixun.com/lesson1/tear_user.aspx">助教老师邀请通道</a> </dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">帮助中心</dt>
+
+						<dd><a href="http://www.jcpeixun.com/lesson1/guide.aspx">新手上路</a></dd>
+						<!--  <dd><a href="http://www.jcpeixun.com/help/index.aspx">学习攻略</a></dd>-->
+						<!--<dd><a href="http://www.jcpeixun.com/help/help36.aspx">积分获取、规则</a></dd>-->
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">升级与购买</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">购买白金学员</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">购买金牌学员</a></dd>
+						<dd><a href="http://wenda.jcpeixun.com/" target="_blank">技成问答</a></dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">关于技成</dt>
+						<dd><a href="http://www.jcpeixun.com/AboutUs.aspx">了解技成</a></dd>
+						<dd><a href="http://www.jcpeixun.com/contact.aspx">联系我们</a></dd>
+						<dd><a href="http://www.jcpeixun.com/zhaopin.aspx">加入我们</a></dd>
+						<dd><a href="http://www.jcpeixun.com/lesson1/tear_info.aspx">助教老师</a></dd>
+						<dd><a href="http://exam.jcpeixun.com/jcexam/certificateprofile.aspx">证书查询</a></dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">客户端</dt>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/">技成播放器</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/jc-index.aspx">技成手机APP</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/other.aspx">工具App</a></dd>
+						<dd><a href="http://weibo.com/jcpx">新浪微博</a></dd>
+						<dd><a href="http://bbs.jcpeixun.com/thread-39246-1-1.html">官方微信</a></dd>
+					</dl>
+					<dl class="fg-item" style="border-right:0; padding-right:0;">
+						<dt class="h30 lh30 f14">合作服务</dt>
+						<dd><a href="http://www.jcpeixun.com/help/help21.aspx">个人服务</a></dd>
+						<dd><a href="/p/weipei">企业服务</a></dd>
+						<dd><a href="/p/weipei">院校服务</a></dd>
+					</dl>
+				</div>
+				<!--footer-guide-->
+
+				<!--copyright-->
+				<div class="copyright">
+					<div class="inner">
+						<div class="w250 r tr mt15">
+							<a class="mr10" href="http://www.baidu.com/s?wd=www.jcpeixun.com@v" target="_blank"><img src="static/picture/bdxy.jpg"
+								 width="66" height="24" alt="百度信誉放心访问" /></a>
+
+							<!--<a class="mr10" href="https://ss.knet.cn/verifyseal.dll?sn=e1108064400000694321023465&comefrom=trust&trustKey=dn&trustValue=jcpeixun.com" target="_blank"><img src="static/picture/kxwz.jpg" width="66" height="24" alt="可信网站身份验证"/></a>-->
+						</div>
+						<p class="gray9">©深圳市技成科技有限公司 - 课程内容版权均归技成培训网所有 粤ICP备11069432号</p>
+						<p class="">联合运营单位：深圳市工程师联合会</p>
+					</div>
+				</div>
+				<!--copyright-->
+
+			</div>
+			<div class="aside-bar fixed-top">
+				<ul class="aside-bar-inner">
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe633;</p>
+							<p class="txt">
+								公众账号</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f13 gray6 tc">
+								扫描二维码<br>
+								关注技成微信公众账号</p>
+							<p>
+								<img src="static/picture/qr.jpg" width="130" height="130" alt="技成微信公众账号"></p>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe630;</p>
+							<p class="txt">
+								学习交流</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f14 gray6 tc">
+								技成学员交流总群</p>
+							<p class="f14">
+								125群：154017892</p>
+							<p class="link-blue">
+								<a href="http://shang.qq.com/wpa/qunwpa?idkey=2eee53569300abbcfb8b8a6cab6f7374da37ddcbe5fc37e5015bdec61dbb30fe"
+								 target="_blank">进群交流</a></p>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe63f;</p>
+							<p class="txt">
+								留言反馈</p>
+						</a>
+						<div class="aside-bar-cont msg-board">
+							<p class="f16 h40 lh40 gray6 tl">
+								欢迎给我们留言</p>
+							<iframe frameborder="0" style="width:234px;height:170px" src="http://www.jcpeixun.com/ashx/studentsound/Form.html?v=1111"></iframe>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe63c;</p>
+							<p class="txt">
+								APP下载</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f13 gray6 tc">
+								扫描二维码下载到手机</p>
+							<p>
+								<img src="static/picture/qr.png" width="130" height="130" alt="技成微信公众账号"></p>
+						</div>
+					</li>
+					<li class="aside-bar-item"><a class="aside-bar-link" href="#top" target="_self">
+							<p class="iconfont f30 n">
+								&#xe625;</p>
+							<p class="txt">
+								返回顶部</p>
+						</a></li>
+				</ul>
+			</div>
+			<script defer type="text/javascript" src="static/js/cityjson.js"></script>
+			<script src="static/js/bm2017.min.js"></script>
+			<script>
+				/* //上线时取消该注释    */
+				(function() {
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = 'https://images.jcpeixun.com/static/js/tongji.js?a=201601';
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				})();
+			</script>
+			<script type="text/javascript">
+				function addLoadEvent(func) {
+					if (document.all) {
+						window.attachEvent("onload", func); //对于IE
+
+					} else {
+						window.addEventListener("load", func, false); //对于FireFox
+					}
+				}
+
+				function calcLoadTime() {
+					//获取网站响应时长，单位毫秒
+					var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart; //响应时间
+					var ip = returnCitySN.cip; //客户端ip地址
+					var city = returnCitySN.cname; //ip所在城市
+					var domain = window.location.host; //域名
+					var page = window.location.href; //页面地址
+					$.getJSON("https://apidata.jcpeixun.com/sys/page-loadtime-handle.aspx?jsoncallback=?&loadtime=" + loadTime +
+						"&domain=" + domain + "&page=" + page + "&ip=" + ip + "&city=" + city,
+						function(data) {
+							if (data.code == "error") {
+								window.console && console.log(data.msg);
+							}
+						})
+				}
+				addLoadEvent(calcLoadTime);
+			</script>
+			<script>
+				$(function() {
+					var learnerId = $.cookie("learnerId");
+					//设置用户在官网登录有效期为当天的23:59:59
+					var expires = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1);
+					$.cookie("learnerId", learnerId, {
+						path: '/',
+						expires: expires,
+						domain: '.jcpeixun.com'
+					});
+				});
+			</script>
+
+			<!--百度课程内容页统计 -->
+			<script type="text/javascript">
+				var _hmt = _hmt || [];
+				(function() {
+					var hm = document.createElement("script");
+					hm.src = "https://hm.baidu.com/hm.js?2c42fc3e7f21e9b99348df496327a306";
+					var s = document.getElementsByTagName("script")[0];
+					s.parentNode.insertBefore(hm, s);
+				})();
+			</script>
+
+			<script type='text/javascript'>
+				var _vds = _vds || [];
+				window._vds = _vds;
+				(function() {
+					_vds.push(['setAccountId', '93cc8bea131bfa68']);
+					var account = $.cookie("account");
+					if (account) {
+						account = eval('(' + $.cookie("account") + ')');
+						_vds.push(['setCS1', 'user_id', new Base64().decode(account.user_id)]);
+					}
+					(function() {
+						var vds = document.createElement('script');
+						vds.type = 'text/javascript';
+						vds.async = true;
+						vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'assets.growingio.com/vds.js';
+						var s = document.getElementsByTagName('script')[0];
+						s.parentNode.insertBefore(vds, s);
+					})();
+				})();
+			</script>
+			<!--footer-->
+		</div>
+		<!-- 下载 -->
+		<div id="warm_modal">
+			<div class="modals-dialog">
+				<div class="modals-header">
+					<span class="lesson-name">变频器、伺服和步进驱动技术应用</span>
+					<a href="javascript:;" class="guanbi" onclick="close_down()">×</a>
+				</div>
+				<div class="modals-content">
+					<img src="static/picture/code.png" alt="" class="code" />
+					<p class="tip1">上技成APP，随时随地看视频！</p>
+					<p class="tip2">扫码下载技成APP</p>
+					<div class="group-img">
+						<img src="static/picture/iphone.png" alt="" />
+						<img src="static/picture/android.png" alt="" style="padding-left: 10px;" />
+					</div>
+					<p class="tip3">扫一扫下载技成APP，随时随地学课程！</p>
+					<a href="javascript:;" class="a_down down" onclick="allow_download(_lessonid, _lessonName)">下载此节视频到电脑观看 >></a>
+				</div>
+			</div>
+		</div>
+		<div class="alert_vip" id="vip_down" style="display: none;">
+			<h1 class="alert_h1">下载方式</h1>
+			<div class="alert_cont pt clearfix">
+				<table cellspacing="0" cellpadding="0" border="0" width="100%" class="alertTable">
+					<tr class="tabtr">
+						<td style="text-align: center;"><a href="javascript:;" data-href="" id="btnbaidu" target="_blank">
+								<img src="static/picture/tit_baidu_1.png" style="width: 250px;" /></a></td>
+					</tr>
+				</table>
+				<div id="errorP"></div>
+			</div>
+		</div>
+
+		<input type="hidden" id="hidden_course_id" value="6972">
+		<!-- 评论限制弹窗 -->
+		<div id="apply_modle">
+			<div class="modal-mask">
+				<div class="modal-content rel">
+					<h4>无法评论</h4>
+					<p id="msg">购买且观看本课程5分钟以上才可进行评论</p>
+					<a href="javascript:;" class="sure">确定</a>
+				</div>
+			</div>
+		</div>
+		<script src="static/js/lesson/lesson2.js"></script>
+		<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=697642"></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(
+				new Date() / 3600000)
+		</script>
+
+		<script type="text/javascript">
+			var uid = 0;
+			var bl = true;
+
+			function VideoPlayer() {
+				//$("#playv-startimg").hide();
+				var so = new SWFObject("/CuPlayer/CuPlayerMiniV4.swf", "ply", "468", "265", "9", "#000000");
+				so.addParam("allowfullscreen", "true");
+				so.addParam("allowscriptaccess", "always");
+				so.addParam("wmode", "opaque");
+				so.addParam("quality", "high");
+				so.addParam("salign", "lt");
+				so.addVariable("CuPlayerSetFile", "/CuPlayer/CuPlayerSetFile.xml"); //播放器配置文件地址
+				so.addVariable("CuPlayerFile", ""); //视频文件地址
+				so.addVariable("CuPlayerImage", "/CuPlayer/images/vstart.jpg"); //视频略缩图
+				so.addVariable("CuPlayerWidth", "468"); //视频宽度
+				so.addVariable("CuPlayerHeight", "265"); //视频高度
+				so.addVariable("CuPlayerAutoPlay", "yes"); //是否自动播放
+				so.write("CuPlayer");
+			}
+
+			//登录页面
+			function login() {
+				$.fancybox.open({
+					href: 'http://www.jcpeixun.com/login/logins.html?callback=' + location.href,
+					type: 'iframe',
+					padding: 2,
+					width: '400',
+					height: '570',
+					keys: {
+						close: [27]
+					}
+				});
+			}
+
+			function getCookie(name) {
+				var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+				if (arr = document.cookie.match(reg)) return (arr[2]);
+				else return null
+			}
+
+			$(function() {
+				var ajaxURL = fpath + "ajax/coursehandle";
+
+				//点击课程的封面图
+				$("#playv-startimg").click(function() {
+					var tryseeUrl = '';
+					if (tryseeUrl == '') {
+						alert("该课程没有试看，请下载课件学习");
+					} else {
+						$(this).hide();
+						var course_id = $(this).attr("data-id");
+						$.post(ajaxURL, {
+							"action": "courseclicknum",
+							"course_id": course_id
+						})
+						VideoPlayer();
+						$("#CuPlayer").show();
+					}
+				});
+
+
+				$(".download-fancybox").fancybox({
+					'centerOnScroll': true
+				});
+
+				//点击百度下载
+				$("#btnbaidu").click(function() {
+					$(this).attr("href", $(this).attr("data-href"));
+				});
+				//【登录验证】给元素添加class check-login ，
+				$(document).on("click", ".check-login", function() {
+					var learnerId = $.cookie("learnerId");
+					if (learnerId == null) {
+						login();
+						return false;
+					}
+				});
+
+
+				//赞-课程
+				$("#like-video-btn").click(function() {
+					if (getCookie("code") == null) {
+						document.cookie = "code=first";
+						$.post(ajaxURL, {
+							"action": "like-course",
+							"course_id": "6972"
+						});
+						$("#like-video-num").html(parseInt($("#like-video-num").text()) + 1);
+
+					} else {
+						alert("您已经点过赞了,感谢你的支持！");
+					}
+				});
+
+
+				//赞-老师
+				$("#like-teacher-btn").click(function() {
+					if (getCookie("codeteacher") == null) {
+						document.cookie = "codeteacher=first";
+						$.post(ajaxURL, {
+							"action": "like-teacher",
+							"teacher_id": "128"
+						});
+						$("#like-teacher-num").html(parseInt($("#like-teacher-num").text()) + 1);
+					} else {
+						alert("您已经点过赞了,感谢你的支持！");
+						return false;
+					}
+				});
+
+				// 收藏课程
+				$("#collect-video-btn").click(function() {
+					var url = "http://www.jcpeixun.com/lesson/6972/"; // location.href;
+					var title = '变频器、伺服和步进驱动技术应用';
+					var learnerId = $.cookie("learnerId");
+					if (learnerId == null) {
+						login();
+						return false;
+					} else {
+						$.post(ajaxURL, {
+							"action": "collect-course",
+							"course_id": "6972",
+							"url_course": url,
+							"name_course": title,
+							"learnerId": learnerId
+						}, function(d) {
+
+							if (d = 3) {
+								alert("请登录后在收藏!");
+								return false;
+							} else if (d = 2) {
+								alert("已经收藏过了!");
+								return false;
+							} else if (d = 1) {
+								alert("收藏成功!");
+								$("#collect-video-num").html(parseInt($("#collect-video-num").text()) + 1);
+							} else {
+								alert("收藏失败!");
+								return false;
+							}
+						});
+					}
+				});
+			});
+
+			$("#small_banner .close-btn").click(function() {
+				$("#small_banner div").fadeOut();
+			});
+
+			//收藏课程
+			function collection() {
+				$.getJSON("https://apidata.jcpeixun.com/live/userinfo.aspx?func=collected&action=jc_collect&class_id=" + 6972 +
+					"&uid=" + uid,
+					function(res) {
+						if (res.errcode == "0" && res.data) {
+							if (res.data > 0) {
+								$("#btn-addToFav i").css("background", "url(static/images/click_add.png) no-repeat");
+								$("#btn-addToFav b").html("已收藏");
+								toastfun('收藏成功');
+							} else {
+								toastfun('取消收藏');
+								$("#btn-addToFav i").css("background", "url(static/images/add.png) no-repeat");
+								$("#btn-addToFav b").html("收藏");
+							}
+						} else {
+							$("#btn-addToFav i").css("background", "url(static/images/click_add.png) no-repeat");
+							$("#btn-addToFav b").html("已收藏");
+							toastfun('已收藏');
+						}
+					});
+			}
+
+			function toastfun(c) {
+				$('body').append('<span class="toast text-center"><b class="color-f f16 ">' + c + '</b></span>');
+				setTimeout(function() {
+					$('.toast').fadeOut();
+				}, 100)
+			};
+
+			$("#btn-addToFav").click(function() {
+				if (uid == 0) {
+					login();
+					return false;
+				} else {
+					collection();
+				}
+			});
+		</script>
+		<script type="text/javascript">
+			var payURI = fpath + "pay/createCourseOrder";
+			$(function() {
+				//toggle-collapse  collapse-head
+				//课程大纲展开、收缩
+				$(".toggle-collapse").click(function(e) {
+					e.stopPropagation();
+					var ctext = $(this).find(".toggle-outline");
+					var $box = $(this).siblings(".collapse-cont");
+					$box.slideToggle();
+					if ($(this).hasClass("child-hidden")) {
+						//$box.slideDown(400);
+						ctext.text("收缩");
+						$(this).removeClass("child-hidden");
+					} else {
+						//$box.slideUp(400);
+						ctext.text("展开");
+						$(this).addClass("child-hidden");
+					}
+
+
+				});
+
+				//加入购物车学习【购买整个课】
+				$(".btnPay").click(function(event) {
+					var vip = '0';
+					var grd = $(".grd").val();
+					var gid = $(this).attr("data-id");
+					var name = $(this).attr("data-name");
+					var learnerId = $.cookie("learnerId");
+					if (learnerId == null) {
+						login();
+						return false;
+					} else {
+
+						if (vip == "1") {
+							alert("您已经是付费会员，不需再购买该课程！若你的会员已过期了，请及时续费！谢谢！");
+							return false;
+						} else {
+							document.getElementById("course_form").action = payURI;
+							document.getElementById("course_form").submit();
+						}
+					}
+				});
+				//tip提示
+				$(".ques").hover(function() {
+					$(".tag-top").show();
+					$(this).css("cursor", "pointer");
+				}, function() {
+					$(".tag-top").hide();
+				});
+
+				$(".sure").click(function() {
+					$("#apply_modle").fadeOut();
+				});
+
+
+			});
+		</script>
+		<!--footer-->
+		<!-- 提交到百度搜录 -->
+		<script>
+			(function() {
+				var bp = document.createElement('script');
+				var curProtocol = window.location.protocol.split(':')[0];
+				if (curProtocol === 'https') {
+					bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+				} else {
+					bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+				}
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(bp, s);
+			})();
+		</script>
+	</body>
+</html>

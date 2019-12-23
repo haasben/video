@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>PLC</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="head">
+				<a href="javascript:" class="back" onclick="history.go(-1)"><img src="__MOBILE__img/icon-return.png" ></a>
+				<h3>{$cate_name.typename}</h3>
+			</header>
+			
+			<!-- 内容区 -->
+			<div class="container">
+				{notempty name="$course_list"}
+				<ul class="tabs">
+					<li class="active"><a href="javascript:" data-id='0'>全部</a></li>
+					{volist name="$course_list" id="v" key="k"}
+					<li><a href="javascript:" data-id='{$v.id}'>{$v.typename}</a></li>
+
+					{/volist}
+				</ul>
+				{/notempty}
+				<input type="hidden" name="" value="{$cate_name.id}" id="pid">
+					<div class="content list_attr_0" data-id="2">
+
+						<div class="cont">
+							<ul>
+								{volist name="$archives" id="v"}
+								<li>
+									<a href="mcourse_show?id={$v.aid}" class="see" role="button" data-id="{$v.aid}">
+										<img class="lazy" src="{$v.litpic}" height="100" class="img-responsive" alt="" />
+										<h5>{$v.title}</h5>
+										<div class="info">
+											<p><span>{$v.videorating}</span></p>
+											<p><span>{$v.click}</span>人在学</p>
+										</div>
+									</a>
+								</li>
+								{/volist}
+								
+							</ul>
+							<div class="div_attr_0" style="text-align: center;font-size: 12px;display: none;">
+								
+							</div>
+						</div>
+					</div>
+				{volist name="$course_list" id="v" key="k1"}
+					<div class="content list_attr_{$v.id}" style="display: none" data-id="1">
+						<div class="cont">
+							<ul>
+
+							</ul>
+							<div class="div_attr_{$v.id}" style="text-align: center;font-size: 12px;display: none">
+								
+							</div>
+						</div>
+					</div>
+					{/volist}
+				</div>
+	
+				
+				
+			</div>
+			
+			
+			<!-- footer -->
+			{include file="footer"}
+		</div>
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/load.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

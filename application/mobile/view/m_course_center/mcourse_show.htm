@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$course_info.title}</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<a href="javascript:" class="goback" onclick="history.go(-1);"></a>
+			<div class="container detail">
+				<div class="video">
+					<video width="100%" controls poster="{$course_info.litpic}" controlslist="nodownload noremoteplayback" class="vid" id="vid" webkit-playsinline="" playsinline="" preload="metadata" id="vid">
+
+
+    
+					</video>
+
+					
+				</div>
+				<div class="title-wrap">
+					<h4>{$course_info.title}</h4>
+					<div class="zx">
+						<p><span>{$course_info.click}</span>人在学</p>
+						<p class="price">
+							<span>￥{$course_info.amount}</span>
+
+							{if condition="$course_info.is_free == '收费'"}
+
+								{if condition="!in_array($course_info['level'],$userData['view_rights'])"}
+									{empty name="$mainCourse"}
+										
+									<a href="javascript:;" class="btnPay" style="color: #fff;background-color: #FF0000;padding: 0.06rem 0.06rem;">立即购买
+									</a>
+									{/empty}
+									
+								{/if}
+
+
+							{/if}
+
+							
+						</p>
+					</div>
+				</div>
+				
+				<div class="course_nav">
+					<div class="tabBox">
+						<a href="javascript:" class="on" data-id="1">课程表</a>
+						<a href="javascript:" data-id="2">课程简介</a>
+					</div>
+					<!-- 课程表 -->
+					<div class="course_list zw" id="zw1">
+						<ul>
+						{volist name="$course_info.list" id="v" key="k"}
+							{if condition="in_array($course_info['level'],$userData['view_rights'])"}
+								<li data-id="{$v.aid}">
+									<a href="javascript:;">
+										<p><!-- 第{$k}课时.  -->{$v.title}</p>
+										<span class="colblue l">￥{$v.users_price}</span>
+										<span class="txt play_video"  data-id="{$v.aid}">立即观看</span>
+									</a>
+								</li>
+							{else}
+
+							{empty name="$mainCourse"}
+								{if condition="$v.arcrank == 1"}
+									<li data-id="{$v.aid}">
+										<a href="javascript:;">
+											<p><!-- 第{$k}课时.  -->{$v.title}</p>
+											<span class="colblue l">￥{$v.users_price}</span>
+											<span class="txt play_video"  data-id="{$v.aid}">立即观看</span>
+										</a>
+									</li>
+								{else}
+									<?php if(in_array($v['aid'],$smallCourse)){ ?>
+										<li data-id="{$v.aid}">
+											<a href="javascript:;">
+												<p><!-- 第{$k}课时.  -->{$v.title}</p>
+												<span class="colblue l">￥{$v.users_price}</span>
+												<span class="txt play_video"  data-id="{$v.aid}">立即观看</span>
+											</a>
+										</li>
+									<?php }else{ ?>
+										<li data-id="{$v.aid}">
+											<a href="javascript:;">
+												<p><!-- 第{$k}课时.  -->{$v.title}</p>
+												<span class="colblue l">￥{$v.users_price}</span>
+												<span class="txt pay btnPay_cou" data-id="{$v.aid}">立即购买</span>
+											</a>
+										</li>
+									<?php }; ?>
+								{/if}
+							{else /}
+								<li data-id="{$v.aid}">
+							
+									<a href="javascript:;">
+										<p><!-- 第{$k}课时.  -->{$v.title}</p>
+										<span class="colblue l">￥{$v.users_price}</span>
+										<span class="txt play_video"  data-id="{$v.aid}">立即观看</span>
+									</a>
+								</li>
+							{/empty}
+							
+							{/if}
+						{/volist}
+						</ul>
+					</div>
+					
+					<!-- 课程简介 -->
+					<div class="course_desc zw" id="zw2">
+						{:htmlspecialchars_decode($course_info.content)}
+					</div>
+					<form id="course_form" name="course_form" method="post" autocomplete="off">
+					<input id="paycourse_id" name="paycourse_id" type="hidden" value="{$course_info.aid}"/>
+					</form>
+				</div>
+			</div>
+			
+			<!-- footer -->
+			{include file="footer"}
+		</div>
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/public/plugins/layer-v3.1.0/layer.js"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+		$(function(){
+
+			var data_id = $('#zw1 ul li:eq(0)').attr('data-id');
+			var id="{$course_info.aid}";
+			get_vedio_url(data_id,id);
+			// get_blob_video(data_id,id);
+
+
+		})
+
+		function get_blob_video(data_id,id){
+
+			var xhr = new XMLHttpRequest();
+			// console.log(xhr);
+			xhr.open('POST',"{:url('mobile/MCourseCenter/get_video_url')}&aid="+data_id+'&id='+id,true);
+
+			xhr.responseType = 'blob';
+
+			xhr.onload = function(e){
+		
+				if(this.status == 200){
+					var blob = this.response;
+					document.getElementById('vid').src=URL.createObjectURL(blob);
+					document.getElementById('vid').play();
+				}	
+			};
+			xhr.send();
+
+
+		}
+
+
+
+
+
+		$('.login_user').click(function(){
+
+			window.location.href = '/mlogin';
+
+		})
+
+		$('.play_video').click(function(){
+			var data_id = $(this).attr('data-id');
+			var id="{$course_info.aid}";
+			get_vedio_url(data_id,id);
+		})
+
+		function get_vedio_url(data_id,id){
+			$.post("{:url('mobile/MCourseCenter/get_video_url')}",{aid:data_id,id:id},function(data){
+				// layer.msg('sad')
+				if(data.code == 1){
+					var html = '<source src="'+data.data.file_url+'" type="'+data.data.file_mime+'"></source>';
+					$('.vid').html(html);
+					$('.vid').get(0).load();
+					$('.vid').trigger('play');
+					$('.vid').get(0).play();
+				}else if(data.code == 2){
+					layer.msg(data.msg,{icon:5,time:1500},function(){
+						window.location.href='/mlogin';
+					});
+				}else if(data.code == 3){
+					layer.msg(data.msg,{icon:5,time:1500});
+				}else{
+
+					layer.msg(data.msg,{icon:5,time:1500});
+				}
+
+			})
+			// 关闭视频画中画功能
+			let v = $('.vid')
+			v[0]['disablePictureInPicture'] = true;
+		}
+
+		$('.btnPay').click(function(){
+			// alert();return false;
+			var data = $('#course_form').serialize();
+			$.post('{:url("mobile/MCourseCenter/get_url")}',data,function(data){
+				if(data.code == 2){
+					window.location.href = '/login?tab=1';
+				}else if(data.code == 1){
+					var url = '/paycourse?orderid='+data.orderid+'&token='+data.token+'&callback='+data.url;
+					window.location.href = url;
+				}else if(data.code == 3){
+					alert(data.msg);
+				}
+			})
+			return false;
+
+		})
+
+		$('.btnPay_cou').click(function(){
+			var data = $('#course_form').serialize();
+			data += '&cou_id='+$(this).attr('data-id');
+			$.post('{:url("mobile/MCourseCenter/get_url")}',data,function(data){
+					if(data.code == 2){
+						window.location.href = '/mlogin?tab=1';
+					}else if(data.code == 1){
+						var url = '/paycourse?orderid='+data.orderid+'&token='+data.token+'&callback='+data.url;
+						window.location.href = url;
+					}else if(data.code == 3){
+						alert(data.msg);
+					}
+			})
+			return false;
+
+		})
+
+
+			
+			
+			// tab切换
+			$(".tabBox").on('click', 'a', function(){
+				$(this).addClass('on').siblings().removeClass('on');
+				const id = $(this).attr('data-id');
+				$('.zw').hide();
+				$("#zw"+id).show();
+			})
+		</script>
+	</body>
+</html>

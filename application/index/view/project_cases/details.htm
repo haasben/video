@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="PAGE-ENTER" content="RevealTrans(Duration=0,Transition=1)" />
+		<title>案例详情</title>
+		<meta name="keywords" content="项目,案例," />
+		<meta name="description" content="" />
+		<link rel="shortcut icon" href="{$web_config.web_icon}" />
+		
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/lesson/jquery.fancybox.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<script src="__INDEX__/js/jquery-1.11.3.js"></script>
+			<script type="text/javascript" src="__INDEX__js/basic.js"></script>
+
+		<!-- FOR IE9 below -->
+		<!--[if lt IE 9]>
+			<script src="__INDEX__js/respond.js"></script>
+		<![endif]-->
+
+	</head>
+	<body class="inner-box-body" id="article-box-id">
+		<div class="wrap">
+			<div class="header">
+				<div class="inner clearfix">
+			
+					{include file="search"}
+					<!--搜索框-->
+			
+					{include file="haslogged"}
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<!-- 内容展示 begin-->
+			<div class="container" id="content_show">
+				<div class="inner">
+					<div class="inner-box">
+						<div class="show_content padding-large-bottom padding-large-top content_detail">
+							<div class="show_body detail">
+								<h1>{$archives.title}</h1>
+								<div class=" padding-bottom qhd-title">
+									<span><strong>来源：</strong>{$archives.author}</span>
+									<span><strong>日期：</strong>{:date('Y-m-d H:i',$archives.add_time)} </span> 
+									<span><strong>浏览：</strong>{$archives.click}</span>
+								</div>
+								<div class="description"> 
+									{:htmlspecialchars_decode($archives.content)}
+			
+									<!--分享begin-->
+			
+									<!--分享 end-->
+									<ul class="pager padding-big-top padding-big-bottom">
+										<li>上一篇：{empty name="$pre"}没有更多了{else /}<a href='{:url("index/projectCases/details")}&id={$pre.aid}'>{$pre.title}</a> {/empty}
+										</li>
+										<li>下一篇：{empty name="$next"}没有更多了{else /}<a href='{:url("index/projectCases/details")}&id={$next.aid}'>{$next.title}</a>{/empty}
+										 </li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 内容展示 end-->
+			<!--footer-->
+			{include file="footer"}

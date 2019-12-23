@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>搜索</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="search_header">
+				<a href="./" class="back"><img src="__MOBILE__img/icon-return.png" ></a>
+				<div class="search">
+					<input type="text" name="" class="txt" placeholder="请输入关键词" />
+					<button type="button" class="search_btn">搜索</button>
+				</div>
+			</header>
+			
+			<div class="container">
+				{empty name="$keywords"}
+				<div class="keys_list">
+					<h3>热门搜索</h3>
+					<div>
+						{volist name="$searchHotData" id="v"}
+						<a href="/msearch?keywords={$v.word}">{$v.word}</a>
+						{/volist}
+					</div>
+				</div>
+
+				{else}
+
+				<div class="search_list" style="">
+					<h3><span>“{$keywords}”</span>相关搜索内容</h3>
+					<ul>
+						{volist name="searchData" id="v"}
+						<li>
+							<div class="kc_img">
+								<a href="/mcourse_show?id={$v.aid}">
+									<img src="{$v.litpic}" height="100">
+								</a>
+							</div>
+							<div class="kc_text">
+								<a href="/mcourse_show?id={$v.aid}">
+									<div class="title">{$v.title}</div>
+									<p>{:mb_substr(strip_tags(htmlspecialchars_decode($v.content)),0,20)}</p> <!-- 课程描述 -->
+									<div class="class_hour">
+										<span>{$v.click}人在学</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+										<span>更新至：{$v.hours}课时</span>
+									</div>
+								</a>
+							</div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+				{/empty}
+			</div>
+			
+			<!-- 底部 -->
+			{include file="footer"}
+		</div>
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 点击搜索
+			$('.search_btn').on('click', function(){
+				const key = $('.txt').val();
+				if(key == ''){
+					alert('请输入关键词');return false;
+				}
+				window.location.href="/msearch?keywords="+key;
+				
+			})
+		</script>
+	</body>
+</html>

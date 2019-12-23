@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人中心</title>
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/lesson/jquery.fancybox.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<script src="__INDEX__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+
+	</head>
+	<body>
+		<div class="wrap" id="mine">
+			<div class="header">
+				<div class="inner clearfix">
+					{include file="search"}
+					<!--搜索框-->
+		<!-- 			<div style="clear: both;"></div> -->
+				{include file="haslogged"}
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="container">
+				<div class="inner contents mt20">
+					<div class="centerLeft">
+						<ul class="leftMenu clearfix">
+							<li class="active" data-name="zw_1">
+								<a href="javascript:">我的首页</a>
+							</li>
+							<li class="" data-name="zw_2">
+								<a href="javascript:" >学习记录</a>
+							</li>
+							<li class="" data-name="zw_3">
+								<a href="javascript:">订单中心</a>
+							</li>
+							<li class="" data-name="zw_4">
+								<a href="javascript:">账户设置</a>
+							</li>
+							<li class="" data-name="zw_5">
+								<a href="javascript:" class="fw" style="background: url(static/images/bg_20130926001.gif) no-repeat scroll 60px 0px transparent;">购买会员</a>
+							</li>
+							<li class="" data-name="zw_6">
+								<a href="javascript:">购买的课程</a>
+							</li>
+							
+						</ul>
+					</div>
+					<!-- 我的首页 -->
+					<div class="centerRight" id="zw_1" style="display: block;">
+						<div class="p_info">
+							<div class="avatar">
+								<img src="{$userData.head_pic}">
+							</div>
+							<div class="infos">
+								<h3 class="nickname">{$userData.username}</h3>
+								<span>注册时间：{:date('Y-m-d',$userData.reg_time)}</span>
+								<p><span>{$userData.mobile}</span><!-- &nbsp;|&nbsp;<a href="javascript:">修改</a> --></p>
+								<p><span>我的收藏：</span><a href="javascript:">{$memberData.collect_count}个</a></p>
+								<p><span>观看视频权限：</span>
+									免费 {volist name="$memberData.cat_level" id="v"}
+											{$v.level_name}
+										{/volist}
+								</p>
+							</div>
+						</div>
+						<!-- 最近学习记录 -->
+						<div class="record">
+							<h3>最近学习记录</h3>
+							<ul>
+								{volist name="$memberData.Learn" id="ml" key="k"}
+
+									{if condition="$k < 4"}
+
+									<li>
+										<div class="kc_img">
+											<a href="/course_show?id={$ml.aid}">
+												<img width="260" height="150" src="{$ml.litpic}" >
+											</a>
+										</div>
+										<div class="kc_text">
+											<div class="title">{$ml.title}</div>
+											<div class="class_hour">
+												<span>课时：{$ml.hours}</span>
+												<span>更新至：{$ml.count}课时</span>
+											</div>
+										</div>
+									</li>
+									{/if}
+								{/volist}
+							</ul>
+						</div>
+					</div>
+					
+					<!-- 学习记录 -->
+					<div class="centerRight" id="zw_2" style="display: none;">
+						<ul class="recordTitle">
+							<li class="on" data-id="1"><a href="javascript:">学习记录</a></li>
+							<li data-id="2"><a href="javascript:">收藏的课程</a></li>
+						</ul>
+						<!-- 学习记录列表 -->
+						<div class="record record1" id="record1">
+							
+
+						</div>
+						
+						<!-- 我的收藏 -->
+						<div class="record record1" id="record2" style="display: none;">
+	
+						</div>
+					</div>
+				
+					<!-- 订单中心 -->
+					<div class="centerRight" id="zw_3" style="display: none;" >
+						<ul class="orderTitle">
+							<li class="on" data-id="1"><a href="javascript:">全部订单</a></li>
+							<li data-id="2"><a href="javascript:">待支付</a></li>
+							<li data-id="3"><a href="javascript:">交易成功</a></li>
+							<li data-id="4"><a href="javascript:">交易关闭</a></li>
+						</ul>
+						<div class="orderList" id="order1">
+							<ul>
+	
+							</ul>
+							<!-- 分页 -->
+							<div class="pages">
+								
+							</div>
+						</div>
+						<div class="orderList" id="order2" style="display: none;">
+							<ul>
+	
+							</ul>
+							<!-- 分页 -->
+							<div class="pages">
+								
+							</div>
+						</div>
+						<div class="orderList" id="order3" style="display: none;">
+							<ul>
+			
+							</ul>
+							<!-- 分页 -->
+							<div class="pages">
+								
+							</div>
+						</div>
+						<div class="orderList" id="order4" style="display: none;">
+							<ul>
+	<!-- 							<li>
+									<div class="kc_img">
+										<a href="course_show.html">
+											<img src="__INDEX__picture/20190827093206582.jpg" >
+										</a>
+									</div>
+									<div class="kc_text">
+										<div class="title">变频器、伺服和步进驱动技术应用变频器、伺服和步进驱动技术应用</div>
+										<div class="class_hour">
+											<span>课程有效时长：365天</span>
+											<span>总课时：45个</span>
+										</div>
+										<div class="box">
+											<div class="price">
+												<span class="jin">￥299</span>
+												<span class="old">￥399</span>
+											</div>
+											<div class="status">交易关闭</div>
+										</div>
+									</div>
+								</li> -->
+							</ul>
+							<!-- 分页 -->
+							<div class="pages">
+								
+							</div>
+						</div>
+					</div>
+					
+					<!-- 账户设置 -->
+					<div class="centerRight" id="zw_4" style="display: none;">
+						<ul class="recordTitle" style="margin-bottom: 20px;">
+							<li class="on" data-id="1"><a href="javascript:">基本信息</a></li>
+							<li class="" data-id="2"><a href="javascript:">修改密码</a></li>
+							<li class="" data-id="3"><a href="javascript:">修改手机号</a></li>
+						</ul>
+						<div class="information set_up" id="set1" style="display: block;">
+							<form action="" method="" id="info">
+								<div class="avatars">
+									<label>头像：</label>
+									<input type="file" name="head_pic" id="upload" style="display: none;">
+									<input type="hidden" name="head_pic" class="head_pic" value="{$userData.head_pic}">
+									<img src="{$userData.head_pic}" id="avatars_pic" >
+								</div>
+								<div class="">
+									<label>用户名：</label>
+									<input type="text" name="username" id="" value="{$userData.username}" />
+								</div>
+								<div class="">
+									<label>用户昵称：</label>
+									<input type="text" name="nickname" id="" value="{$userData.nickname}" />
+								</div>
+<!-- 								<div class="">
+									<label>性别：</label>
+									<input type="radio" name="sex" id="" checked /><span>男</span>
+									<input type="radio" name="sex" id="" /><span>女</span>
+								</div> -->
+	<!-- 							<div class="">
+									<label>生日：</label>
+									<input type="date" name="" id="" value="" />
+								</div> -->
+		<!-- 						<div class="">
+									<label>QQ：</label>
+									<input type="text" name="" id="" value="" />
+								</div> -->
+								<div class="">
+									<label>邮箱：</label>
+									<input type="text" name="email" id="" value="{$userData.email}" />
+								</div>
+						<!-- 		<div class="">
+									<label>单位名称：</label>
+									<input type="text" name="" id="" value="" />
+								</div> -->
+								<div>
+									<input type="submit" id="btn" name="" value="提交" />
+								</div>
+							</form>
+						</div>
+						
+						<script type="text/javascript" src="/public/plugins/layui/layui.js"></script>
+						<script type="text/javascript">
+							layui.use('upload', function(){
+							  var upload = layui.upload;
+							  //执行实例
+							  var uploadInst = upload.render({
+							    elem: '#upload' //绑定元素
+							    ,url: '{:url("index/member/pic")}' //上传接口
+							    ,choose: function(obj){
+								    //将每次选择的文件追加到文件队列
+								    var files = obj.pushFile();
+
+								  },done: function(res){
+								  	if(res.code == 1){
+								  		$('.head_pic').val(res.src);
+								  	}else{
+								  		alert(res.info);
+								  	}
+
+
+															      //上传完毕回调
+							    }
+							    ,error: function(){
+							      //请求异常回调
+							    }
+							  });
+							});
+
+
+						</script>
+						<div class="update_pwd set_up" id="set2" style="display: none;">
+							<form action="" method="" id="info1">
+								<div class="">
+									<label>旧密码：</label>
+									<input type="password" name="oldpass" id="" value="" />
+								</div>
+								<div class="">
+									<label>新密码：</label>
+									<input type="password" name="password" id="" value="" />
+								</div>
+								<div class="">
+									<label>确认密码：</label>
+									<input type="password" name="sub_password" id="" value="" />
+								</div>
+								<div class="">
+									<input type="submit" id="btn1" name="" value="保存" />
+								</div>
+							</form>
+						</div>
+						
+						<div class="update_tel set_up" id="set3" style="display: none;">
+							<form action="" method="">
+								<div class="">
+									<label>当前号码：</label>
+									<input type="text" name="" id="mobile" value="{$userData.mobile}" disabled />
+								</div>
+								<div class="">
+									<label>新号码：</label>
+									<input type="text" name="" id="newmobile" value="" />
+								</div>
+								<div class="">
+									<label>验证码：</label>
+									<p>
+										<input type="text" name="" id="code" value="" />
+										<a href="javascript:" class="get_code" id="get_code" style="color: #09f;">获取验证码</a>
+									</p>
+								</div>
+								<div class="">
+									<input type="submit" id="bnt3" name="" value="立即修改" />
+								</div>
+							</form>
+						</div>
+						
+					</div>
+					
+					
+					<!-- 升级会员 -->
+					<div class="centerRight" id="zw_5" style="display: none;">
+						<div class="title">
+							<h3>升级会员</h3>
+						</div>
+						<div class="record">
+							<table>
+								<thead>
+									<tr>
+										<th>选择</th>
+										<th>产品名称</th>
+										<th>产品价格</th>
+										<th>会员期限</th>
+									</tr>
+								</thead>
+								<tbody>
+									{volist name="$memberData.member_level" id="v"}
+									<tr>
+										<td><input type="radio" name="vip" value="{$v.level_id}" /></td>
+										<td>{$v.type_name}</td>
+										<td>￥{$v.price}</td>
+										<td>终身</td>
+									</tr>
+									{/volist}
+								</tbody>
+							</table>
+<!-- 							
+							<div class="pay">
+								<div class="">
+									<input type="radio" name="pay" value="" />
+									<img src="__INDEX__/images/w.png" >
+								</div>
+								<div class="">
+									<input type="radio" name="pay" value="" />
+									<img src="__INDEX__/images/z.png" >
+								</div>
+							</div> -->
+							<button type="button" class="pay_btn">去付款</button>
+							<script type="text/javascript">
+								$(function(){
+									$('.pay_btn').click(function(){
+
+										var name = $("input[name='vip']:checked").val();
+										if(name == undefined){
+											alert('请先选择开通的等级');return false;
+										}
+										var token = "{$memberData.token}";
+										$.post("{:url('index/pay/mem_level_order')}",{level:name,__token__:token},function(data){
+											if(data.code == 1){
+												window.location.href="{:url('index/pay/mem_activation')}&order_code="+data.data+'&level='+name;
+
+											}else{
+												var token = data.token;
+												alert(data.msg);
+											}
+											
+
+										})
+									})
+
+								})
+
+							</script>
+						</div>
+					</div>
+					<!-- 购买的课程 -->
+					<div class="centerRight" id="zw_6" style="display: none;">
+						<div class="title">
+							<h3>已购买的课程</h3>
+						</div>
+						<div class="record orderList" id="bought_course">
+							<ul>
+								<li>
+									<div class="kc_img">
+										<a href="course_show.html">
+											<img src="__INDEX__picture/20190827093206582.jpg" >
+										</a>
+									</div>
+									<div class="kc_text">
+										<div class="title">变频器、伺服和步进驱动技术应用</div>
+										<div class="class_hour">
+											<span>课程有效时长：365天</span>
+											<span>总课时：45个</span>
+										</div>
+										<div class="box">
+											<div class="price">
+												<span class="jin">￥399</span>
+												<span class="old">￥399</span>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="kc_img">
+										<a href="course_show.html">
+											<img src="__INDEX__picture/20190827093206582.jpg" >
+										</a>
+									</div>
+									<div class="kc_text">
+										<div class="title">变频器、伺服和步进驱动技术应用变频器、伺服和步进驱动技术应用</div>
+										<div class="class_hour">
+											<span>课程有效时长：365天</span>
+											<span>总课时：45个</span>
+										</div>
+										<div class="box">
+											<div class="price">
+												<span class="jin">￥299</span>
+												<span class="old">￥399</span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<!-- 分页 -->
+							<div class="pages">
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<!-- footer -->
+			{include file="footer"}
+		
+		<script src="__INDEX__js/mine.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+</html>
+

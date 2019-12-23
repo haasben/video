@@ -1,0 +1,23 @@
+<div class="inner">
+	<div class="tabs1 mt20">
+		<!-- page tab nav -->
+		<ul class="tabs-nav" id="page-tabs-nav">
+
+			{volist name="$course_sorts" id="cs"}
+			<li class="{$cs.dirname}">
+				<a class="tabs-link" href="/{$cs.dirname}?id={$cs.id}">
+					<h3 class="rel">{$cs.typename}</h3>
+
+					<p>{$cs.seo_title}</p>
+				</a>
+			</li>
+
+			{/volist}
+		</ul>
+		<!-- page tab nav end-->
+
+<script type="text/javascript">
+
+	 $('.{$categroy}').addClass('active');
+
+</script>

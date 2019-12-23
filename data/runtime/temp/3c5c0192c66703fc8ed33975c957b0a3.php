@@ -1,0 +1,539 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:48:"./application/admin/template/admin\admin_add.htm";i:1571037616;s:57:"D:\WWW\video\application\admin\template\public\layout.htm";i:1571037616;s:59:"D:\WWW\video\application\admin\template\admin\admin_bar.htm";i:1571037616;s:57:"D:\WWW\video\application\admin\template\public\footer.htm";i:1571037616;}*/ ?>
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Apple devices fullscreen -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- Apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link href="/public/plugins/layui/css/layui.css?v=<?php echo $version; ?>" rel="stylesheet" type="text/css">
+<link href="/public/static/admin/css/main.css?v=<?php echo $version; ?>" rel="stylesheet" type="text/css">
+<link href="/public/static/admin/css/page.css?v=<?php echo $version; ?>" rel="stylesheet" type="text/css">
+<link href="/public/static/admin/font/css/font-awesome.min.css" rel="stylesheet" />
+<!--[if IE 7]>
+  <link rel="stylesheet" href="/public/static/admin/font/css/font-awesome-ie7.min.css">
+<![endif]-->
+<script type="text/javascript">
+    var eyou_basefile = "<?php echo \think\Request::instance()->baseFile(); ?>";
+    var module_name = "<?php echo MODULE_NAME; ?>";
+    var GetUploadify_url = "<?php echo url('Uploadify/upload'); ?>";
+    var __root_dir__ = "";
+    var __lang__ = "<?php echo $admin_lang; ?>";
+</script>  
+<link href="/public/static/admin/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+<link href="/public/static/admin/js/perfect-scrollbar.min.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">html, body { overflow: visible;}</style>
+<script type="text/javascript" src="/public/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/public/static/admin/js/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/public/plugins/layer-v3.1.0/layer.js"></script>
+<script type="text/javascript" src="/public/static/admin/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/public/static/admin/js/admin.js?v=<?php echo $version; ?>"></script>
+<script type="text/javascript" src="/public/static/admin/js/jquery.validation.min.js"></script>
+<script type="text/javascript" src="/public/static/admin/js/common.js?v=<?php echo $version; ?>"></script>
+<script type="text/javascript" src="/public/static/admin/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="/public/static/admin/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="/public/plugins/layui/layui.js"></script>
+<script src="/public/static/admin/js/myFormValidate.js"></script>
+<script src="/public/static/admin/js/myAjax2.js?v=<?php echo $version; ?>"></script>
+<script src="/public/static/admin/js/global.js?v=<?php echo $version; ?>"></script>
+</head>
+<body class="rolecss">
+<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+        <div class="fixed-bar">
+        <div class="item-title">
+            <a class="back" href="<?php echo url(CONTROLLER_NAME.'/index'); ?>" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+            <div class="subject">
+                <h3>管理员</h3>
+                <h5></h5>
+            </div>
+            <ul class="tab-base nc-row">
+                <?php if(is_check_access('Admin@index') == '1'): ?>
+                <li><a href="<?php echo url("Admin/index"); ?>" class="tab <?php if(in_array(\think\Request::instance()->controller(), array('Admin'))): ?>current<?php endif; ?>"><span>管理员列表</span></a></li>
+                <?php endif; if($main_lang == $admin_lang): if(is_check_access('AuthRole@index') == '1'): ?>
+                <li><a href="<?php echo url("AuthRole/index"); ?>" class="tab <?php if(in_array(\think\Request::instance()->controller(), array('AuthRole'))): ?>current<?php endif; ?>"><span>权限组列表</span></a></li>
+                <?php endif; endif; ?>
+            </ul>
+        </div>
+    </div>
+    <form class="form-horizontal" id="postForm" action="<?php echo url('Admin/admin_add'); ?>" method="post">
+        <div class="ncap-form-default">
+            <dl class="row">
+                <dt class="tit">
+                    <label for="user_name"><em>*</em>用户名</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="user_name" value="" id="user_name" onkeyup="check_user_name(this);" class="input-txt">
+                    <p class="red" id="tips_user_name"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="password"><em>*</em>登录密码</label>
+                </dt>
+                <dd class="opt">
+                    <input type="password" name="password" value="" id="password" autocomplete="off" class="input-txt">
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="password"><em>*</em>确认密码</label>
+                </dt>
+                <dd class="opt">
+                    <input type="password" name="password2" value="" id="password2" autocomplete="off" class="input-txt">
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="pen_name">笔名</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="pen_name" value="" id="pen_name" class="input-txt">
+                    <p class="notic">发布文档后显示责任编辑的名字</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="true_name">真实姓名</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="true_name" value="" id="true_name" class="input-txt">
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="mobile">手机号码</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="mobile" value="" id="mobile" class="input-txt">
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row"><dt class="tit"><label><b>管理员权限设置</b></label></dt></dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="name">管理员权限组</label>
+                </dt>
+                <dd class="opt">
+                    <p><label><input type="radio" name="role_id" value="-1" onclick="changeRole(-1);" checked="checked" />超级管理员</label></p>
+                    <?php if(is_array($admin_role_list) || $admin_role_list instanceof \think\Collection || $admin_role_list instanceof \think\Paginator): if( count($admin_role_list)==0 ) : echo "" ;else: foreach($admin_role_list as $k=>$role): ?>
+                    <p>
+                        <label><input type="radio" name="role_id" value="<?php echo $role['id']; ?>" onclick="changeRole(<?php echo $role['id']; ?>);" <?php if($role['id'] == \think\Request::instance()->param('role_id')): ?> checked="checked"<?php endif; ?> /><?php echo $role['name']; ?></label>
+                        <!-- &nbsp;<a href="javascript:void;" data-url="<?php echo url('AuthRole/edit', array('id'=>$role['id'],'iframe'=>1)); ?>" onclick="addRole(this);">[编辑]</a>&nbsp;&nbsp;<a href="javascript:void;" data-url="<?php echo url('AuthRole/del'); ?>" data-id="<?php echo $role['id']; ?>" onclick="delfun(this);">[删除]</a> -->
+                    </p>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                    <p id="custom_role" style="padding-left: 13px; text-decoration:underline;"><label><a href="javascript:void(0);" data-url="<?php echo url('AuthRole/add', array('iframe'=>1)); ?>" onclick="addRole(this);">自定义</a></label></p>
+                </dd>
+            </dl>
+            <dl class="row"><dt class="tit"><label><b>当前权限组预览</b></label></dt></dl>
+<!--             <dl class="row">
+                <dt class="tit">
+                    <label for="name">语言权限</label>
+                </dt>
+                <dd class="opt">
+                    <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" name="language[]" value="cn" class="none" />简体中文</label>
+                    <span class="err"></span>
+                    <p class="notic"></p>
+                </dd>
+            </dl> -->
+            <dl class="row">
+                <dt class="tit">
+                    <label for="name">在线升级</label>
+                </dt>
+                <dd class="opt">
+                    <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" name="online_update" value="1" class="none" />允许操作</label>
+                    <span class="err"></span>
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="name">文档权限</label>
+                </dt>
+                <dd class="opt">
+                    <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" name="only_oneself" value="1" class="none" />只允许查看自己发布的文档</label>
+                    <span class="err"></span>
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="name">操作权限</label>
+                </dt>
+                <dd class="opt">
+                    <p><label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" id="select_cud" class="none" />完全控制</label></p>
+                    <p><label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" name="cud[]" value="add" class="none" />添加信息</label></p>
+                    <p><label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" name="cud[]" value="edit" class="none" />修改信息</label></p>
+                    <p><label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" name="cud[]" value="del" class="none" />删除信息</label></p>
+                    <span class="err"></span>
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="name">功能权限</label>
+                </dt>
+                <dd class="opt">
+                    <p>
+                        <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" id="select_all_permission" class="none" />全部选择</label>
+                    </p>
+
+                    <?php if(is_array($modules) || $modules instanceof \think\Collection || $modules instanceof \think\Paginator): if( count($modules)==0 ) : echo "" ;else: foreach($modules as $key=>$vo): if(is_array($vo['child']) || $vo['child'] instanceof \think\Collection || $vo['child'] instanceof \think\Paginator): if( count($vo['child'])==0 ) : echo "" ;else: foreach($vo['child'] as $key=>$vo2): if(1 == $vo2['is_modules'] AND ! empty($auth_rule_list[$vo2['id']])): if(1002 == $vo2['id']): ?>
+                            <div class="admin_poplistdiv">
+                                <h2><?php echo $vo2['name']; ?></h2>
+                            <?php if(! empty($arctypes)): ?>
+                                <p>
+                                    <?php $first_arctype_id = ''; if(is_array($arctypes) || $arctypes instanceof \think\Collection || $arctypes instanceof \think\Paginator): if( count($arctypes)==0 ) : echo "" ;else: foreach($arctypes as $k=>$arctype): if(isset($arctype_array[$arctype['id']])): if($k>0): ?>
+                                            <em class="arctype_bg expandable"></em>
+                                            <?php else: ?>
+                                            <em class="arctype_bg collapsable"></em>
+                                            <?php $first_arctype_id = $arctype['id']; endif; endif; ?>
+                                        <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" class="arctype_cbox arctype_id_<?php echo $arctype['id']; ?> none" name="permission[arctype][]" value="<?php echo $arctype['id']; ?>" /><?php echo $arctype['typename']; ?></label>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                </p>
+                                
+                                <?php if(is_array($arctypes) || $arctypes instanceof \think\Collection || $arctypes instanceof \think\Paginator): if( count($arctypes)==0 ) : echo "" ;else: foreach($arctypes as $k=>$arctype): if(isset($arctype_array[$arctype['id']])): ?>
+                                    <div class="arctype_child" id="arctype_child_<?php echo $arctype['id']; ?>"<?php if($first_arctype_id==$arctype['id']): ?> style="display: block;"<?php endif; ?>>
+                                    <?php foreach($arctype_array[$arctype['id']] as $item): ?>
+                                        <div class="arctype_child1">
+                                            <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" class="arctype_cbox arctype_id_<?php echo $item['id']; ?> none" name="permission[arctype][]" value="<?php echo $item['id']; ?>" data-pid="<?php echo $item['parent_id']; ?>" /><?php echo $item['typename']; ?></label>
+                                        </div>
+                                        <?php if(isset($arctype_array[$item['id']])): ?>
+                                        <div class="arctype_child2" id="arctype_child_<?php echo $item['id']; ?>">
+                                            <span class="button level1 switch center_docu"></span>
+                                            <?php foreach($arctype_array[$item['id']] as $vo): ?>
+                                            <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" class="arctype_cbox none" data-pid="<?php echo $vo['parent_id']; ?>" data-tpid="<?php echo $item['parent_id']; ?>" name="permission[arctype][]" value="<?php echo $vo['id']; ?>" /><?php echo $vo['typename']; ?></label>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <?php endif; endforeach; ?>
+                                    </div>
+                                <?php endif; endforeach; endif; else: echo "" ;endif; endif; ?>
+                            </div>
+                          <?php else: ?>
+                            <div class="admin_poplistdiv">
+                                <h2><?php echo $vo2['name']; ?></h2>
+                                <p>
+                                    <?php if(is_array($auth_rule_list[$vo2['id']]) || $auth_rule_list[$vo2['id']] instanceof \think\Collection || $auth_rule_list[$vo2['id']] instanceof \think\Paginator): if( count($auth_rule_list[$vo2['id']])==0 ) : echo "" ;else: foreach($auth_rule_list[$vo2['id']] as $key=>$rule): ?>
+                                    <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" class="none" name="permission[rules][]" value="<?php echo $rule['id']; ?>" /><?php echo $rule['name']; ?></label>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                </p>
+                            </div>
+                          <?php endif; endif; endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; if(! empty($plugins)): ?>
+                    <div class="admin_poplistdiv">
+                        <h2>插件应用</h2>
+                        <ul>
+                            <?php if(is_array($plugins) || $plugins instanceof \think\Collection || $plugins instanceof \think\Paginator): if( count($plugins)==0 ) : echo "" ;else: foreach($plugins as $key=>$plugin): ?>
+                            <li>
+                                <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" class="none" name="permission[plugins][<?php echo $plugin['code']; ?>][code]" value="<?php echo $plugin['code']; ?>" /><?php echo $plugin['name']; ?></label>
+                                <?php $config = json_decode($plugin['config'], true); if(! empty($config['permission'])): ?>
+                                <p style="padding-left:10px;">
+                                    <span class="button level1 switch center_docu"></span>
+                                    <?php foreach($config['permission'] as $index => $text): ?>
+                                    <label><img class="cboximg" src="/public/static/admin/images/ok.png" /><input type="checkbox" class="none" name="permission[plugins][<?php echo $plugin['code']; ?>][child][]" value="<?php echo $index; ?>" /><?php echo $text; ?></label>
+                                    <?php endforeach; ?>
+                                </p>
+                                <?php endif; ?>
+                            </li>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+                </dd>
+            </dl>
+            <div class="bot"><a href="JavaScript:void(0);" onclick="adsubmit();" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+        </div>
+    </form>
+</div>
+<textarea name="admin_role_list" id="admin_role_list" class="none"><?php echo json_encode($admin_role_list); ?></textarea>
+<script type="text/javascript">
+    $(function(){
+        // 默认全部禁用复选框
+        $('#postForm input[type="checkbox"]').attr("disabled","disabled");
+
+        /*超级管理员默认全选复选框*/
+        if (-1 == $('#postForm input[name="role_id"]').val()) {
+            $('#postForm input[type="checkbox"]').attr('checked', 'checked');
+            $('#postForm img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+        }
+        /*--end*/
+
+        $('.arctype_bg').bind('click', function(){
+            var acid = $(this).next().find('input').val(), input = 'arctype_child_' + acid;
+            $('.arctype_child').hide();
+            if( $(this).attr('class').indexOf('expandable') == -1 ){
+                $(this).removeClass('collapsable').addClass('expandable');
+            }else{
+                $('.arctype_bg').removeClass('collapsable').addClass('expandable');
+                $(this).removeClass('expandable').addClass('collapsable');
+                $('#'+input).show();
+            }
+        });
+        $('.arctype_cbox').bind('click', function(){
+            var acid = $(this).val(), input = 'arctype_child_' + acid;
+            var pid = $(this).data('pid');
+            var tpid = $(this).data('tpid');
+            if($(this).attr('checked')){
+                if (0 < $('input[data-pid="'+pid+'"]:checked').length) {
+                    $('.arctype_id_'+pid).attr('checked', 'checked');
+                    $('.arctype_id_'+pid).parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                }
+                if (0 < $('#arctype_child_'+tpid).find('input[type="checkbox"]:checked').length) {
+                    $('.arctype_id_'+tpid).attr('checked', 'checked');
+                    $('.arctype_id_'+tpid).parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                }
+                $('#'+input).find('input[type="checkbox"]').attr('checked', 'checked');
+                $('#'+input).find('input[type="checkbox"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+            }else{
+                if (1 > $('input[data-pid="'+pid+'"]:checked').length) {
+                    $('.arctype_id_'+pid).removeAttr('checked');
+                    $('.arctype_id_'+pid).parent().find('img.cboximg').attr('src', '/public/static/admin/images/del.png');
+                }
+                if (1 > $('#arctype_child_'+tpid).find('input[type="checkbox"]:checked').length) {
+                    $('.arctype_id_'+tpid).removeAttr('checked');
+                    $('.arctype_id_'+tpid).parent().find('img.cboximg').attr('src', '/public/static/admin/images/del.png');
+                }
+                $('#'+input).find('input[type="checkbox"]').removeAttr('checked');
+                $('#'+input).find('input[type="checkbox"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/del.png');
+            }
+        });
+        $('#select_cud').bind('click', function(){
+            if($(this).attr('checked')){
+                $('#postForm input[name^="cud"]').attr('checked', 'checked');
+                $('#postForm input[name^="cud"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+            }else{
+                $('#postForm input[name^="cud"]').removeAttr('checked');
+                $('#postForm input[name^="cud"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/del.png');
+            }
+        });
+
+        $('#select_all_permission').bind('click', function(){
+            if($(this).attr('checked')){
+                $('#postForm input[name^="permission"]').attr('checked', 'checked');
+                $('#postForm input[name^="permission"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+            }else{
+                $('#postForm input[name^="permission"]').removeAttr('checked');
+                $('#postForm input[name^="permission"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/del.png');
+            }
+        });
+        $('#postForm input[name^="permission"],#postForm input[name^="cud"]').bind('click', function(){
+            hasSelectAll();
+        });
+    });
+
+    function hasSelectAll(){
+        var c = true;
+        $('#postForm input[name^="permission"]').each(function(idx, ele){
+            if(! $(ele).attr('checked')){
+                c = false;
+                return;
+            }
+        });
+        if(c){
+            $('#select_all_permission').attr('checked', 'checked');
+            $('#select_all_permission').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+        }else{
+            $('#select_all_permission').removeAttr('checked');
+            $('#select_all_permission').parent().find('img.cboximg').attr('src', '/public/static/admin/images/del.png');
+        }
+
+        var c1 = true;
+        $('#postForm input[name^="cud"]').each(function(idx, ele){
+            if(! $(ele).attr('checked')){
+                c1 = false;
+                return;
+            }
+        });
+        if(c1){
+            $('#select_cud').attr('checked', 'checked');
+            $('#select_cud').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+        }else{
+            $('#select_cud').removeAttr('checked');
+            $('#select_cud').parent().find('img.cboximg').attr('src', '/public/static/admin/images/del.png');
+        }
+    }
+
+    function changeRole(value){
+        if (-1 == value) {
+            $('#postForm input[type="checkbox"]').attr("checked","checked").attr('disabled', 'disabled');
+            $('#postForm img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+            return;
+        }
+        
+        $('#postForm input[name!="role_id"]').removeAttr('checked').removeAttr('disabled');
+        $('#postForm img.cboximg').attr('src', '/public/static/admin/images/del.png');
+
+        /*自定义权限组*/
+        // if(value == "0"){
+        //     $('#postForm input[name!="role_id"]').attr('checked', 'checked');
+        //     $('#postForm input[name="online_update"]').removeAttr('checked');
+        //     $('#postForm input[name="only_oneself"]').removeAttr('checked');
+        //     return ;
+        // }
+        /*--end*/
+        var admin_role_list = JSON.parse($('#admin_role_list').val());
+        for(var i in admin_role_list){
+            var item = admin_role_list[i];
+            if(item.id == value){
+                if(item.language){
+                    item.language.map(function(row){
+                        $('#postForm input[name^="language"][value="'+row+'"]').attr('checked', 'checked');
+                        $('#postForm input[name^="language"][value="'+row+'"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                    });
+                }
+
+                if(item.online_update){
+                    $('#postForm input[name="online_update"]').attr('checked', 'checked');
+                    $('#postForm input[name="online_update"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                };
+                // if(item.editor_visual){
+                //     $('#postForm input[name="editor_visual"]').attr('checked', 'checked');
+                //     $('#postForm input[name="editor_visual"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                // };
+                if(item.only_oneself){
+                    $('#postForm input[name="only_oneself"]').attr('checked', 'checked');
+                    $('#postForm input[name="only_oneself"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                };
+                if(item.cud){
+                    item.cud.map(function(row){
+                        $('#postForm input[name^="cud"][value="'+row+'"]').attr('checked', 'checked');
+                        $('#postForm input[name^="cud"][value="'+row+'"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                    });
+                }
+
+                if(item.permission){
+                    for(var p in item.permission){
+                        if(p == 'plugins'){
+                            if(item.permission[p]){
+                                for(var pluginId in item.permission[p]){
+                                    $('#postForm input[name="permission['+p+']['+pluginId+'][code]"][value="'+pluginId+'"]').attr('checked', 'checked');
+                                    $('#postForm input[name="permission['+p+']['+pluginId+'][code]"][value="'+pluginId+'"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                                    if(item.permission[p][pluginId].child){
+                                        item.permission[p][pluginId].child.map(function(row){
+                                            $('#postForm input[name="permission['+p+']['+pluginId+'][child][]"][value="'+row+'"]').attr('checked', 'checked');
+                                            $('#postForm input[name="permission['+p+']['+pluginId+'][child][]"][value="'+row+'"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                                        });
+                                    }
+                                }
+                            }
+                        }else{
+                            item.permission[p].map(function(row){
+                                $('#postForm input[name="permission['+p+'][]"][value="'+row+'"]').attr('checked', 'checked');
+                                $('#postForm input[name="permission['+p+'][]"][value="'+row+'"]').parent().find('img.cboximg').attr('src', '/public/static/admin/images/ok.png');
+                            });
+                        }
+                        
+                    }
+                }
+
+                hasSelectAll();
+                $('#postForm input[type="checkbox"]').attr('disabled', 'disabled');
+                break;
+            }
+        }
+    }
+
+    function addRole(obj)
+    {
+        var url = $(obj).data('url');
+        // iframe窗
+        layer.open({
+            type: 2,
+            title: '自定义权限组',
+            fixed: true, //不固定
+            shadeClose: false,
+            shade: 0.3,
+            maxmin: false, //开启最大化最小化按钮
+            area: ['90%', '90%'],
+            content: url
+        });
+    }
+
+    function custom_role(str, new_role_id, auth_role_list)
+    {
+        $('#custom_role').before(str);
+        $('#admin_role_list').val(auth_role_list);
+        changeRole(new_role_id);
+    }
+
+    function check_user_name(obj)
+    {
+        var user_name = $(obj).val();
+        $.ajax({
+            url: "<?php echo url('Admin/ajax_add_user_name'); ?>",
+            type: "POST",
+            dataType: "JSON",
+            async: false,
+            data: {user_name:user_name, _ajax:1},
+            success: function(res){
+                if (0 == res.code) {
+                    $('#tips_user_name').html(res.msg);
+                } else {
+                    $('#tips_user_name').html('');
+                }
+            }
+        });
+    }
+
+    // 判断输入框是否为空
+    function adsubmit(){
+        var user_name = $('input[name=user_name]').val();
+        if($.trim(user_name) == ''){
+            showErrorMsg('用户名不能为空！');
+            $('input[name=user_name]').focus();
+            return false;
+        }
+        var password = $('#password').val();
+        var password2 = $('#password2').val();
+        if(password == ''){
+            showErrorMsg('登录密码不能为空！');
+            $('input[name=password]').focus();
+            return false;
+        }
+        if(password2 == ''){
+            showErrorMsg('确认密码不能为空！');
+            $('input[name=password2]').focus();
+            return false;
+        }
+        if (password != password2) {
+            showErrorMsg('两次密码输入不一致！');
+            $('input[name=password]').focus();
+            return false;
+        }
+        var role_id = $('input[name=role_id]:checked').val();
+        if(role_id == '' || undefined == role_id){
+            showErrorMsg('请选择权限组！');
+            $('input[name=role_id]').focus();
+            return false;
+        }
+
+        layer_loading('正在处理');
+        $('#postForm').submit();
+    }
+</script>
+
+<br/>
+<div id="goTop">
+    <a href="JavaScript:void(0);" id="btntop">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <a href="JavaScript:void(0);" id="btnbottom">
+        <i class="fa fa-angle-down"></i>
+    </a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#think_page_trace_open').css('z-index', 99999);
+    });
+</script>
+</body>
+</html>

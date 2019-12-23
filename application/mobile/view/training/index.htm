@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>培训案例</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="head">
+				<a href="javascript:" class="back" onclick="history.go(-1)"><img src="__MOBILE__img/icon-return.png" ></a>
+				<h3>培训案例</h3>
+			</header>
+			<div class="container">
+				<div class="cont">
+					<ul style="padding-top: 0.1rem;">
+						{volist name="$cases" id="v"}
+						<li>
+							<a href="javascript:" class="see" role="button" data-id="{$v.aid}">
+								<img class="lazy" src="{$v.litpic}" height="120" class="img-responsive" alt="{$v.title}" />
+								<h5>{$v.title}</h5>
+							</a>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+			
+			<!-- footer -->
+			{include file="footer"}
+		</div>
+		
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

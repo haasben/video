@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>支付</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="head">
+				<a href="javascript:" class="back" onclick="history.go(-1)"><img src="__MOBILE__img/icon-return.png" ></a>
+				<h3>支付中心</h3>
+			</header>
+			
+			<div class="container">
+				
+				<div class="order_desc">
+					<h4>订单信息</h4>
+					<ul class="list">
+						<li>
+							<div class="box">
+
+								<div class="kc_text">
+								
+										<div class="title">订单类型：{$user_money.cause}</div>
+										
+										<div class="title">
+											<span>订单编号：{$user_money.order_number}</span>
+										</div>
+										<div class="title">
+											<span class="jin">应付金额：￥{$user_money.money}</span>
+										</div>
+									
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="pay_method">
+	
+
+					<div class="tip">请选择支付方式：</div>
+					<div class="types">
+						<?php if(isWeixin()){?>
+						<a href="{:url('index/Pay/h5_wechat_pay')}&order_code={$user_money.order_number}&token={$token}&transaction_type=1&level={$user_money.level}"><img src="__MOBILE__img/w.png" ></a>
+						<?php }else{?>
+						<a href="{:url('index/Pay/new_alipay_pay_url')}&order_code={$user_money.order_number}&token={$token}&transaction_type=1&level={$user_money.level}"><img src="__MOBILE__img/timg.jpg" ></a>
+						<a href="{:url('index/Pay/h5_wechat_pay')}&order_code={$user_money.order_number}&token={$token}&transaction_type=1&level={$user_money.level}"><img src="__MOBILE__img/w.png" ></a>
+						<?php };?>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

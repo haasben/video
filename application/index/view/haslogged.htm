@@ -1,0 +1,54 @@
+					<div class="h-user">
+						<!--已登录-->
+						{empty name="$userData"}
+								<!--未登录-->
+							<div class="login-nav" id="header-n-login">
+								<a class="mr10" href="/login?tab=1">用户登录</a> <a class="reg" href="/login?tab=2">用户注册</a>
+							</div>
+							<!--未登录-->
+						{else /}
+						
+							<div class="user-center" id="header-logined" style="">
+								<!--用户菜单-->
+								<div class="user-wrap" data-role="collapsible">
+									<div class="user-head">
+										<a class="user-head-inner" href="/member">
+											<img class="u-avatar" src="{$userData.head_pic}" width="32" height="32">
+											<b class="u-truename"></b>
+										</a>
+										<i class="caret"></i>
+									</div>
+									<div class="user-cont">
+										<div class="user-info">
+											<span class="u-truename"></span>
+										</div>
+										<div class="user-menu">
+											
+											<a href="/member?tab=3" target="_blank">我的订单</a>
+											<a href="/member?tab=4" target="_blank">账户设置</a> 
+											<a href="/member?tab=2" target="_blank">学习记录</a> 
+											<a href="/member?tab=2&c=2" target="_blank">我的收藏</a> 
+
+											<a href="javascript:;" class="fw logout">退出</a>
+										</div>
+									</div>
+								</div>
+								<!--用户菜单-->
+								<!--购物车-->
+								<div class="user-shop" data-role="collapsible" style="margin-right:0">
+									<a class="shop-btn u-grade2" href="#" style="padding:0 10px;">{$userData.level_name}</a>
+								</div>
+							</div>
+							<script type="text/javascript">
+								//退出登录
+								$('.logout').click(function(){
+									$.post('{:url("index/login/logout")}',function(data){
+											if(data.code == 1){
+												window.location.href = '/';
+											}
+										})
+									})
+
+							</script>
+						{/empty}
+					</div>

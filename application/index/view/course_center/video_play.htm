@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$course.title}</title>
+		<meta name="description" content="{$course.seo_description}" />
+		<meta name="keywords" content="{$course.seo_keywords}" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/player.css">
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css">
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/jquery.fancybox.css" />
+		<link rel="stylesheet" href="__INDEX__css/automail.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<script src="__INDEX__js/jquery-1.11.3.js"></script>
+		<script src="__INDEX__js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="__INDEX__js/jquery.fancybox.js"></script>
+
+		<style type="text/css">
+			html,body{height: 100%;}
+		</style>
+	</head>
+	<body style="height: 100% !important;overflow: hidden;">
+		<div class="video_wrap">
+			<div class="container videos">
+				<video width="800" height="" controls="controls" controlslist="nodownload noremoteplayback" class="vid">
+				<!-- 	<source src="" type="video/mp4" class="video"> -->
+					当前浏览器不支持 video直接播放
+				</video>
+			</div>
+			<script type="text/javascript">
+				var aid = '{$aid}';
+				$.post('/get_video',{aid:aid},function(data){
+				sourceDom = $("<source src=\""+ data +"\"> type='video/mp4' </source>");
+				   $(".vid").append(sourceDom);
+				   // // 自动播放
+				   $('.vid').attr('autoplay',"autoplay");
+				   // $(".vid").get(0).play();
+
+				})
+
+
+			</script>
+			<!--侧栏伸展-->
+			<div class="menu">
+				<div class="clearfix collapse collapse-wrap">
+					<div class=" Course-Details">
+						<div class="summarize l">
+							<dl>
+								<dt>{$course.title}-{$course.videorating}课程</dt>
+								<dd>{$course.click}人观看</dd>
+								<dd>讲师:{$course.lecturer}</dd>
+							</dl>
+						</div>
+						<div class="course-cover l">
+							<a href="javaScript:;">
+								<img src="{$course.litpic}" alt="{$course.title}"></a>
+						</div>
+					</div>
+					<div class="Tab">
+						<ul>
+							<li>
+								目录</li>
+						</ul>
+					</div>
+				
+					<div class="collapse-cont2" id="list-lessons" style="height: calc(100% - 170px);overflow-x: hidden;">
+							<ul>
+									
+								{empty name="$course.chapter"}
+								{volist name="$course.course_list" id="cl" key="k"}
+								<li>
+									
+									<div class="Course-List" style="display: block;">
+
+										<ul>
+											<!-- False, False -->
+											<li class="rel">
+												<a id="lesson_id_{$cl.aid}" class="ellipsis " href="/video_play?aid={$cl.aid}" title="{$cl.title}">
+													{if condition="$cl.aid == $aid"}
+													<img src="__INDEX__images/icons.gif" alt="" class="icon-music">
+													{/if}
+													<span class="pl10">
+													{if condition="$cl.arcrank == 1"}
+														<b class="Watch-permissions abs">免费</b>
+													{elseif condition="$cl.arcrank == 2"}
+														<b class="Watch-permissions abs">会员</b>
+													{/if}{$cl.title}</span>
+												
+												</a>
+											</li>
+				
+										</ul>
+									</div>
+								</li>
+								{/volist}
+
+
+								{else /}
+								{volist name="$course.chapter" id="cc" key="key"}
+									<li>
+										<div class="collapse-head {if condition='$cha_id != $cc.id'}child-hidden{/if}">
+											<span class="r toggle-outline">∧</span>
+											<span class=" l ellipsis" style="width: 260px;">{$cc.title}</span>
+										</div>
+										<div class="Course-List" {if condition='$cha_id != $cc.id'}style="display: none;"{else}style="display: block;"{/if}>
+											<ul>
+												{volist name="$course.course_list" id="cl" key="k"}
+													{if condition="$cl.cha_id == $cc.id"}
+												<!-- False, False -->
+														<li class="rel">
+															<a id="lesson_id_{$cl.aid}" class="ellipsis " href="/video_play?aid={$cl.aid}" title="{$cl.title}">
+																{if condition="$cl.aid == $aid"}
+																	<img src="__INDEX__images/icons.gif" alt="" class="icon-music">
+																{/if}
+																<span class="pl10">
+																{if condition="$cl.arcrank == 1"}
+																	<b class="Watch-permissions abs">免费</b>
+																{elseif condition="$cl.arcrank == 2"}
+																	<b class="Watch-permissions abs">会员</b>
+																{/if}
+															{$cl.title}</span>
+															</a>
+														</li>
+													{/if}
+												{/volist}
+					
+											</ul>
+										</div>
+									</li>
+								{/volist}
+								{/empty}
+
+
+								
+							</ul>
+					</div>
+					
+					<!-- 目录右下角广告 -->
+					<!-- <div id="ads_banner">
+						<a href="https://act.jcpeixun.com/topic/20191012/?kecheng" target="_blank">
+							<img src="__INDEX__picture/20191101090320754.png" />
+						</a>
+						<span class="close_ads" title="关闭">×</span>
+					</div> -->
+				</div>
+			</div>
+			
+		</div>
+	</body>
+
+	<script src="__INDEX__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		// 关闭视频画中画功能
+		let v = $('.vid')
+		v[0]['disablePictureInPicture'] = true;
+		
+		//课程大纲展开、收缩
+		$(".collapse-head").click(function (e) {
+		    e.stopPropagation();
+		    var ctext = $(this).find(".toggle-outline");
+		    var $box = $(this).siblings(".Course-List");
+		    $box.slideToggle();
+		    if ($(this).hasClass("child-hidden")) {
+		        ctext.text("∧");
+		        $(this).removeClass("child-hidden");
+		    } else {
+		        ctext.text("∨");
+		        $(this).addClass("child-hidden");
+		    }
+		});
+	</script>
+</html>

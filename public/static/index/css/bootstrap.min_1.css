@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk2312" />
+<title></title>
+</head>
+
+<body style="   padding:0; margin:0; font:14px/1.5 Microsoft Yahei, ��
+��,sans-serif; color:#555;">
+
+<div style="margin:0 auto;width:980px;">
+      <div style="background: url('../images/head.png') no-repeat;height:300px;">
+      	<div style="width:300px;height:300px;cursor:pointer;background:#f00;filter: alpha(opacity=0); opacity: 0;float:left;" onclick="location.href='http://www.safedog.cn'">
+      	</div>
+      	<div style="float:right;width:430px;height:100px;padding-top:90px;padding-right:90px;font-size:22px;">
+      		<p id="error_code_p"><a  id="eCode">404</a>����<span style="font-size:16px;padding-left:15px;">(���ڷ������ϲ鿴���������Ϣ)</span></p>
+      		<p id="eMsg"></p>
+      	<a href="http://bbs.safedog.cn/thread-60693-1-1.html?from=stat" target="_blank" style="color:#139ff8; font-size:16px; text-decoration:none">վ������</a>
+	      <a href="#" onclick="redirectToHost();" style="color:#139ff8; font-size:16px; text-decoration:none;padding-left: 20px;">������һ��>></a>
+      	</div>
+      </div>	
+</div>
+
+
+
+<div style="width:1000px; margin:0 auto; "> 
+    <div style=" width:980px; margin:0 auto;">
+  <div style="width:980px; height:600px; margin:0 auto;">
+   <iframe allowtransparency=" true" src="http://404.safedog.cn/sitedog_stat_new.html"   frameborder="no" border="0" scrolling="no" style="width:980px;  height:720px;" ></iframe>
+ </div>
+  </div>
+</div>
+</body>
+</html>
+
+<script>
+
+function redirectToHost(){
+            	 var host = location.host;
+                 location.href = "http://" + host;
+         }
+
+
+var errorMsgData = {
+	"400":"��������﷨����",
+	"401":"û�з���Ȩ��",
+	"403":"�������ܾ�ִ�и�����",
+	"404":"ָ����ҳ�治����",
+	"405":"���󷽷���ָ������Դ������",
+	"406":"�ͻ����޷�������Ӧ����",
+	"408":"�ȴ�����ʱ��������ʱ",
+	"409":"�����뵱ǰ��Դ��״̬��ͻ�����������޷����",
+	"410":"�������Դ�Ѳ����ڣ�����û��ת�ӵ�ַ",
+	"500":"����������ִ������ʱ�������������",
+	"501":"���������߱�ִ�и���������Ĺ���",
+	"502":"���ػ��������������η������յ�����Ӧ��Ч",
+	"503":"��������ʱ�޷����������",
+	"504":"�ڵȴ����η�������Ӧʱ�����ػ�����������ʱ",
+	"505":"��������֧�����������õ� HTTP �汾",
+	"1":"�޷������������� DNS ��ַ",
+	"2":"����ʧ��",
+	"-7":"������ʱ",
+	"-100":"����������ر�������",
+	"-101":"����������",
+	"-102":"�������ܾ�������",
+	"-104":"�޷����ӵ�������",
+	"-105":"�޷������������� DNS ��ַ",
+	"-109":"�޷����ʸ÷�����",
+	"-138":"�޷���������",
+	"-130":"�������������ʧ��",
+	"-106":"�������������ж�",
+	"-401":"�ӻ����ж�ȡ����ʱ���ִ���",
+	"-400":"������δ�ҵ��������Ŀ",
+	"-331":"���� IO ����ͣ",
+	"-6":"�޷��ҵ����ļ���Ŀ¼",
+	"-310":"�ض������",
+	"-324":"�������ѶϿ����ӣ���δ�����κ�����",
+	"-346":"�յ������Է��������ظ���ͷ",
+	"-349":"�յ������Է��������ظ���ͷ",
+	"-350":"�յ������Է��������ظ���ͷ",
+	"-118":"���ӳ�ʱ"
+};
+
+var eCode = document.getElementById("eCode").innerHTML;
+var eMsg = errorMsgData[eCode];
+document.title = eMsg;
+document.getElementById("eMsg").innerHTML = eMsg;
+</script>
+<script type="text/javascript" src="http://404.safedog.cn/Scripts/url.js"></script>

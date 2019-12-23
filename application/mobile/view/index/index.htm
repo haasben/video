@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$web_config.web_name}</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__js/swiper/css/swiper.min.css"/>
+		<style type="text/css">
+			.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{bottom: 0;}
+		</style>
+
+	</head>
+	<style type="text/css">
+			.menu{
+/*				margin-right: 0.3rem;
+			    width: 1rem;*/
+			    height: 100%;
+			    font-size: 0.32rem;
+			    line-height: 1.2rem;
+			    text-align: right;
+			    color: #666;
+			}
+
+	</style>
+	<body>
+		<div class="wrap">
+			<!-- 头部 -->
+			<header>
+				<div class="logo">
+					<img src="{$web_config.web_attr_13}" >
+				</div>
+				<div class="menus">
+					<a href="/msearch">
+						<img src="__MOBILE__img/search.png" >
+					</a>
+					<span class="menu menu_bar">导航</span>
+	<!-- 				<img src="__MOBILE__img/menu.png" class="menu_bar"> -->
+				</div>
+				<div class="nav">
+					<ul>
+						<li><a href="./">首页</a></li>
+						{volist name="$cate" id="v"}
+						<li><a href="{if condition='$v.is_part == 0'}/M{$v.dirname}?id={$v.id}{else}{$v.typelink}{/if}">{$v.typename}</a></li>
+						{/volist}
+					</ul>
+				</div>
+			</header>
+			
+			<!-- 内容主体 -->
+			<div class="container">
+				<!-- banner -->
+				<div class="banners">
+					<div class="swiper-container" id="banner_list" style="z-index: 0;">
+						<div class="swiper-wrapper">
+							{volist name="$banner" id="b"}
+								{if condition='$b.pid == 7'}
+							<div class="swiper-slide">
+								<a href="{$b.links}" {if condition='$b.target ==1'}target="_blank"{/if}  style='display:block;height: 168px;' alt="">
+									<img src="{$b.litpic}" style="height: 100%;">
+								</a>
+							</div>
+							{/if}
+							{/volist}
+							
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				
+				<!-- 学员心声 -->
+				<div class="cont">
+					<h3>学员心声</h3>
+					<ul>
+						{volist name="$voice" id="v"}
+						<li>
+							<a href="/mvoice?id={$v.aid}" class="see" role="button" data-id="{$n.aid}">
+								<img class="lazy" src="{$v.litpic}" class="img-responsive" alt="{$v.title}" height="100" />
+								<h5>{$v.title}</h5>
+							</a>
+						</li>
+						{/volist}
+						</li>
+					</ul>
+				</div>
+				
+				<!-- 热门课程 -->
+				<div class="cont">
+					<h3>热门课程</h3>
+					<ul>
+						{volist name="$hotCourse" id="n"}
+						<li>
+							<a href="/mcourse_show?id={$n.aid}" class="see" role="button" data-id="6972">
+								<img class="lazy" src="{$n.litpic}" class="img-responsive" alt="" height="100" />
+								<h5>{$n.title}</h5>
+								<div class="info">
+									<p><span>{$n.click}</span>人在学</p>
+									<p>更新至<span>{$n.total}</span>课</p>
+								</div>
+								
+							</a>
+						</li>
+					
+						{/volist}
+					</ul>
+				</div>
+				
+				<!-- 新课上架 -->
+				<div class="cont">
+					<h3>新课上架</h3>
+					<ul>
+						{volist name="$newCourse" id="n"}
+							<li>
+								<a href="/mcourse_show?id={$n.aid}" class="see" role="button" data-id="6972">
+									<img class="lazy" width="223" height="127" src="{$n.litpic}" class="img-responsive" alt="" height="100" />
+									<h5>{$n.title}</h5>
+									<div class="info">
+										<p><span>{$n.click}</span>人在学</p>
+										<p>更新至<span>{$n.total}</span>课</p>
+									</div>
+									
+								</a>
+							</li>
+						{/volist}
+					</ul>
+				</div>
+				
+				<div class="more">
+					<a href="/MCourseCenter?id=169">查看更多 >></a>
+				</div>
+				
+				
+			</div>
+			
+			
+			<!-- 底部 -->
+			{include file="footer"}
+		</div>
+		
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 轮播图
+			var mySwiper = new Swiper ('.swiper-container', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+				autoplay: true,
+				
+				// 如果需要分页器
+				pagination: {
+				  el: '.swiper-pagination',
+				},
+			})
+				
+		</script>
+	</body>
+</html>

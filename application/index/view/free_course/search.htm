@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>搜索</title>
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/lesson/jquery.fancybox.css" media="screen" />
+
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+
+		<script src="__INDEX__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="wrap" id="search">
+			<div class="header">
+				<div class="inner clearfix">
+					{include file="search"}
+					<!--搜索框-->
+			
+					{include file="haslogged"}
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="container">
+				<div class="inner">
+					<div class="searchList">
+						<div class="keyword">
+							<span>"{$keywords}"</span>相关搜索内容
+						</div>
+						<ul class="lists">
+						{volist name="$searchData" id="v"}
+							<li>
+								<div class="kc_img">
+									<a href="/course_show?id={$v.aid}">
+										<img width="230" height="130" src="{$v.litpic}" >
+									</a>
+								</div>
+								<div class="kc_text">
+									<div class="title">{$v.title}</div>
+									<p>{:mb_substr(strip_tags(htmlspecialchars_decode($v.content)),0,50)}</p> <!-- 课程描述 -->
+									<div class="class_hour">
+										<span>{$v.click}人在学</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+										<span>总课时：{$v.hours}课时</span>
+									</div>
+								</div>
+							</li>
+						{/volist}
+						</ul>
+						<!-- 分页 -->
+						<div class="pages">
+							{$searchData->render()}
+						</div>
+					</div>
+					<div class="hot">
+						<h3>热门搜索</h3>
+						<div class="hotList">
+							{volist name="$searchHotData" id="s"}
+							<a href="/search?keywords={$s.word}">{$s.word}</a>
+							{/volist}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			{include file="footer"}
+		
+<!-- 		<script src="__INDEX__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				let keyword = window.location.search.split('?')[1];
+				let key = keyword.split('=')[1];
+				$('.keyword span').text('"'+decodeURIComponent(key)+'"');
+			})
+		</script> -->

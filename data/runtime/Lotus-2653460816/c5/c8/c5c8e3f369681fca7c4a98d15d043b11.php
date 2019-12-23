@@ -1,0 +1,1 @@
+<?php exit;?>s:99:"D:\phpStudy\PHPTutorial\WWW\video\vendor\alipay\lotusphp_runtime\Cache\Adapter\CacheAdapterFile.php";

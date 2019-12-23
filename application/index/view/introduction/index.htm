@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$archives.seo_title}-{$web_config.web_name}</title>
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/lesson/jquery.fancybox.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<script src="__INDEX__/js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="__INDEX__js/basic.js"></script>
+
+	</head>
+	<body>
+
+<!-- 				<div class="container videos">
+				<video width="800" height="" controls="controls" controlslist="nodownload noremoteplayback" class="vid">
+					<source src="{:url('index/introduction/goVideo')}" type="video/mp4">
+					</source>
+					当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+				</video>
+			</div> -->
+
+
+
+		<div class="wrap" id="about">
+			<div class="header">
+				<div class="inner clearfix">
+					{include file="search"}
+					<!--搜索框-->
+			
+{include file="haslogged"}
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="container">
+				<div class="banner-pic">
+					<img src="{$archives.catpic}" style="width: 100%;">
+				</div>
+				<div class="inner">
+					<div class="title">
+						<h2>{$archives.title}</h2>
+					</div>
+					<div class="desc">
+						{:htmlspecialchars_decode($archives.content)}
+					</div>
+				</div>
+			</div>
+			
+			<!-- footer -->
+{include file="footer"}

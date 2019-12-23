@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$archives.title}</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+	</head>
+	<body>
+		<div class="wrap" id="join">
+			<header class="head">
+				<a href="javascript:" class="back" onclick="history.go(-1)"><img src="__MOBILE__img/icon-return.png" ></a>
+				<h3>{$archives.title}</h3>
+			</header>
+			<div class="container">
+				<div class="desc">
+					{:htmlspecialchars_decode($archives.content)}
+				</div>
+			</div>
+			<!-- footer -->
+			{include file="footer"}
+		</div>
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

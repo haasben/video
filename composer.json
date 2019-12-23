@@ -1,0 +1,5 @@
+{
+    "require": {
+        "huizhang/file-segment-upload": "^1.0"
+    }
+}

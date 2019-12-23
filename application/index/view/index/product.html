@@ -1,0 +1,616 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>产品中心-工控自动化视频课程中心</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="shortcut icon" href="http://images.jcpeixun.com/favicon.ico?20141124001" />
+
+		<link rel="stylesheet" href="static/css/lesson/reset.css" />
+		<link rel="stylesheet" href="static/css/iconfont.css" />
+		<link rel="stylesheet" href="static/css/lesson/basic.css" />
+		<link rel="stylesheet" href="static/css/lesson/style.css" />
+
+		<script type="text/javascript" src="static/js/jquery-1.10.2.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="static/css/jquery.fancybox.css" media="screen" />
+		<script type="text/javascript" src="static/js/jquery.fancybox.js"></script>
+
+		<script type="text/javascript" src="static/js/jquery.superslide.2.1.1.js"></script>
+		<script type="text/javascript" src="static/js/basic.js"></script>
+		<script src="static/js/pagesou_ajax.js" type="text/javascript"></script>
+		<script src="static/js/tools.v1.js" type="text/javascript"></script>
+
+		<script src="static/js/jquery.lazyload.js" type="text/javascript"></script>
+		<script type="text/javascript" src="static/js/pagination.bootstrap.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				/* 图片懒加载 */
+				$(".lazy").lazyload({
+					placeholder: "http://images.jcpeixun.com/grey.gif",
+					effect: "fadeIn"
+				});
+			});
+			
+			window.enable_ad_stat_ord = true; //表示本页面启用订单来源统计
+		</script>
+
+		<style type="text/css">
+			/* -------------------------------------------------
+			 * pages 
+			 * 
+			*/
+			.pages li {
+				display: inline;
+			}
+
+			.pages .active a {
+				border-color: #188EEE;
+				background-color: #188EEE;
+				color: #FFF;
+			}
+			
+			.user-wrap .user-head {
+				width: 98px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.user-wrap .user-head .caret {
+				z-index: 1;
+			}
+			
+			.user-wrap .user-head .user-head-inner {
+				width: 100%;
+				z-index: 0;
+				border: 0;
+				text-align: center;
+			}
+			
+			.user-wrap .user-head .user-head-inner img {
+				border-radius: 3px;
+			}
+			
+			.h-user {
+				float: right;
+				width: 230px;
+				margin-top: -70px;
+				height: 70px;
+			}
+		</style>
+
+		<script type="text/javascript">
+			$(function() {
+				$("#page-tabs-nav li").eq(3).addClass("active");
+			})
+		</script>
+
+	</head>
+
+	<body>
+		<div class="wrap">
+			<!--header-->
+
+			<div class="header">
+				<div class="inner clearfix">
+
+					<a class="logo mr20" href="./">
+						<img src="static/picture/logo.jpg" width="250" height="66" alt="工控培训" />
+					</a>
+
+					<!--位置导航-->
+					<div class="guide-nav mr20">
+						<li>
+							<a class="nav-link" href="./">首页</a>
+						</li>
+						<li class="trigger" data-role="collapsible">
+							<a class="nav-link" href="http://course.jcpeixun.com/p/PLC"><i class="iconfont f20 b"></i> 栏目</a>
+							<div class="guide-sub-nav dn clearfix">
+								<dl>
+									<dt class="red"><a href="http://course.jcpeixun.com/p/PLC">选课中心</a></dt>
+									<dd>
+										<a href="http://course.jcpeixun.com/p/PLC">精品课</a>
+										<a href="http://www.jcpeixun.com/class/">直播课</a>
+										<a href="http://course.jcpeixun.com/p/qianghua">小班课</a>
+										<a href="http://course.jcpeixun.com/p/scene">现场实训</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>客户端</dt>
+									<dd>
+										<a href="http://act.jcpeixun.com/topic/20180112/" target="_blank">技成播放器</a>
+										<a href="#" target="_blank">技成手机APP</a>
+										<a href="http://www.jcpeixun.com/mobile/Phone.aspx" target="_blank">微信公众号</a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>资讯中心</dt>
+									<dd>
+										<a href="http://www.jcpeixun.com/knowledge/" target="_blank">文章</a>
+										<a href="http://www.jcpeixun.com/xiazai/ " target="_blank">资料下载</a>
+										<a href="http://zhaopin.jcpeixun.com/" target="_blank">找工作</a>
+										<a href="http://www.jcpeixun.com/topic/exam/login.html?callback=http://exam.jcpeixun.com/jcexam/ChooseRoom.aspx">考证</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>企业服务</dt>
+									<dd>
+										<a href="http://course.jcpeixun.com/p/weipei">企业内训</a>
+										<a href="http://course.jcpeixun.com/p/weipei">定向委培</a>
+										<a href="http://course.jcpeixun.com/p/weipei">人才输送</a>
+										<a href="http://course.jcpeixun.com/p/weipei">项目要求 </a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>实操中心</dt>
+									<dd>
+										<a href="http://act.jcpeixun.com/topic/20160503/ximenzi.aspx">西门子学习机 (箱)</a>
+										<a href="http://act.jcpeixun.com/topic/20160503/sanling.aspx">三菱学习机(箱)</a>
+									</dd>
+								</dl>
+								<dl class="bd0">
+									<dt>院校服务</dt>
+									<dd>
+										<a href="http://yuanxiao.jcpeixun.com/index.aspx">学习平台</a>
+										<a href="http://course.jcpeixun.com/p/weipei">定向委培</a>
+										<a href="http://zhaopin.jcpeixun.com/">就业交流</a>
+										<a href="http://course.jcpeixun.com/p/weipei">技术方案</a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>技成会员</dt>
+									<dd>
+										<a href="http://www.jcpeixun.com/help/help21.aspx">服务</a>
+										<a href="http://www.jcpeixun.com/pay/member.aspx">购买</a>
+										<a href="http://www.jcpeixun.com/lesson1/person_xufei.aspx">续费</a>
+										<a href="http://course.jcpeixun.com/p/weipei">工程对接</a>
+									</dd>
+								</dl>
+							</div>
+						</li>
+						<li>
+							<span class="fs pr10 pl10">&gt;</span>
+							<strong class="gray3">选课中心</strong>
+						</li>
+					</div>
+					<!--位置导航-->
+
+					<!--搜索框-->
+					<div class="h-search mr20">
+
+						<div class="search-input search-area">
+							<input type="text" name="txtSearch" class="txt-search1" id="txtSearch" placeholder="搜索课程" />
+						</div>
+						<a href="javascript:;" class="search-btn searchsubmit btn-search1" id="btn-search1" onfocus="this.blur();">
+							<i class="iconfont f20"></i>
+						</a>
+
+						<p class="hot-key h20 lh20 mt5">
+							<a href="majorcourse.html?f5=电工">电工基础</a>
+							<a href="course.html">PLC</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=数控">数控</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=S7-200">S7-200</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=学习机">学习机</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=编程案例">编程案例</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=案例">案例课程</a>
+							<a href="http://course.jcpeixun.com//p/search?keyword=微课">微课</a>
+						</p>
+					</div>
+					<div style="clear: both;"></div>
+					<!--搜索框-->
+
+					<div class="h-user">
+						<!--已登录-->
+						<div class="user-center" id="header-logined" style="display:none;">
+							<!--用户菜单-->
+							<div class="user-wrap" data-role="collapsible">
+								<div class="user-head">
+									<a class="user-head-inner" href="javascript:;">
+										<img class="u-avatar" src="static/picture/stu.jpg" width="32" height="32">
+										<b class="u-truename"></b>
+									</a>
+									<i class="caret"></i>
+								</div>
+								<div class="user-cont">
+									<div class="user-info">
+										<span class="u-truename"></span>
+									</div>
+									<div class="user-menu">
+										<a href="http://lgc.jcpeixun.com/user.aspx?t=4">学员中心</a> <a href="http://lgc.jcpeixun.com/Message.aspx?t=6">
+											我的消息<span></span></a> <a href="http://lgc.jcpeixun.com/Study.aspx?t=2" target="_blank">
+											学习记录</a> <a href="http://lgc.jcpeixun.com/Order.aspx?t=3" target="_blank">我的订单</a>
+										<a href="http://lgc.jcpeixun.com/my_course.aspx?t=2" target="_blank">我的收藏</a> <a href="http://course.jcpeixun.com/"
+										 target="_blank">新课上架</a>
+										<a href="http://lgc.jcpeixun.com/Money.aspx?t=5" class="btn-link btn-link9" target="_blank">赚学费</a> <a href="http://lgc.jcpeixun.com/coupon.aspx?t=7"
+										 class="btn-link btn-link9" target="_blank">优惠券</a>
+										<a href="http://www.jcpeixun.com//lesson1/person_xufei.aspx" class="fw" style="background: url(static/images/bg_20130926001.gif) no-repeat scroll 60px 0px transparent;">会员续费</a>
+										<a href="http://act.jcpeixun.com/topic/20170804/?vippage" class="fw" style="background: url(static/images/bg_20130926001.gif) no-repeat scroll 60px 0px transparent;">购买会员</a>
+										<a href="http://www.jcpeixun.com/logout.aspx?callback=" class="fw">退出</a>
+									</div>
+								</div>
+							</div>
+							<!--用户菜单-->
+							<!--购物车-->
+							<div class="user-shop" data-role="collapsible" style="margin-right:0">
+								<a class="shop-btn u-grade2" href="#" style="padding:0 10px;">用户注册</a>
+							</div>
+						</div>
+
+						<!--未登录-->
+						<div class="login-nav" id="header-n-login">
+							<a class="mr10" href="http://www.jcpeixun.com/newlogin.aspx">用户登录</a> <a class="reg" href="http://www.jcpeixun.com/emailregister.aspx">免费注册</a>
+						</div>
+						<!--未登录-->
+
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+
+			<!-- 用户登录信息 -->
+			<script>
+				$.getJSON("https://apidata.jcpeixun.com/user/loginstate_cross_domain?jsoncallback=?", function(Json) {
+					if (Json.login == 1) {
+						var $login = $("#header-logined");
+						$login.find(".u-truename").text(Json.truename);
+						$login.find(".u-grade").text(Json.grade);
+						$login.find(".u-grade2").text(Json.grade);
+
+						$login.find(".u-avatar").attr("src", "http://www.jcpeixun.com/user/uimg.aspx?lid=" + Json.learnerId);
+						$login.show();
+						$("#header-n-login").hide();
+					} else {
+
+					}
+				})
+			</script>
+			<!--header-->
+			<!--container-->
+			<div class="container">
+				<!--tabs-->
+				
+				<!--tabs-->
+
+				<div class="inner mt20 oh" id="center">
+					<!--产品列表-->
+					<div class="inner oh">
+						<ul class="listview13 clearfix" style="width:1220px;">
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="6431" target="_index">
+										<img src="static/picture/20190222105837859.jpg" width="263" height="150" alt="产品一" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品一</a></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="5587" target="_index">
+										<img src="static/picture/20170602111823824.png" width="263" height="150" alt="产品二" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品二</a></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="4829" target="_index">
+										<img src="static/picture/20170426171058124.jpg" width="263" height="150" alt="产品三" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品三</a></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="4828" target="_index">
+										<img src="static/picture/20170428114712782.jpg" width="263" height="150" alt="" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品四</a></p>
+							</li>
+
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="6431" target="_index">
+										<img src="static/picture/20190222105837859.jpg" width="263" height="150" alt="产品一" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品一</a></p>
+							</li>
+							
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="5587" target="_index">
+										<img src="static/picture/20170602111823824.png" width="263" height="150" alt="产品二" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品二</a></p>
+							</li>
+							
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="4829" target="_index">
+										<img src="static/picture/20170426171058124.jpg" width="263" height="150" alt="产品三" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品三</a></p>
+							</li>
+							
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="4828" target="_index">
+										<img src="static/picture/20170428114712782.jpg" width="263" height="150" alt="" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品四</a></p>
+							</li>
+
+
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="6431" target="_index">
+										<img src="static/picture/20190222105837859.jpg" width="263" height="150" alt="产品一" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品一</a></p>
+							</li>
+							
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="5587" target="_index">
+										<img src="static/picture/20170602111823824.png" width="263" height="150" alt="产品二" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品二</a></p>
+							</li>
+							
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="4829" target="_index">
+										<img src="static/picture/20170426171058124.jpg" width="263" height="150" alt="产品三" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品三</a></p>
+							</li>
+							
+							<li>
+								<div class="li-img">
+									<a href="course_show.html" class="title" id="title" data-id="4828" target="_index">
+										<img src="static/picture/20170428114712782.jpg" width="263" height="150" alt="" class="lazy" />
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="course_show.html">产品四</a></p>
+							</li>
+						</ul>
+					</div>
+					<!--课程列表-->
+
+					<!--pages分页-->
+					<div class=" pages tr">
+						<ul id="pagination">
+
+						</ul>
+					</div>
+					<div class="" style="clear:both"></div>
+
+					<!--pages-->
+				</div>
+
+				<!--课程推荐-->
+				<div id="recommend-courses">
+					
+				</div>
+				<!--课程推荐-->
+
+			</div>
+			<!--container-->
+
+			<!--footer-->
+			<div class="footer mt20">
+
+				<!--footer-guide-->
+				<div class="foot-guide inner clearfix">
+					<dl class="fg-item2">
+						<dt class="h30 lh30 b f14">精品课程</dt>
+						<dd class="clearfix">
+							<a class="w140" href="/p/search?keyword=三菱">三菱视频教程</a>
+							<a class="w80" href="/p/search?keyword=电工">电工</a>
+							<a class="w140" href="/p/search?keyword=案例课程">案例课程</a>
+							<a class="w140" href="/p/search?keyword=西门子">西门子视频教程</a>
+							<a class="w80" href="/p/search?keyword=数控">数控</a>
+							<a class="w140" href="/p/search?keyword=西门子S7-200">西门子S7-200</a>
+							<a class="w140" href="/p/search?keyword=指令详解">指令详解</a>
+							<a class="w80" href="/p/search?keyword=组态王">组态王</a>
+							<a class="w140" href="/p/search?keyword=西门子S7-300">西门子S7-300</a>
+							<a class="w140" href="/p/search?keyword=变频器">变频器</a>
+							<a class="w80" href="/p/search?keyword=PID">PID</a>
+							<a class="w140" href="/p/search?keyword=伺服">伺服</a>
+						</dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">学习咨询</dt>
+						<dd><a href="/p/PLC">选课中心</a></dd>
+						<dd><a href="/P/jihua">学习计划</a></dd>
+						<dd><a href="http://www.jcpeixun.com/knowledge/">文章中心</a></dd>
+						<dd><a href="http://www.jcpeixun.com/xiazai/">技成下载库</a></dd>
+						<dd style="width:100px;"><a href="http://www.jcpeixun.com/lesson1/tear_user.aspx">助教老师邀请通道</a> </dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">帮助中心</dt>
+
+						<dd><a href="http://www.jcpeixun.com/lesson1/guide.aspx">新手上路</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">升级与购买</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">购买白金学员</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20190227/" target="_blank">购买金牌学员</a></dd>
+						<dd><a href="http://wenda.jcpeixun.com/" target="_blank">技成问答</a></dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">关于技成</dt>
+						<dd><a href="http://www.jcpeixun.com/AboutUs.aspx">了解技成</a></dd>
+						<dd><a href="http://www.jcpeixun.com/contact.aspx">联系我们</a></dd>
+						<dd><a href="http://www.jcpeixun.com/zhaopin.aspx">加入我们</a></dd>
+						<dd><a href="http://www.jcpeixun.com/lesson1/tear_info.aspx">助教老师</a></dd>
+						<dd><a href="http://exam.jcpeixun.com/jcexam/certificateprofile.aspx">证书查询</a></dd>
+					</dl>
+					<dl class="fg-item">
+						<dt class="h30 lh30 b f14">客户端</dt>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/">技成播放器</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/jc-index.aspx">技成手机APP</a></dd>
+						<dd><a href="http://act.jcpeixun.com/topic/20180112/other.aspx">工具App</a></dd>
+						<dd><a href="http://weibo.com/jcpx">新浪微博</a></dd>
+						<dd><a href="http://bbs.jcpeixun.com/thread-39246-1-1.html">官方微信</a></dd>
+					</dl>
+					<dl class="fg-item" style="border-right:0; padding-right:0;">
+						<dt class="h30 lh30 f14">合作服务</dt>
+						<dd><a href="http://www.jcpeixun.com/help/help21.aspx">个人服务</a></dd>
+						<dd><a href="/p/weipei">企业服务</a></dd>
+						<dd><a href="/p/weipei">院校服务</a></dd>
+					</dl>
+				</div>
+				<!--footer-guide-->
+
+				<!--copyright-->
+				<div class="copyright">
+					<div class="inner">
+						<div class="w250 r tr mt15">
+							<a class="mr10" href="http://www.baidu.com/s?wd=www.jcpeixun.com@v" target="_blank">
+								<img src="static/picture/bdxy.jpg" width="66" height="24" alt="百度信誉放心访问" />
+							</a>
+						</div>
+						<p class="gray9">©成都市工控邦科技有限公司 - 课程内容版权均归工控培训网所有 粤ICP备11069432号</p>
+						<p class="">联合运营单位：深圳市工程师联合会</p>
+					</div>
+				</div>
+				<!--copyright-->
+
+			</div>
+			<div class="aside-bar fixed-top">
+				<ul class="aside-bar-inner">
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe633;</p>
+							<p class="txt">
+								公众账号</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f13 gray6 tc">
+								扫描二维码<br>
+								关注技成微信公众账号</p>
+							<p>
+								<img src="static/picture/qr.jpg" width="130" height="130" alt="技成微信公众账号"></p>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe630;</p>
+							<p class="txt">
+								学习交流</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f14 gray6 tc">
+								技成学员交流总群</p>
+							<p class="f14">
+								125群：154017892</p>
+							<p class="link-blue">
+								<a href="http://shang.qq.com/wpa/qunwpa?idkey=2eee53569300abbcfb8b8a6cab6f7374da37ddcbe5fc37e5015bdec61dbb30fe"
+								 target="_blank">进群交流</a></p>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe63f;</p>
+							<p class="txt">
+								留言反馈</p>
+						</a>
+						<div class="aside-bar-cont msg-board">
+							<p class="f16 h40 lh40 gray6 tl">
+								欢迎给我们留言</p>
+							<iframe frameborder="0" style="width:234px;height:170px" src="http://www.jcpeixun.com/ashx/studentsound/Form.html?v=1111"></iframe>
+						</div>
+					</li>
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe63c;</p>
+							<p class="txt">
+								APP下载</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f13 gray6 tc">
+								扫描二维码下载到手机</p>
+							<p>
+								<img src="static/picture/qr.png" width="130" height="130" alt="技成微信公众账号"></p>
+						</div>
+					</li>
+					<li class="aside-bar-item"><a class="aside-bar-link" href="#top" target="_self">
+							<p class="iconfont f30 n">
+								&#xe625;</p>
+							<p class="txt">
+								返回顶部</p>
+						</a></li>
+				</ul>
+			</div>
+			<script defer type="text/javascript" src="static/js/cityjson.js"></script>
+			<script src="static/js/bm2017.min.js"></script>
+			<script>
+				/* //上线时取消该注释    */
+				(function() {
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = 'https://images.jcpeixun.com/static/js/tongji.js?a=201601';
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				})();
+			</script>
+			<script type="text/javascript">
+				function addLoadEvent(func) {
+					if (document.all) {
+						window.attachEvent("onload", func); //对于IE
+
+					} else {
+						window.addEventListener("load", func, false); //对于FireFox
+					}
+				}
+
+				function calcLoadTime() {
+					//获取网站响应时长，单位毫秒
+					var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart; //响应时间
+					var ip = returnCitySN.cip; //客户端ip地址
+					var city = returnCitySN.cname; //ip所在城市
+					var domain = window.location.host; //域名
+					var page = window.location.href; //页面地址
+				}
+				addLoadEvent(calcLoadTime);
+			</script>
+
+			<!--百度课程内容页统计 -->
+			<!--footer-->
+		</div>
+	</body>
+
+
+	<script type="text/javascript">
+		var callbackURI = escape(location.href);
+		//登录页面
+		function login(url) {
+			if (!url) {
+				url = callbackURI
+			}
+			$.fancybox.open({
+				href: 'http://www.jcpeixun.com/login/logins.html?callback=' + url + '',
+				type: 'iframe',
+				padding: 10,
+				width: '400',
+				height: '520',
+				keys: {
+					close: [27]
+				}
+			});
+
+		}
+	</script>
+</html>

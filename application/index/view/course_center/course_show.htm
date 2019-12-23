@@ -1,0 +1,483 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{$course_info.title}-工控邦培训网</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/player.css">
+		<link href="__INDEX__css/lesson/course.css" rel="stylesheet" />
+		<link href="__INDEX__css/lesson/course_v2019.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<link rel="shortcut icon" href="{$web_config.icon}" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" href="__INDEX__css/course_show.css" />
+		<script type="text/javascript" src="__INDEX__js/jquery-1.10.2.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/jquery.fancybox.css" media="screen" />
+		<script type="text/javascript" src="__INDEX__js/jquery.fancybox.js"></script>
+		<script type="text/javascript" src="__INDEX__js/jquery.superslide.2.1.1.js"></script>
+		<script type="text/javascript" src="__INDEX__js/basic.js"></script>
+		<script src="__INDEX__js/pagesou_ajax.js" type="text/javascript"></script>
+		<script src="__INDEX__js/tools.v1.js" type="text/javascript"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body id="lesson_20140110">
+		<div class="wrap">
+			<!--header-->
+			<style type="text/css">
+				.user-wrap .user-head {
+					width: 98px;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+
+				.user-wrap .user-head .caret {
+					z-index: 1;
+				}
+
+				.user-wrap .user-head .user-head-inner {
+					width: 100%;
+					z-index: 0;
+					border: 0;
+					text-align: center;
+				}
+
+				.user-wrap .user-head .user-head-inner img {
+					border-radius: 3px;
+				}
+
+				.h-user {
+					float: right;
+					width: 230px;
+					margin-top: -70px;
+					height: 70px;
+				}
+			</style>
+			<div class="header">
+				<div class="inner clearfix">
+			<!--container-->
+		{include file="search"}
+
+				<div style="clear: both;"></div>
+
+		{include file="haslogged"}
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<!--header-->
+
+			<!--container-->
+			<div class="container">
+				<!--头部导航栏-->
+				<div style="clear: both;"></div>
+				<!--bread-crumb-->
+				<!--课程简介-->
+				<div class="bread-crumb inner">
+					<a href="/">首页</a> <em class="fs">&gt;</em> 
+<!-- 					<a href="">选课中心</a><em class="fs">&gt;</em> -->
+					<span><a href="javascript:">{$course_info.title}</a></span>
+				</div>
+				<div style="clear: both;"></div>
+				<!--课程简介-->
+				<div class="inner">
+					<div class="bd1 bds bdgrayd bgwhite pt20 pl20 pr20 clearfix pb20">
+						<div class="w468 l vedio rel">
+							<div id="player" style="width: 468px;">
+
+								{if condition="in_array($course_info.level,$userData.view_rights)"}
+								<a href="javascript:;" target="_blank" class="see check-login study" >
+									<img src="{$course_info.litpic}" width="468" height="265">
+									<i class="icon-vedio"></i>
+
+								</a>
+								{else}
+
+									{if condition="$course_info.is_free == '免费'"}
+										<a href="javascript:;" target="_blank" class="see check-login study" >
+											<img src="{$course_info.litpic}" width="468" height="265">
+											<i class="icon-vedio"></i>
+										</a>
+									{elseif condition="$course_info.is_free == ''"}
+
+										{if condition="$userData.level >=1"}
+											<a href="javascript:;" target="_blank" class="see check-login study" >
+												<img src="{$course_info.litpic}" width="468" height="265">
+												<i class="icon-vedio"></i>
+											</a>
+										{else}
+
+											<a href="javascript:;" class="see check-login" >
+												<img src="{$course_info.litpic}" width="468" height="265">
+												<i class="icon-vedio"></i>
+											</a>
+
+										{/if}
+
+									{else}
+										{empty name="$mainCourse"}
+											<a href="javascript:;" class="see check-login" >
+												<img src="{$course_info.litpic}" width="468" height="265">
+												<i class="icon-vedio"></i>
+										</a>
+										{else /}
+											<a href="javascript:;" target="_blank" class="see check-login study" >
+												<img src="{$course_info.litpic}" width="468" height="265">
+												<i class="icon-vedio"></i>
+										</a>
+
+										{/empty}
+
+									{/if}
+
+								{/if}
+
+
+							</div>
+
+						</div>
+
+						<div class="w672 r" style="padding-top: 0; position: relative;">
+							<h3 class="h20 lh20 f20 n" style="color: #333;">{$course_info.title}</h3>
+							<!--加上类别标签-->
+							<p class="category">
+								<a href='javascript:;'>{$course_info.typename}</a>
+							</p>
+							<!--讲师-->
+							<p class="tec-name">讲师：{$course_info.lecturer}</p>
+							<p class="tec-name">视频等级：{$course_info.videorating}</p>
+							<!--课程介绍-->
+							<div class="p2em f14 bds bdb bdgrayd lh22 pb6">{:mb_substr(htmlspecialchars_decode($v.content),0,30)}</div>
+							<div class="reset">
+								<form id="course_form" name="course_form" method="post" autocomplete="off">
+									<div class="fix-box">
+										<p class="gray6">
+											<span class="mr10 discount_price">￥{$course_info.amount}</span>
+										<!-- 	<span class="mr10 price">原价:&nbsp;￥{$course_info.amount}</span> -->
+										</p>
+									</div>
+						
+									<input id="paycourse_id" name="paycourse_id" type="hidden" value="{$course_info.aid}" />
+
+							
+										{if condition="in_array($course_info.level,$userData.view_rights)"}
+											<a class='btn btn-active w165 f18 quick_buy study' href="javascript:;">立即观看 </a>
+										{else}
+
+											{if condition="$course_info.is_free == '免费'"}
+												<a class='btn btn-active w165 f18 quick_buy study' href="javascript:;" >立即观看</a>
+											
+											{else}
+												{empty name="$mainCourse"}
+													<a class='btn btn-active w165 f18 quick_buy btnPay' href="javascript:;">立即购买</a>
+													{else /}
+														<a class='btn btn-active w165 f18 quick_buy study' href="javascript:;">立即观看 </a>
+												{/empty}
+
+											{/if}
+
+										{/if}
+									
+
+
+
+									
+								
+			
+								</form>
+								<p class="detail">
+									<span>{$course_info.click}</span>人正在学
+									| 课程进度：更新至<span>{$course_info.count}</span>课时
+									| 有效期: <span>365</span>天<span class='ques' style='cursor: pointer;'>?</span>
+								</p>
+								<div class="tag-top">有效期自支付成功后开始计算。单课程购买用户需关注课程有效期，合理安排好学习计划。</div>
+							</div>
+						</div>
+						<div style="clear: both;"></div>
+						<!--新添加的收藏和推荐手机观看-->
+
+					</div>
+					<div class="tabs-nav1" data-role="fixed" id="mini-play-navbar">
+						<a data-path="ajax/part/kechengbiao" data-role="course-intro" class="active kechengbiao" href="javascript:;">课程表<em class="badge">试听</em></a>
+						<a data-path="ajax/part/content" class="kechengjianjie" data-role="course-syll" href="javascript:;">课程简介</a>
+					</div>
+					
+
+				</div>
+				<!--bread-crumb-->
+				<!--课程简介-->
+				<div class="inner mt20 clearfix" id="inner-container">
+					<!--左侧栏目块-->
+					<!--选项卡内容-->
+					<div class="tabCon">
+						<div class="tabConBox" id="part-kechengbiao">
+							<!--课程视频大纲-->
+							<div class="w880 box1 mt0">
+								<div class="bhead">
+									<h3>课程设置</h3>
+									<span><em>{$course_info.hours}</em>个课时</span>
+
+								
+									{if condition="in_array($course_info.level,$userData.view_rights)"}
+										<a href="javascript:;" target="_blank" class="see check-login study" >开始学习</a>
+
+									{else}	
+
+										{if condition="$course_info.is_free == '免费'"} 
+										<a href="javascript:;" target="_blank" class="see check-login study" >开始学习</a>
+										{else}
+
+											{empty name="$mainCourse"}
+												<a class='quick_buy btnPay' href="javascript:;">立即购买</a>
+											{else /}
+											<a href="javascript:;" target="_blank" class="see check-login study" >开始学习</a>
+											{/empty}
+										{/if}
+
+
+									{/if}
+
+								</div>
+								<div>
+									<ul class="listview4">
+										{volist name="$chapter" id="v" key="k"}
+										<li class="list-collapse">
+										
+										<div class="collapse-head toggle-collapse {if condition='$k>1'}child-hidden{/if}">
+												<h3>{$v.title}</h3>
+												<span class="toggle-outline"></span>
+											</div>
+										<div class="collapse-cont" {if condition="$k>1"}style="display: none;" {/if}>
+											<ul class="listview5">
+
+											{volist name="$course_info.list" id="cl" key="k"}
+
+											{if condition="$cl.cha_id == $v.id"}
+											<li class="child_id" data-id="{$cl.aid}"><span class="w550 l">
+												<input type="checkbox" class="form-checkbox dn"><a class="check-login" href="/video_play?aid={$cl.aid}" target="_blank">
+														{$cl.title}
+													</a></span><span class="colblue l">
+														{if condition="in_array($course_info.level,$userData.view_rights)"}
+															已购买
+															</span>
+															<a class="icon-btn r check-login" href="/video_play?aid={$cl.aid}" target="_blank">
+																<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> 
+
+														{else}
+
+															{empty name="$mainCourse"}
+
+															{if condition="$cl.arcrank == 1"}
+																免费
+																</span>
+															<a class="icon-btn r check-login" href="/video_play?aid={$cl.aid}" target="_blank">
+																<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> 
+															{else}
+																{empty name="$smallCourse"}
+																	</span>
+																	<a class="icon-btn r check-login btnPay_cou" href="javascript:;" data-id="{$cl.aid}">
+																		<i class="iconfont">&#xe612;</i> <span class="txt">立即购买</span></a> 
+																{else /}
+
+																	<?php if(in_array($cl['aid'],$smallCourse)){ ?>
+																		</span>
+																	<a class="icon-btn r check-login" href="/video_play?aid={$cl.aid}" target="_blank">
+																		<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> 
+																	<?php }else{ ?>
+
+																			</span>
+																	<a class="icon-btn r check-login btnPay_cou" href="javascript:;" data-id="{$cl.aid}">
+																		<i class="iconfont">&#xe612;</i> <span class="txt">立即购买</span></a> 
+
+																	<?php }; ?>
+																{/empty}
+
+
+																￥ {$cl.users_price}
+															{/if}
+
+															{else /}
+																已购买
+																</span>
+																<a class="icon-btn r check-login" href="/video_play?aid={$cl.aid}" target="_blank">
+																	<i class="iconfont">&#xe612;</i> <span class="txt">马上学习</span></a> 
+															{/empty}
+
+
+														{/if}
+
+
+														
+											</li>
+											{/if}
+											{/volist}
+											
+											</ul>
+										</div>
+										
+										</li>
+										{/volist}
+									</ul>
+								</div>
+
+							</div>
+							<!--课程视频大纲-->
+
+						</div>
+						<div class="tabConBox hide" id="part-content">
+							<div class="w880 box1 mt0">
+								<div class="bhead">
+									<h3>课程简介</h3>
+									
+								</div>
+								<div style="padding: 5px 0;"></div>
+								{:htmlspecialchars_decode($course_info.content)}
+						</div>
+						</div>
+					</div>
+					<!--左侧栏目块-->
+
+					<!--右侧栏目块-->
+					<div class="w300 r">
+						<!--广告图-->
+
+						<!--广告图-->
+						<!--老师介绍-->
+						<div class="box1 mt5">
+							<div class="bhead">
+								<h3>老师介绍</h3>
+							</div>
+							<div class="pt10 pb10 pl20 pr20 f14">
+								<div class="clearfix pt10 pb10">
+									<div class="w100 l">
+								<!-- 		<a href="javascript:;">
+											<img src="__INDEX__picture/190d3ee4b7d44e20b0f1e92edc7c8eed.gif" class="img-radius" width="100" height="100"
+											 alt=""></a> -->
+									</div>
+									<div class="w140 pl10 l">
+										<h4 class="f16 gray3">
+											{$course_info.lecturer}</h4>
+
+									</div>
+								</div>
+								<p>
+									{:htmlspecialchars_decode($course_info.Instructors)}
+								</p>
+							</div>
+							<div class="bfoot pl20 pr20 f14">
+								<p class="clearfix">
+									<span class="l">课程总数（{$course_info.hours}）</span><!--  <span class="r hand" id="like-teacher-btn">
+										<i class="iconfont f14 colblue">&#xe601;</i> 赞（<label id="like-teacher-num">80</label>）</span> -->
+								</p>
+							</div>
+						</div>
+
+		<script type="text/javascript">
+						
+						$(function(){
+
+							var aid = $('.child_id').attr('data-id');
+							// console.log(aid);
+							$('.study').attr('href','/video_play?aid='+aid);
+
+						})
+
+
+						$('.kechengjianjie').click(function(){
+
+							$('.kechengjianjie').addClass('active');
+							$('.kechengbiao').removeClass('active');
+							$('#part-content').removeClass('hide');
+							$('#part-kechengbiao').addClass('hide');
+						})
+						$('.kechengbiao').click(function(){
+
+							$('.kechengbiao').addClass('active');
+							$('.kechengjianjie').removeClass('active');
+							$('#part-kechengbiao').removeClass('hide');
+							$('#part-content').addClass('hide');
+						})
+
+						$('.btnPay').click(function(){
+							
+							var data = $('#course_form').serialize();
+							$.post('{:url("index/courseCenter/get_url")}',data,function(data){
+									if(data.code == 2){
+										window.location.href = '/login?tab=1';
+									}else if(data.code == 1){
+										var url = '/paycourse?orderid='+data.orderid+'&token='+data.token+'&callback='+data.url;
+										window.location.href = url;
+									}else if(data.code == 3){
+										alert(data.msg);
+									}
+							})
+
+						})
+
+
+						$('.btnPay_cou').click(function(){
+							
+							var data = $('#course_form').serialize();
+
+							data += '&cou_id='+$(this).attr('data-id');
+							$.post('{:url("index/courseCenter/get_url")}',data,function(data){
+									if(data.code == 2){
+										window.location.href = '/login?tab=1';
+									}else if(data.code == 1){
+										var url = '/paycourse?orderid='+data.orderid+'&token='+data.token+'&callback='+data.url;
+										window.location.href = url;
+									}else if(data.code == 3){
+										alert(data.msg);
+									}
+							})
+
+						})
+
+							$(function() {
+								//课程大纲展开、收缩
+								$(".toggle-collapse").click(function(e) {
+									e.stopPropagation();
+									var ctext = $(this).find(".toggle-outline");
+									var $box = $(this).siblings(".collapse-cont");
+									$box.slideToggle();
+
+
+									if ($(this).hasClass("child-hidden")) {
+										// ctext.text("∧");
+										$(this).removeClass("child-hidden");
+									} else {
+										// ctext.text("∨");
+										$(this).addClass("child-hidden");
+									}
+
+								});
+
+								// //加入购物车学习【购买整个课】
+								// $(".btnPay").click(function(event) {
+									
+								// });
+								//tip提示
+								$(".ques").hover(function() {
+									$(".tag-top").show();
+									$(this).css("cursor", "pointer");
+								}, function() {
+									$(".tag-top").hide();
+								});
+
+							});
+
+
+					</script>
+
+					</div>
+					<!--右侧栏目块-->
+				</div>
+
+			</div>
+
+{include file="footer"}
+			

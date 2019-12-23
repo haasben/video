@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>课程中心</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+		
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="head">
+				<a href="javascript:" class="back" onclick="history.go(-1)"><img src="__MOBILE__img/icon-return.png" ></a>
+				<h3>课程中心</h3>
+			</header>
+			<div class="container">
+				<div class="category">
+					<ul>
+						{volist name="$course_cate" id="v"}
+						<li>
+							<a href="/mcategory?id={$v.id}">{$v.typename}</a>
+						</li>
+						{/volist}
+						
+					</ul>
+				</div>
+				
+				<!-- 列表 -->
+				<div class="contents">
+					<!-- 热门课程 -->
+					<div class="cont">
+						<h4>热门课程</h4>
+						<ul>
+							{volist name="$hotCourse" id="h"}
+							<li>
+								<a href="/mcourse_show?id={$h.aid}" class="see" role="button" data-id="6972">
+									<img class="lazy" src="{$h.litpic}" height="100" width="" class="img-responsive" alt="" />
+									<h5>{$h.title}</h5>
+									<div class="info">
+										<p><span>{$h.click}</span>人在学</p>
+										<p>更新至<span>{$h.total}</span>课</p>
+									</div>
+								</a>
+							</li>
+							{/volist}
+						</ul>
+					</div>
+					<!-- 热门课程 -->
+					
+					<!-- 免费课程 -->
+					<div class="cont">
+						<h4>免费课程</h4>
+						<ul>
+							{volist name="$FreeCourse" id="f"}
+							<li>
+								<a href="/mcourse_show?id={$f.aid}" class="see" role="button" data-id="6972">
+									<img class="lazy" src="{$f.litpic}" height="100" class="img-responsive" alt="" />
+									<h5>{$f.title}</h5>
+									<div class="info">
+										<p><span>{$f.click}</span>人在学</p>
+										<p>更新至<span>{$h.total}</span>课</p>
+									</div>
+									
+								</a>
+							</li>
+							{/volist}
+						</ul>
+						
+						<div class="more">
+							<a href="/MFreeCourse?id=129">查看更多>></a>
+						</div>
+					</div>
+					<!-- 免费课程 -->
+					
+				</div>
+			</div>
+			
+			
+			
+			<!-- footer -->
+			{include file="footer"}
+		</div>
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

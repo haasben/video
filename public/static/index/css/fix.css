@@ -1,0 +1,378 @@
+﻿charset "utf-8";
+/*切换tab*/
+.banner-bg .content-box{
+	width: 838px;
+	padding: 0;
+	margin: 0 auto;
+}
+.content-box .tab-content{
+	margin-top: 30px;
+    width: 50%;
+    text-align: center;
+}
+.content-box .tab-content ul li{
+	display: inline-block;
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+}
+.content-box .tab-content ul li span{
+	display: block;
+	font-size: 20px;
+	color: #188EEE;
+}
+.content-box .tab-content ul li em{
+	display: block;
+    width: 45px;
+    height: 5px;
+    background: #188EEE;
+    position: absolute;
+    left: 32%;
+    bottom: -6px;
+    border-radius: 25px;
+    display: none;
+}
+.content-box .tab-content ul li.current em{
+	display: block;
+}
+/*tip提示*/
+.drop{
+    position: relative;
+    width: 170px;
+    height: 24px;
+    border: none;
+    background-color: #F4921A;
+    border-radius: 5px;
+    float: right;
+    margin-top: -25px;
+    margin-right: -135px;
+}
+.drop i{
+	display: block;
+    font-size: 12px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 5px;
+    left: 6px;
+}
+.drops{
+   	position: absolute;
+    left: -3px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: #F4921A;
+    transform: rotate(45deg);
+}
+#changebar-box{padding-top: 6px;}
+#changebar-box .tabbox{
+	position: relative;
+}
+/*登录窗口*/
+.login_forms{
+    width: 419px;
+    height: 542px;
+    background-color: #fff;
+    margin-top: 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.login_forms .login_box{
+	padding: 20px 30px;
+}
+.login_forms .login_box .title{
+	font-size: 22px;
+    color: #333444;
+    padding-bottom: 20px;
+}
+.login_forms .login_box .group{
+	height: 40px; 
+	line-height:40px;
+	position: relative;
+}
+.login_forms .login_box .group label{
+	font-weight: normal;
+    font-size: 14px;
+    color: #999AAA;
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 22px;
+}
+.login_forms .login_box .tips{height: 20px; line-height: 20px;}
+.login_forms .login_box .tips2{text-indent: 60px;}
+.login_forms .login_box .btns{height: 50px;padding-left: 60px;font-size: 16px;}
+.login_forms .login_box .btns2{height: 50px;line-height: 50px;background: url(../images/loading2.gif) no-repeat scroll 40px center #F3F3F3;padding-left: 80px;font-size: 14px;}
+.login_forms .login_box .reg_txt:hover{
+    -moz-box-shadow:inset 1px 1px 3px rgba(0,0,0,.1); 
+    -webkit-box-shadow:inset 1px 1px 3px rgba(0,0,0,.1);
+    box-shadow:inset 1px 1px 3px rgba(0,0,0,.1); 
+}
+.login_forms .login_box .reg_txt:focus{
+	outline:none;
+    -moz-box-shadow:0 0 5px rgba(0,0,0,.2);
+    -webkit-box-shadow:0 0 5px rgba(0,0,0,.2);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+}
+.login_forms .login_box img{
+	width: auto;
+}
+#uName{
+	line-height: 40px;
+    height: 40px;
+    padding: 0 3%;
+    width: 100%;
+    padding-left: 65px;
+    float: left;
+    font-size: 14px;
+    border: 1px solid #E9EAF5;
+}
+#uPwd{
+	line-height: 40px;
+    height: 40px;
+    padding: 0 3%;
+    width: 100%;
+    padding-left: 55px;
+    float: left;
+    font-size: 14px;
+    border: 1px solid #E9EAF5;
+}
+.login_forms .login_box i.titles{
+	font-size: 14px;
+    color: #333444;
+    position: absolute;
+    top: 0px;
+    left: 15px;
+}
+#login{
+	display: block;
+    width: 100%;
+    text-align: center;
+    background: #188EEE;
+    color: #fff;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#loginForm input[type="checkbox"]{width: 16px;height: 16px;display: inline-block;text-align: center;vertical-align: middle; line-height: 15px!important;position: relative;}
+#loginForm input[type="checkbox"]::before{content: "";position: absolute;top: 0;left: 0;background: #fff;width: 100%;height: 100%;border: 1px solid #d9d9d9}
+#loginForm input[type="checkbox"]:checked::before{content: "\2713";background-color: #fff;position: absolute;top: 0;left: 0;width:100%;border: 1px solid #188EEE;color: #188EEE;font-size: 16px;font-weight: bold;}
+
+::-webkit-input-placeholder {
+   color: #AAABBB;
+}
+:-moz-placeholder {
+   color: #AAABBB;
+}
+::-moz-placeholder {
+   color: #AAABBB;
+}
+:-ms-input-placeholder {
+   color: #AAABBB;
+}
+.login_forms .login_box .forget{
+    color: #999AAA;
+    display: block;
+    float: right;
+    margin-top: 12px;
+}
+
+.tabbox .img{
+	display: block;
+    width: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/*登录按钮*/
+#btns1{
+	width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+/*登录的快捷窗口展示*/
+#shortcut{
+	width: 420px;
+    padding: 50px 20px 20px 20px;
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 542px;
+    margin-top: 20px;
+}
+#shortcut .title{
+	position: relative;
+    height: 25px;
+    margin-bottom: 30px;
+}
+#shortcut .title img{
+	width: auto;
+    display: block;
+    position: absolute;
+    left: 25%;
+}
+#shortcut .title span{
+	font-size: 24px;
+    color: #333444;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: 35%;
+    font-weight: normal;
+}
+#shortcut em{
+	display: block;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: #333444;
+}
+#shortcut .quick_away{
+	margin-top: 0px;
+}
+#shortcut .quick_away a{
+	display: inline-block;
+	width: 40%;
+	text-align: center;
+	margin: 5px;
+}
+#shortcut .code{
+	display: block;
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    line-height: 180px;
+}
+
+#shortcut .code img{
+	width: auto;
+	display: block;
+	text-align: center;
+	width: 160px;
+}
+
+
+/*注册窗口*/
+#changebar-box .register_forms{
+    width: 419px;
+    height: 542px;
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+#changebar-box .register_forms .register_box{
+	padding: 20px 30px;
+}
+#changebar-box .register_forms .register_box .title{
+	font-size: 22px;
+    color: #333444;
+    padding-bottom: 20px;
+}
+#changebar-box .register_forms .register_box .groups{
+	height: 40px; 
+	line-height:40px;
+	position: relative;
+}
+#changebar-box .register_forms .register_box .tips{height: 20px; line-height: 20px;text-indent: 0;}
+#changebar-box .register_forms .register_box i.titles{
+	font-size: 14px;
+    color: #555666;
+    position: absolute;
+    top: 0px;
+    left: 15px;
+}
+#changebar-box input{
+	line-height: 40px;
+    height: 40px;
+    padding: 0 3%;
+    width: 100%;
+    padding-left: 75px;
+    float: left;
+    font-size: 14px;
+    border: 1px solid #E9EAF5;
+}
+::-webkit-input-placeholder {
+   color: #AAABBB;
+}
+:-moz-placeholder {
+   color: #AAABBB;
+}
+::-moz-placeholder {
+   color: #AAABBB;
+}
+:-ms-input-placeholder {
+   color: #AAABBB;
+}
+
+/*发送验证码*/
+#sendCode{
+	display: inline-block;
+    border: 1px solid #E9EAF5;
+    background: none;
+    height: 40px;
+    line-height: 38px;
+    color: #188EEE;
+    font-size: 14px;
+    width: 120px;
+    text-align: center;
+}
+#regForm input[type="checkbox"]{width: 18px;height: 18px;display: inline-block;text-align: center;vertical-align: middle; line-height: 14px;position: relative;}
+#regForm input[type="checkbox"]::before{content: "";position: absolute;top: 0;left: 0;background: #fff;width: 100%;height: 100%;border: 1px solid #E9EAF5;border-radius: 2px;}
+#regForm input[type="checkbox"]:checked::before{content: "\2713";background-color: #fff;position: absolute;top: 0;left: 0;width:100%;border: 1px solid #E9EAF5;color: #188EEE;font-size: 16px;font-weight: bold;}
+
+#changebar-box .single{
+	position: relative;
+	height: 30px;
+}
+#changebar-box .single .agreement{
+	display: block;
+    font-weight: normal;
+    font-size: 14px;
+    color: #666777;
+    position: absolute;
+    top: 2px;
+    left: 25px;
+}
+#changebar-box .single .agree{
+	display: block;
+    font-weight: normal;
+    font-size: 14px;
+    color: #666777;
+    position: absolute;
+    top: 35px;
+    left: 25px;
+}
+/*注册按钮*/
+#btns{
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
+	margin-top: 45px;
+}
+#btns span{
+	display: block;
+}
+#btns a{
+	display: block;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: center;
+    background: #188EEE;
+    color: #fff;
+    margin: 0 auto;
+}
+
+#mailBox{
+	display: none;
+	z-index: 100000000000;
+}
+#uEmail:hover #mailBox{
+	display: block;
+}

@@ -1,0 +1,118 @@
+
+			<div id="baseD">
+				<!--这里是浅色条-->
+				<div>
+					<div>
+						<table></table>
+						<div id="baseDn">
+							<div>
+								{volist name="cate_footer" id="v"}
+								<ul>
+									<li><a href="javascript:">{$v.typename}</a></li>
+									{volist name="$v.child" id="cf"}
+									<li><a  class="baseA" href="{if condition='$cf.is_part == 1'}{$cf.typelink}{else}/{$cf.dirname}?id={$cf.id}{/if}">{$cf.typename}</a></li>
+									
+									{/volist}
+
+								</ul>
+								{/volist}
+
+						
+								<div style="clear:both"></div>
+							</div>
+							<div id="baseDn1">
+								<p style="display: flex;">
+									<img src="__INDEX__picture/tel.png" style="width: 32px;margin-right: 10px;" >
+									<span style="font-size:26px !important">{$web_config.web_attr_1}</span>
+								</p>
+								<span style="color:#9A9A9A !important">{$web_config.web_attr_2}</span>
+								
+								<div class="qr" style="display: flex;">
+									<div>
+										<img class="baseA baseXs" src="{$web_config.web_attr_15}"></img>
+										<span style="color:#9A9A9A !important">公众号</span>
+									</div>
+									<div>
+										<img class="baseA baseXs2" src="{$web_config.web_attr_17}"></img>
+										<span style="color:#9A9A9A !important">APP</span>
+									</div>
+								</div>
+							</div>
+<!-- 								<div id="baseDn2">
+		
+								<a class="baseA" href="javascript:;" style="display: block;">友情链接</a>
+								{volist name="$linkData" id="ld"}
+								<a class="baseA" href="{$ld.url}" target="{if condition='$ld.target==1'}_blank{/if}" title="{$ld.title}">{$ld.title}</a>
+								{/volist}
+
+						</div> -->
+					</div>
+					</div>
+					<div></div>
+				</div>
+				<!--这里是最下面的神色条-->
+				<div id="baseDn3">
+					<div>
+						<span>{$web_config.web_copyright} - {$web_config.web_recordnum}</span>
+					</div>
+				</div>
+			</div>
+			<div class="aside-bar fixed-top">
+				<ul class="aside-bar-inner">
+<!-- 					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe633;</p>
+							<p class="txt">
+								公众账号</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f13 gray6 tc">
+								扫描二维码<br>
+								关注工控微信公众账号</p>
+							<p>
+								<img src="__INDEX__picture/qr.jpg" width="130" height="130" alt="工控邦微信公众账号"></p>
+						</div>
+					</li> -->
+					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe630;</p>
+							<p class="txt">
+								学习交流</p>
+						</a>
+						<div class="aside-bar-cont">
+							<p class="f14 gray6 tc">
+								工控学员交流总群</p>
+							<p class="f14">
+								125群：154017892</p>
+							<p class="link-blue">
+								<a href="http://shang.qq.com/wpa/qunwpa?idkey=2eee53569300abbcfb8b8a6cab6f7374da37ddcbe5fc37e5015bdec61dbb30fe"
+								 target="_blank">进群交流</a></p>
+						</div>
+					</li>
+<!-- 					<li class="aside-bar-item" data-role="collapsible"><a class="aside-bar-link">
+							<p class="iconfont f30 n">
+								&#xe63f;</p>
+							<p class="txt">
+								留言反馈</p>
+						</a>
+						<div class="aside-bar-cont msg-board">
+							<p class="f16 h40 lh40 gray6 tl">
+								欢迎给我们留言</p>
+							<iframe frameborder="0" style="width:234px;height:170px" src=""></iframe>
+						</div>
+					</li> -->
+					<li class="aside-bar-item"><a class="aside-bar-link" href="#top" target="_self">
+							<p class="iconfont f30 n">
+								&#xe625;</p>
+							<p class="txt">
+								返回顶部</p>
+						</a></li>
+				</ul>
+			</div>
+<!-- 			<script defer type="text/javascript" src="__INDEX__js/cityjson.js"></script>
+			<script src="__INDEX__js/bm2017.min.js"></script> -->
+
+			<!--footer-->
+		</div>
+	</body>
+</html>

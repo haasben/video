@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>{$voiceData.title}</title>
+		<link rel="stylesheet" type="text/css" href="__MOBILE__css/style.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<a href="javascript:" class="goback" onclick="history.go(-1);"></a>
+			<div class="container detail">
+				<div class="video">
+					<video width="100%" controls autoplay="autoplay" controlslist="nodownload noremoteplayback" class="vid">
+						<source src="{$voiceData.file_url}" type="{$voiceData.file_mime}"></source>
+					</video>
+					
+				</div>
+				<div class="title-wrap">
+					<h4>{$voiceData.title}</h4>
+
+				</div>
+
+			</div>
+			
+			<!-- footer -->
+			{include file="footer"}
+		</div>
+		
+		<script src="__MOBILE__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__MOBILE__js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 关闭视频画中画功能
+			let v = $('.vid')
+			v[0]['disablePictureInPicture'] = true;
+			
+			// tab切换
+			$(".tabBox").on('click', 'a', function(){
+				$(this).addClass('on').siblings().removeClass('on');
+				const id = $(this).attr('data-id');
+				$('.zw').hide();
+				$("#zw"+id).show();
+			})
+		</script>
+	</body>
+</html>

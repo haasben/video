@@ -1,0 +1,87 @@
+﻿ .priceP span{font-size:36px;color:#fff799}
+.priceP del{text-decoration:line-through;font-size:25px;color:#fff;padding:0 10px;display:inline-block}
+.kc_span{margin-top:10px}
+.kc_span p{float:left;width:50%;display:inline-block;height:28px;line-height:28px}
+.jibie{height:28px;line-height:28px}
+.jibie em{display:inline-block;width:14px;height:14px;background:#d6d6d6;margin-right:3px}
+.jibie em.actblue{background:#1caaea}
+.jibie code{font-family:"microsoft yahei";display:inline-block}
+.h100{height:100px}
+.dianping{height:28px;display:block;clear:both}
+.sharesBtnLink{float:left}
+.sharesBtnLink a{display:inline-block;background:#ff9f00;height:40px;line-height:40px;padding:0 25px;border-radius:5px;color:#fff;float:left;font-size:16px}
+.sharesBtnLink a:hover{background:#e48f02}
+.sharesBtnLink{padding-top:6px}
+.hide{display:none}
+.tabCon{float:left}
+.dianping span{float:left;display:inline-block;height:28px;line-height:28px}
+.dianping span.sa_star_1{height:19px;line-height:19px;margin-top:9px}
+.dpNm{padding-left:5px}
+.sharesdiv{float:left;width:200px;padding-top:6px;padding-left:10px}
+.bds_more{background-image:none;background-position:0 0}
+.bdshare-button-style0-32 a.bds_more{background:url(../images/shares_spirite.png) no-repeat 0 -80px !important}
+.bdshare-button-style0-32 a.bds_qzone{background:url(../images/shares_spirite.png) no-repeat -160px -80px !important}
+.bdshare-button-style0-32 a.bds_tsina{background:url(../images/shares_spirite.png) no-repeat -64px -80px !important}
+.bdshare-button-style0-32 a.bds_tqq{background:url(../images/shares_spirite.png) no-repeat -192px -80px !important}
+.bdshare-button-style0-32 a.bds_weixin{background:url(../images/shares_spirite.png) no-repeat -96px -80px !important}
+.bdshare-button-style0-32 a.bds_sqq{background:url(../images/shares_spirite.png) no-repeat -128px -80px !important}
+.listview10{padding:15px 0 0 15px;width:860px}
+.listview10 li.col3{width:270px;overflow:hidden}
+.listview10 li{margin-right:15px;margin-bottom:15px}
+.listview10 li:nth-child(3n){margin-right:0}
+.toggle-collapse{cursor:pointer}
+/***2018.1.24 课程点评****/
+ .tab-comment{width: 880px;}
+.pull-left{float: left;}
+.comment-top{width: 800px;height: auto;background: #f4f4f4;margin:20px auto;padding: 20px;border-radius: 2px;text-align: center;}
+.comment-top .score{width: 100%;margin-bottom: 20px;}
+.comment-top .score .pingfei-icon{width: 120px!important;}
+.comment-top .tag-box{float: left;margin-bottom: 10px;margin-top: 20px;}
+
+.comment-top .tag-box .tag{display: inline-block;width: 100px;height: 36px;line-height: 36px;border-radius: 2px;float: left;margin-right: 10px;border:1px solid #ccc;cursor: pointer;margin-bottom: 10px;word-wrap: normal;overflow: hidden;position: relative;}
+.comment-top .tag-box .tag:hover{border: 1px solid #1CAAEA;}
+.comment-top .tag-box .tag-click{border:1px solid #1CAAEA;}
+.comment-top .tag-box .tc-cheak{display: none;width: 16px;height: 16px;position: absolute;right: 0; bottom: 0;background: url(../images/sprite-operate.png);background-position: -40px 0;}
+
+.comment-top .tag-box .tag-text{border: 1px solid #ccc;display:block;text-align: center;}
+.lab-box{width: 800px;height: 20px;border-radius: 2px;background: #f4f4f4;border: 1px solid #ccc;padding: 20px;margin: auto;}
+
+.lab-box .f-rc-list .f-radio {margin-left: 30px; margin-right: 0;}
+.lab-box .f-radio{ display: inline-block;  vertical-align: middle;  margin-right: 10px;  line-height: 20px; cursor: pointer;}
+.lab-box .icon-radio{float:left;width:18px;height:18px;background:url(../images/icon-form.png) no-repeat;margin-right:5px;margin-top:1px;cursor:pointer;}
+.lab-box .checked .icon-radio{background-position: 0 -40px;}
+.lab-box .border-color:hover .icon-radio{background-position: 0 -20px;}
+.comment .w50{border-radius: 100%;overflow: hidden;}
+.comment .w50 img{display: block;}
+
+/***评星级****/
+.comment .icon{
+	display: block;
+	float: left;
+	width: 120px;
+	height: 20px;
+	background-image: url(../images/icon.png);
+    background-position:center;
+	margin-top: 10px;
+	margin-left: 6px;	
+}
+.comment .icon-5{background-position: 0 0;}
+.comment .icon-4{background-position: 0 -25px;}
+.comment .icon-3{background-position: 0 -50px;}
+.comment .icon-2{background-position: 0 -75px;}
+.comment .icon-1{background-position: 0 -100px;}
+.comment .icon-0{background-position: 0 -124px;}
+ .cutPage-statistics { display:none;}
+
+a{text-decoration: none;color:#999;}
+			#warm_modal{position: fixed;top: 0;bottom: 0;left: 0;background: rgba(0,0,0,.2);right: 0;display:none;transform: all .5s;}
+			.modals-dialog{width: 550px; border-radius: 10px; background: rgb(255, 255, 255); top: 50%; transform: translate(-50%,-50%); left: 50%;height:320px;overflow: hidden;position: absolute;}
+			.modals-header{background: rgb(37, 153, 242); color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px; text-align: center; font-size: 20px; padding:20px;font-weight: normal;}
+			.modals-header span{display:block;text-align: left;font-size: 20px;}
+			.modals-header .guanbi{float: right;margin-right: -10px;text-decoration: none;font-size: 30px;margin-top: -25px;color: rgb(255, 255, 255);font-weight: 300;width:25px;height:25px;line-height: 22px;}
+			.modals-content .code{width: 200px;display: block;margin: 20px;}
+			.modals-content .tip1{color:#999;font-size: 18px;float: right;margin-top:-40%;margin-right: 65px;}
+			.modals-content .tip2{color:#0099ff;font-size: 36px;float: right;margin-top:-35%;margin-right: 24px;font-weight: bold;}
+			.modals-content .group-img{float: right;margin-top:-24%;margin-right:15px;border-bottom: 1px solid #ccc;padding-bottom: 15px;}
+			.modals-content .tip3{color:#999;font-size: 14px;float: right;margin-top:-12%;margin-right: 60px;}
+			.modals-content .down{color:#999;font-size: 14px;float: right;margin-top:-8%;margin-right: 134px;}

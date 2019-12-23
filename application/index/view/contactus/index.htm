@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>联系我们</title>
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/lesson/jquery.fancybox.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<script src="__INDEX__/js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="__INDEX__js/basic.js"></script>
+		
+	</head>
+	<body>
+		<div class="wrap" id="contact">
+			<div class="header">
+				<div class="inner clearfix">
+					{include file="search"}
+					<!--搜索框-->
+			
+{include file="haslogged"}
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="container">
+				<div class="banner-pic">
+					<img src="{$archives.catpic}" style="width: 100%;">
+				</div>
+				<div class="inner">
+					<div class="title">
+						<h2>{$archives.title}</h2>
+					</div>
+					<div class="desc">
+						{:htmlspecialchars_decode($archives.content)}
+					</div>
+					<div id="map">
+						
+					</div>
+				</div>
+			</div>
+			
+{include file="footer"}
+		
+		<script src="__INDEX__js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=QjzOrQyA4SBF0R14jfMFlPS2ZvIB89uz"></script>
+		<script type="text/javascript">
+			var map = new BMap.Map("map"); 
+			var point = new BMap.Point(104.101531,30.653214);
+			map.centerAndZoom(point, 15);
+			map.enableScrollWheelZoom();
+			var marker = new BMap.Marker(point);        // 创建标注    
+			map.addOverlay(marker);		// 将标注添加到地图中
+			var opts = {
+			  width : 250,     // 信息窗口宽度
+			  height: 100,     // 信息窗口高度
+			  title : "成都工控邦科技有限公司" , // 信息窗口标题
+			  enableMessage:true,//设置允许信息窗发送短息
+			}
+			var infoWindow = new BMap.InfoWindow("地址：成都市锦江一环路东四段牛王庙D出口普生大厦603", opts);  // 创建信息窗口对象    
+			map.openInfoWindow(infoWindow, point);      // 打开信息窗口
+			// 点击标注打开信息窗口
+			marker.addEventListener("click", function(){    
+				map.openInfoWindow(infoWindow, point);  
+			}); 
+   
+			
+		</script>
+	</body>
+</html>

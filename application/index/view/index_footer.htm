@@ -1,0 +1,102 @@
+		<!--/友情链接-->
+
+		<!--/footer-->
+		<!--这里开始修改底部-->
+		<div id="baseD">
+    <!--这里是浅色条-->
+    <div>
+     <div>
+      <table></table>
+      <div id="baseDn">
+       <div>
+       	{volist name="cate_footer" id="v"}
+        <ul>
+         <li><a href="javascript:;">{$v.typename}</a></li>
+         {volist name="$v.child" id="cf"}
+         <li><a  class="baseA" {if condition="$cf.is_part==1"}href="{$cf.typelink}"{else}href="/{$cf.dirname}?id={$cf.id}"{/if} >{$cf.typename}</a></li>
+         {/volist}
+        </ul>
+
+        {/volist}
+        
+        <div style="clear:both"></div>
+       </div>
+       <div id="baseDn1">
+        <p style="display: flex;">
+			<img src="__INDEX__picture/tel.png" style="width: 32px;margin-right: 10px;" >
+			<span style="font-size:26px !important">{$web_config.web_attr_1}</span>
+		</p>
+		<span style="color:#9A9A9A !important">{$web_config.web_attr_2}</span>
+
+        
+        <div class="qr" style="display: flex;">
+         <div>
+          <img class="baseA baseXs" src="{$web_config.web_attr_15}"></img>
+          <span style="color:#9A9A9A !important">公众号</span>
+         </div>
+         <div>
+          <img class="baseA baseXs2" src="{$web_config.web_attr_17}"></img>
+          <span style="color:#9A9A9A !important">APP</span>
+         </div>
+        </div>
+       </div>
+      </div>
+
+     </div>
+     <div></div>
+    </div>
+
+			<!--这里是最下面的神色条-->
+			<div id="baseDn3">
+				<div>
+					<span>{$web_config.web_copyright}  {$web_config.web_recordnum}<br></span>
+				</div>
+			</div>
+		</div>
+
+		
+
+
+
+
+
+
+
+
+
+
+		
+		<!--这里修改底部结束-->
+
+		<script>
+			//修改官网底部的a标签状态
+			$(".baseD").ready(function() {
+				$(".baseA").hover(
+					function() {
+						$(this).addClass("blue");
+					},
+					function() {
+						$(this).removeClass("blue");
+					}
+				)
+			});
+			//底部右侧鼠标移入事件
+			$("#baseDn1").ready(function() {
+				$(".baseXs").hover(
+						function() {
+							$(".baseImg").removeClass("disPl");
+						},
+						function() {
+							$(".baseImg").addClass("disPl");
+						}
+					),
+					$(".baseXs2").hover(
+						function() {
+							$(".baseImg2").removeClass("disPl");
+						},
+						function() {
+							$(".baseImg2").addClass("disPl");
+						}
+					)
+			});
+		</script>

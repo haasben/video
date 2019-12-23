@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{$cate_name.seo_title}</title>
+		<meta name="description" content="{$cate_name.seo_description}" />
+		<meta name="keywords" content="{$cate_name.seo_keywords}" />
+		<link rel="shortcut icon" href="{$web_config.web_ico}" />
+
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<script type="text/javascript" src="__INDEX__js/jquery-1.10.2.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/lesson/jquery.fancybox.css" media="screen" />
+		<script type="text/javascript" src="__INDEX__js/jquery.fancybox.js"></script>
+
+		<script type="text/javascript" src="__INDEX__js/jquery.superslide.2.1.1.js"></script>
+		<script type="text/javascript" src="__INDEX__js/basic.js"></script>
+		<script src="__INDEX__js/pagesou_ajax.js" type="text/javascript"></script>
+		<script src="__INDEX__js/tools.v1.js" type="text/javascript"></script>
+
+		<script src="__INDEX__js/jquery.lazyload.js" type="text/javascript"></script>
+<!-- 		<script type="text/javascript" src="__INDEX__js/pagination.bootstrap.js"></script> -->
+		
+
+		<style type="text/css">
+			/* 分页 */
+			.pages li {
+				display: inline;
+			}
+
+			.pages .active a {
+				border-color: #188EEE;
+				background-color: #188EEE;
+				color: #FFF;
+			}
+			
+			.user-wrap .user-head {
+				width: 98px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.user-wrap .user-head .caret {
+				z-index: 1;
+			}
+			
+			.user-wrap .user-head .user-head-inner {
+				width: 100%;
+				z-index: 0;
+				border: 0;
+				text-align: center;
+			}
+			
+			.user-wrap .user-head .user-head-inner img {
+				border-radius: 3px;
+			}
+			
+			.h-user {
+				float: right;
+				width: 230px;
+				margin-top: -70px;
+				height: 70px;
+			}
+		</style>
+
+
+	</head>
+
+	<body>
+		<div class="wrap">
+			<!--header-->
+			<div class="header">
+				<div class="inner clearfix">
+					{include file="search"}
+				
+					<!--搜索框-->
+					
+					{include file='haslogged'}
+					
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+
+			<!--header-->
+
+			<!--container-->
+			<div class="container">
+
+				<!--tabs-->
+	{include file="course_cate"}
+						<!-- page tab nav end-->
+
+						<div class="tabs-cont pd20">
+
+							<dl class="condition clearfix">
+								<dt>课程：</dt>
+								<dd class="condition-cont clearfix condition-devicetype">
+									<!--课程分类：-->
+
+									{volist name="$course_cate" id="v"}
+										<?php if(empty($v['child'])){?>
+											<a id="f5-电工" {if condition="$v.id == $d"}class='active' {/if} href="/category?d={$v.id}">{$v.typename}</a>
+
+										<?php }else{ ?>
+
+											<div class="type-plc-unfold">
+												<a id="d_{$v.typename}" class="type-plc-unfold" href="/CourseCenter?id=121">{$v.typename}</a>
+												<div class="type-plc-child" style="">
+													{volist name="$v.child" id="c"}
+													<a id="d_{$v.typename}" href="/category?d={$c.id}">{$c.typename}</a>
+												
+													{/volist}
+												</div>
+											</div>
+
+										<?php };?>
+										{/volist}	
+								</dd>
+							</dl>
+
+							<dl class="condition clearfix dn">
+								<dt>难度：</dt>
+								<dd class="condition-cont clearfix condition-diffc">
+									<a href="?f1=0&f2=0&f3=">全部</a>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<!--tabs-->
+
+				<div class="inner mt20 oh">
+<!-- 					<div class="clearfix bd1 bds bdgrayd dn">
+						<span class="r gray6 f16 lh45 pr20">共27门课</span>
+						<div class="tabs-nav1 bd0" style="background-color:#FFF;">
+							<a id="Psort-3" class="" href="?f1=0&f2=0&f3=0&psort=3">最近更新</a>
+							<a id="Psort-1" href="?f1=0&f2=0&f3=0&psort=1">近期热门</a>
+							<a id="Psort-2" href="?f1=0&f2=0&f3=0&psort=2">评分最高</a>
+						</div>
+					</div> -->
+
+					<div class="tabs-nav1 bd0" style="background-color:#FFF;"><a class="active">{$cate_name.typename}课程</a><span class="r gray6 f16 lh45 pr20">共{$cate_name.count}门课</span></div>
+
+					<!--课程列表-->
+					<div class="inner oh">
+						<ul class="listview13 clearfix" style="width:1220px; margin-top:0px;">
+							{volist name="$archives" id="v"}
+							<li>
+								<div class="li-img">
+									<a href="/course_show?id={$v.aid}" class="title" id="title" data-id="{$v.aid}" target="_blank">
+										<img src="{$v.litpic}" width="263" height="150" alt="" class="lazy">
+										<span class="btn btn-blue1 btn-radius f20">开始学习</span>
+										<span class="mask"></span>
+									</a>
+								</div>
+								<p class="h40 mt5 lh20 f16"><a href="/course_show?id={$v.aid}">{$v.title}</a></p>
+								<p class="clearfix pt5 f14">
+
+									<span class="gray9"><i class="graya iconfont f14">&#xe62d;</i> {$v.click}人学习</span></p>
+								<p class="clearfix pt5"><span class="btn btn-blue2 r">{$v.videorating}</span>
+									<span class="f14 gray9"><i class="graya iconfont f14">&#xe62d;</i> <a class="btnlogin" href="/course_show?id={$v.aid}">
+											<em class="colblue">{if condition="$v.is_free =='是'"}免费观看{else}付费观看{/if}</em></a></span></p>
+							</li>
+							{/volist}
+
+
+						</ul>
+					</div>
+					<!--课程列表-->
+
+					<!--pages-->
+					<div class=" pages tr">
+						
+							{$archives->render()}
+						<!-- </ul> -->
+					</div>
+					<div class="" style="clear:both"></div>
+					<!--pages-->
+				</div>
+			</div>
+			<!--container-->
+
+			<!--footer-->
+			{include file="footer"}

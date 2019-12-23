@@ -1,0 +1,199 @@
+#boxen_titlebar {
+				position: relative;
+				height: 30px;
+				line-height: 30px;
+				background-color: rgb(37, 153, 242) !important;
+				color: #333;
+				font-size: 18px;
+				font-weight: 700;
+				font-family: 'Microsoft Yahei';
+				padding: 15px;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+				width: 520px;
+			}
+
+			#boxen_content_area {
+				background: #fff;
+				width: 100%;
+				height: 240px !important;
+				box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6) !important;
+				padding-top: 20px;
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+
+			#boxen_container {
+				width: 550px;
+				height: 260px position: fixed;
+				left: 50%;
+				top: 50%;
+				margin-left: -275px;
+				margin-top: -160px;
+				z-index: 10001;
+				box-shadow: rgb(51, 51, 51) 0px 5px 15px;
+				border-radius: 10px !important;
+			}
+
+			#boxen_title {
+				position: relative;
+				height: 30px;
+				line-height: 30px;
+				background-color: #eee;
+				color: #fff;
+				font-size: 20px;
+				font-weight: normal;
+				font-family: 'Microsoft Yahei';
+				padding: 15px;
+				background: rgb(37, 153, 242);
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+
+			#boxen_close_button {
+				border: none;
+				position: absolute;
+				right: 0;
+				top: 15px;
+				width: 28px;
+				text-align: center;
+				outline: none;
+				text-decoration: none;
+				font-size: 18px;
+				font-family: Arial;
+				font-weight: normal;
+				color: #fff;
+				padding-right: 5px;
+			}
+
+			/*新改版的课程说明样式*/
+			.kc_span p .shijian {
+				color: #1caaea;
+			}
+
+			.kc_span p .ques {
+				color: #fff;
+				background: #c9c9c9;
+				border-radius: 100%;
+				font-size: 15px;
+				display: inline-block;
+				width: 22px;
+				height: 22px;
+				line-height: 22px;
+				text-align: center;
+			}
+
+			.kc_span p .comment-star {
+				display: inline-block;
+				width: 78px;
+				height: 14px;
+				background: url(__INDEX__images/stars.jpg) no-repeat;
+			}
+
+			.kc_span p .star-0 {
+				background-position: -80px 0;
+			}
+
+			.kc_span p .star-1 {
+				background-position: -64px 0;
+			}
+
+			.kc_span p .star-2 {
+				background-position: -48px 0;
+			}
+
+			.kc_span p .star-3 {
+				background-position: -32px 0;
+			}
+
+			.kc_span p .star-4 {
+				background-position: -16px 0;
+			}
+
+			.kc_span p .star-5 {
+				background-position: 0 0;
+			}
+
+			.sharesdiv {
+				float: right;
+				width: 200px;
+				margin-top: -40px;
+				margin-right: -40px;
+				padding-top: 0 !important;
+				padding-left: 0 !important;
+			}
+
+			.reset p .discount_price {
+				font-size: 30px;
+				color: #ff4d4d;
+				font-weight: normal;
+			}
+
+			.reset p .discount_price em {
+				font-size: 18px;
+			}
+
+			.reset p .discount_price i {
+				font-style: normal;
+				font-size: 32px;
+				font-weight: bold;
+			}
+
+			.reset p .price {
+				font-size: 14px;
+				text-decoration: line-through;
+				color: #999;
+			}
+
+			.reset .btn {
+				display: inline-block;
+				padding: 0;
+				width: 120px;
+				height: 40px;
+				line-height: 40px;
+				margin-right: 10px;
+				font-size: 14px;
+				margin-top: 10px;
+			}
+
+			.reset .btn:hover {
+				background: #FF7272;
+				border-color: #fff;
+			}
+
+			.reset .buy_vip {
+				background: #fff;
+				color: #FF4D4D;
+				border: 1px solid #FF4D4D;
+			}
+
+			.reset .buy_vip:hover {
+				background: #FF4D4D;
+				color: #fff;
+				border-color: #fff;
+			}
+
+			.reset .btn:active {
+				background: #CD3131;
+			}
+
+			.reset .detail {
+				color: #999;
+				font-size: 12px;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+
+			.reset .detail .ques {
+				color: #fff;
+				background: #c9c9c9;
+				border-radius: 100%;
+				font-size: 12px;
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				line-height: 16px;
+				text-align: center;
+				margin-left: 2px;
+			}

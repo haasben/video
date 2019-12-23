@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>下载中心</title>
+		<link rel="stylesheet" href="__INDEX__css/lesson/reset.css" />
+		<link rel="stylesheet" href="__INDEX__css/iconfont.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/basic.css" />
+		<link rel="stylesheet" href="__INDEX__css/lesson/style.css" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/lesson/jquery.fancybox.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="__INDEX__css/public.css"/>
+		<script type="text/javascript" src="__INDEX__js/jquery-1.10.2.min.js"></script>
+	</head>
+	<body>
+
+		<div class="wrap" id="download">
+			<div class="header">
+				<div class="inner clearfix">
+					{include file="search"}
+					<!--搜索框-->
+<!-- 			<div style="clear: both;"></div> -->
+					{include file="haslogged"}
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="container">
+				<div class="inner download">
+					<h3>下载中心</h3>
+					<div class="download_list">
+						<ul>
+							{volist name="$downloadData" id="v"}
+							<li>
+								<a href="javascript:" class="btnPay" data-id="{$v.aid}">
+									<span>{$v.title} &nbsp;&nbsp;{:round($v.file_size/1024,2)}M&nbsp;&nbsp;[{if condition="$v.is_free == '是'"}<span style="color:green">免费{else}<span style="color:red">收费{/if}]</span></span>
+								</a>
+							</li>
+							{/volist}
+						</ul>
+
+						<div class="hot_download">
+							<h4>推荐下载</h4>
+							<ul>
+								{volist name="$tuijian" id="v"}
+							<li>
+								<a href="javascript:" class="btnPay" data-id="{$v.aid}">
+									<span>{$v.title}</span>
+								</a>
+							</li>
+							{/volist}
+							</ul>
+						</div>
+
+
+					</div>
+					<!--pages分页-->
+					<div class=" pages tr">
+						{$downloadData->render()}
+					</div>
+					<div class="" style="clear:both"></div>
+				</div>
+			</div>
+			
+			<script type="text/javascript">
+				$('.btnPay').click(function(){
+							
+					// var data = $('#course_form').serialize();
+					var aid = $(this).attr('data-id');
+					$.post('{:url("index/download/get_url")}',{paycourse_id:aid,type:3},function(data){
+							if(data.code == 2){
+								window.location.href = '/login?tab=1';
+							}else if(data.code == 1){
+								var url = '/paycourse?orderid='+data.orderid+'&token='+data.token+'&callback='+data.url;
+
+								window.location.href = url;
+							}else if(data.code == 3){
+								alert(data.msg);
+							}else if(data.code == 5){
+								window.location.href = data.url;
+							}
+					})
+
+						})
+
+
+			</script>
+
+
+			{include file="footer"}
